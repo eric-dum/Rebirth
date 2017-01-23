@@ -49,7 +49,7 @@ gulp.task('scripts', function() {
 		'node_modules/bootstrap/dist/js/bootstrap.js',
 
 		//Site/Theme
-		themePath + 'assets/js/*.js'
+		themePath + 'assets/js/theme.js'
 	])
 	.pipe(plumber({
 		errorHandler: onError
@@ -96,10 +96,11 @@ gulp.task('fonts', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
+	gulp.watch( '*.php', ['browser-sync'] );
 	gulp.watch( themePath + 'less/partials/*.less', ['less', 'browser-sync'] );
-	gulp.watch( themePath + 'less/*.less', ['less'] );
-	gulp.watch( themePath + 'js/*.js', ['scripts'] );
-  gulp.watch( themePath + 'js/global/*.js', ['scripts'] );
+	gulp.watch( themePath + 'less/*.less', ['less', 'browser-sync'] );
+	gulp.watch( themePath + 'js/*.js', ['scripts', 'browser-sync'] );
+  gulp.watch( themePath + 'js/global/*.js', ['scripts', 'browser-sync'] );
 });
 
 //Start work with project using the default "gulp" command
