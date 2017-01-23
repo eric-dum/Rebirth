@@ -417,7 +417,7 @@ function theme_scripts() {
 	wp_enqueue_style( 'twentyseventeen-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'theme-styles', get_theme_file_uri( '/assets/less/_compiled/theme.css' ) );
 
-	wp_enqueue_script( 'theme-global', get_theme_file_uri( '/assets/js/min/theme.js' ), array(), false, true );
+	//wp_enqueue_script( 'theme-global', get_theme_file_uri( '/assets/js/min/theme.js' ), array(), false, true );
 
 }
 add_action( 'wp_enqueue_scripts', 'theme_scripts' );
