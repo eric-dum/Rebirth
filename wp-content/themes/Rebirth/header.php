@@ -23,7 +23,9 @@
 	</head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
-	
-	<div class="site-content-contain">
-		<div id="content" class="site-content">
+  <div id="page" class="site">
+  	
+  	<div class="site-content-contain">
+  		<div id="content" class="site-content">
+
+        <?php get_template_part( 'template-parts/navigation/navigation', 'masthead' ); ?>
