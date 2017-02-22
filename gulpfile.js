@@ -1,25 +1,43 @@
+//REQUIREMENTS
+
 //Utilities
-var gulp 				= require('gulp');
-var gutil 			= require('gulp-util');
-var plumber 		= require('gulp-plumber');
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var plumber = require('gulp-plumber');
+var rename = require('gulp-rename');
 
 //Scripting
-var uglify 			= require('gulp-uglify');
-var concat 			= require('gulp-concat');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
 
 //Styling
-var less 					= require('gulp-less');
-var sourceMap 		= require('gulp-sourcemaps');
-var autoprefixer  = require('gulp-autoprefixer');
+var less = require('gulp-less');
+var sourceMap = require('gulp-sourcemaps');
+var lesswatch = require('gulp-watch-less');
 
-var cssnano 			= require('gulp-cssnano');
+//Dev Tools
+var browserSync = require('browser-sync').create();
+var es = require('event-stream');
+
+//On Error
+var onError = function (err) {
+  gutil.beep();
+  console.log(err.toString());
+  this.emit('end');
+};
 
 
-//theme path
+
+//PATH VARIABLES
+var bootstrap = './node_modules/bootstrap/';
+var fontAwesome = './node_modules/font-awesome/';
+var jQuery = './node_modules/jquery/';
+
+//THEME PATH
 var themeName = 'Rebirth';
 var themePath = 'wp-content/themes/' + themeName + '/assets/';
 
-var browserSync = require('browser-sync').create();
+
 
 // Static server
 gulp.task('browser-sync', function() {
@@ -29,82 +47,107 @@ gulp.task('browser-sync', function() {
 });
 
 
-//On Error
-var onError = function (err) {
-	gutil.beep();
-	console.log(err.toString());
-	this.emit('end');
-};
+
+
+
+// Reload all Browsers
+gulp.task('bs-reload', function () {
+  browserSync.reload();
+});
+
+
+
+//--------------------------------------------------------------
+// LESS Main
+//
+// This task is for auto-created minified css files. Any less  
+// files in the 'global' directory will automatically be minified
+// and concatenated and have a 'theme.min.css' file created.
+//--------------------------------------------------------------
+gulp.task('less-main', function() {
+  return gulp.src([
+    //ADD VENDOR STYLESHEETS HERE
+    bootstrap+ 'less/bootstrap.less',
+    fontAwesome + 'less/font-awesome.less',
+
+    //MAIN GLOBAL STYLESHEET
+    themePath + 'less/theme.less'
+  ])
+  .pipe(plumber({
+    errorHandler: onError
+  }))
+  .pipe(sourceMap.init())
+  .pipe(less( {compress : true} ))
+  .pipe(concat('theme.min.css'))
+  .pipe(sourceMap.write('maps/'))
+  .pipe(gulp.dest( themePath + 'less/_compiled' ))
+  .pipe(browserSync.stream())
+  .on('error', gutil.log);
+});
+
+
+
+
+
+
+//COPY FONTS FOR FA
+gulp.task('copy-fonts', function() {
+  return gulp.src(fontAwesome + 'fonts/**')
+  .pipe(gulp.dest('./assets/fonts/'));
+});
+
+
+
 
 
 //Compile and concat framework and custom scripts into one file
 gulp.task('scripts', function() {
-	return gulp.src([
+  return gulp.src([
+    
+    //ADD VENDOR JAVASCRIPT HERE
+    jQuery + '/dist/jquery.js',
+    bootstrap + '/dist/js/bootstrap.min.js',
 
-		//Libraries
-		'node_modules/jquery/dist/jquery.js',
-		'node_modules/modernizr/src/Modernizr.js',
-
-		//Framework
-		'node_modules/bootstrap/dist/js/bootstrap.js',
-
-		//Site/Theme
-		themePath + 'assets/js/theme.js'
-	])
-	.pipe(plumber({
-		errorHandler: onError
-	}))
-	.pipe(concat('theme.js'))
-	.pipe(uglify())
-	.pipe(gulp.dest( themePath + 'js/min'))
-	.pipe(browserSync.stream())
-	.on('error', gutil.log);
+    themePath + 'assets/js/theme.js'
+  ])
+  .pipe(plumber({
+    errorHandler: onError
+  }))
+  .pipe(concat('theme.min.js'))
+  .pipe(uglify())
+  .pipe(gulp.dest( themePath + 'js/min'))
+  .pipe(browserSync.stream())
+  .on('error', gutil.log);
 });
 
 
-//Compile all less files into main less file and output minified css
-gulp.task('less', function() {
-	return gulp.src(
-		themePath + 'less/theme.less'
-	)
-	.pipe(plumber({
-		errorHandler: onError
-	}))
-	.pipe(sourceMap.init())
-	.pipe(less({
-		paths: [
-			'node_modules/bootstrap/less/bootstrap.less',
-			'node_modules/font-awesome/less/font-awesome.less'
-		],
-		compress: true
-	}))
-	.pipe(autoprefixer())
-	.pipe(sourceMap.write('maps/'))
-	.pipe(gulp.dest( themePath + 'less/_compiled' ))
-	.pipe(browserSync.stream())
-	.on('error', gutil.log);
-});
-
-//Copy fonts
-gulp.task('fonts', function() {
-	return gulp.src(
-		'node_modules/font-awesome/fonts/**'
-	)
-	.pipe(gulp.dest( themePath + 'fonts/'));
-});
 
 
-// Watch Files For Changes
+
+
+
+
+
+
+//Watch Task
+//Watches less and js directories for change.
 gulp.task('watch', function() {
-	gulp.watch( '*.php', ['browser-sync'] );
-	gulp.watch( themePath + 'less/partials/*.less', ['less', 'browser-sync'] );
-	gulp.watch( themePath + 'less/*.less', ['less', 'browser-sync'] );
-	gulp.watch( themePath + 'js/*.js', ['scripts', 'browser-sync'] );
-  gulp.watch( themePath + 'js/global/*.js', ['scripts', 'browser-sync'] );
+  gulp.watch( '*.php', ['bs-reload'] );
+  gulp.watch( themePath + 'less/**/*.less', ['less-main'] );
+  gulp.watch( themePath + 'js/*.js', ['scripts'] );
 });
+
+
+
+
+
+
+//Build Task
+gulp.task('build', ['less-main', 'scripts']);
 
 //Start work with project using the default "gulp" command
-gulp.task('default', ['fonts', 'browser-sync', 'scripts', 'less', 'watch']);
+gulp.task('default', ['less-main', 'scripts', 'copy-fonts', 'browser-sync', 'watch']);
+
 
 
 

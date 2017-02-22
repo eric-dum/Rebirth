@@ -14,32 +14,6 @@
 
 get_header(); ?>
 
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Project name</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <form class="navbar-form navbar-right">
-        <div class="form-group">
-          <input type="text" placeholder="Email" class="form-control">
-        </div>
-        <div class="form-group">
-          <input type="password" placeholder="Password" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-success">Sign in</button>
-      </form>
-    </div><!--/.navbar-collapse -->
-  </div>
-</nav>
-
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
   <div class="container">
@@ -50,6 +24,40 @@ get_header(); ?>
 </div>
 
 <div class="container">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <?php
+      if ( have_posts() ) : ?>
+        <?php
+          /* Start the Loop */
+          while ( have_posts() ) : the_post();
+
+            /*
+             * Include the Post-Format-specific template for the content.
+             * If you want to override this in a child theme, then include a file
+             * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+             */
+            get_template_part( 'template-parts/post/content', get_post_format() );
+
+          endwhile;
+
+          the_posts_pagination( array(
+            'prev_text' => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
+            'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
+            'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
+          ) );
+
+        else :
+
+          get_template_part( 'template-parts/post/content', 'none' );
+
+        endif; 
+      ?>
+    </div>
+  </div>
+
+
   <!-- Example row of columns -->
   <div class="row">
     <div class="col-md-4">
@@ -71,6 +79,7 @@ get_header(); ?>
 
   <div class="row">
     <div class="col-sm-12">
+
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -106,8 +115,10 @@ get_header(); ?>
           <span class="sr-only">Next</span>
         </a>
       </div>
+      
     </div>
   </div>
+
 </div> <!-- /container -->
 
 

@@ -412,12 +412,11 @@ function theme_scripts() {
 	//wp_enqueue_style( 'twentyseventeen-fonts', twentyseventeen_fonts_url(), array(), null );
 
 	// Theme stylesheet.
-	$theme_path = '/wp-content/themes/Rebirth/assets/';
 
 	wp_enqueue_style( 'twentyseventeen-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'theme-styles', get_theme_file_uri( '/assets/less/_compiled/theme.css' ) );
+	wp_enqueue_style( 'theme-styles', get_theme_file_uri( '/assets/less/_compiled/theme.min.css' ) );
 
-	//wp_enqueue_script( 'theme-global', get_theme_file_uri( '/assets/js/min/theme.js' ), array(), false, true );
+	wp_enqueue_script( 'theme-global', get_theme_file_uri( '/assets/js/min/theme.min.js' ), array(), false, '1.0.0', true );
 
 }
 add_action( 'wp_enqueue_scripts', 'theme_scripts' );
@@ -503,6 +502,33 @@ add_filter( 'wp_get_attachment_image_attributes', 'twentyseventeen_post_thumbnai
 	return is_home() ? '' : $template;
 }*/
 /*add_filter( 'frontpage_template',  'twentyseventeen_front_page_template' );*/
+
+
+/* CUSTOM POST TYPES */
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+  register_post_type( 'work_entry',
+    array(
+      'labels' => array(
+        'name' => __( 'Work Items' ),
+        'singular_name' => __( 'Work Items' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'menu_icon' => 'dashicons-camera',
+      'supports' => array( 'title', 'custom-fields' )
+    )
+  );
+}
+
+
+
+
+
+
+
+
+
 
 /**
  * Implement the Custom Header feature.
