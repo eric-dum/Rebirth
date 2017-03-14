@@ -22,42 +22,27 @@
         <ul class="nav nav-pills">
           <li role="presentation" class="active">
             <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-o fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x"></i>
-              </span>
+              <?php get_template_part( 'template-parts/svg/svg', 'facebook' ); ?>
             </a>
           </li>
           <li role="presentation" class="active">
             <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-o fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x"></i>
-              </span>
+              <?php get_template_part( 'template-parts/svg/svg', 'instagram' ); ?>
             </a>
           </li>
           <li role="presentation" class="active">
             <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-o fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x"></i>
-              </span>
+              <?php get_template_part( 'template-parts/svg/svg', 'twitter' ); ?>
             </a>
           </li>
           <li role="presentation" class="active">
             <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-o fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x"></i>
-              </span>
+              <?php get_template_part( 'template-parts/svg/svg', 'youtube' ); ?>
             </a>
           </li>
           <li role="presentation" class="active">
             <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-o fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x"></i>
-              </span>
+              <?php get_template_part( 'template-parts/svg/svg', 'snapchat' ); ?>
             </a>
           </li>
         </ul>

@@ -1,6 +1,7 @@
 //masthead.less
 
 .masthead {
+  z-index: 3;
   position: relative;
   border-top: 5px solid @brand-primary;
   padding-top: 20px;
@@ -19,5 +20,36 @@
         width: auto;
       }
     }
+    @media (min-width: @screen-lg-min) {
+      .brand-logo {
+        img {
+          max-height: 80px;
+        }
+      }
+    }
   }
+
+  .nav-pills {
+    float: right;
+    margin-top: 5px;
+    li {
+      a {
+        background-color: transparent;
+        padding: 5px;
+        svg {
+          width: 40px;
+          height: auto;
+          .icon-stroke {
+            stroke: @brand-primary;
+          }
+          .icon-main {
+            fill: @brand-primary;
+          }
+        }
+      }
+    }
+    @media (min-width: @screen-lg-min) {
+      margin-top: 15px;
+    }
+  } 
 }

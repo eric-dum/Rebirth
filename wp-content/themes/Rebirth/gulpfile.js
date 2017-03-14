@@ -14,6 +14,7 @@ var concat = require('gulp-concat');
 var less = require('gulp-less');
 var sourceMap = require('gulp-sourcemaps');
 var lesswatch = require('gulp-watch-less');
+var autoprefixer = require('gulp-autoprefixer');
 
 //Dev Tools
 var browserSync = require('browser-sync').create();
@@ -80,6 +81,7 @@ gulp.task('less-main', function() {
   }))
   .pipe(sourceMap.init())
   .pipe(less( {compress : true} ))
+  .pipe(autoprefixer('last 10 versions', 'ie 9'))
   .pipe(concat('theme.min.css'))
   .pipe(sourceMap.write('maps/'))
   .pipe(gulp.dest( lessDest ))
