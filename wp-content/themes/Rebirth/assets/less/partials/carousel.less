@@ -1,0 +1,135 @@
+//carousel.less
+
+
+//items
+.item {
+  .carousel-caption {
+    min-height: 150px;
+    position: relative; //bs override mobile
+    left: 0; //bs override mobile
+    right: 0; //bs override mobile
+    bottom: 0; //bs override mobile
+    background-color: @gray-med;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: left;
+
+    .carousel-heading {
+      margin-top: 0;
+      text-align: left;
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+    .btn {
+      margin-top: 15px;
+      float: left;
+    }
+  }
+
+  @media (min-width: 600px) {
+    .carousel-caption {
+      min-height: 125px;
+    }
+  }
+  @media (min-width: @screen-sm-min) {
+    .carousel-caption {
+      position: absolute;
+      width: 250px;
+      top: 50%;
+      left: auto;
+      right: 80px;
+      bottom: auto;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.70);
+
+      .carousel-heading {
+        color: @brand-primary;
+      }
+    }
+  }
+  @media (min-width: @screen-md-min) {
+    .carousel-caption {
+      width: 350px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+  @media (min-width: @screen-lg-min) {
+    .carousel-caption {
+      right: 130px;
+
+      .carousel-heading {
+        font-size: 24px;
+      }
+      .carousel-excerpt, .btn-ghost {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+//indicators
+.carousel-indicators {
+  bottom: 50%;
+  margin-bottom: 0;
+  li {
+    border: 0; //bs override
+    background-color: @gray-med;
+    margin: 0; //bs override
+
+    &.active {
+      background-color: @brand-primary;
+      width: @indicator-size; //bs override
+      height: @indicator-size; //bs override
+    }
+  }
+
+  @media (min-width: 600px) {
+    bottom: 40%;
+  }
+  @media (min-width: @screen-sm-min) {
+    bottom: 10px;
+  }
+}
+
+//controls
+//most styles are overrides for bs using glyphicons instead of fa
+.carousel-control {
+  i {
+    position: absolute;
+    top: 25%;
+    margin-top: -10px;
+    z-index: 5;
+    display: inline-block;
+    color: white;
+
+    &.fa-chevron-right {
+      right: 50%;
+      margin-right: -10px;
+    }
+    &.fa-chevron-left { 
+      left: 50%;
+      margin-left: -10px;
+    }
+  }
+
+  @media (min-width: 600px) {
+    i {
+      top: 30%;
+    }
+  }
+  @media (min-width: @screen-sm-min) {
+    width: 10%;
+    i {
+      top: 50%;
+      font-size: 60px;
+      margin-top: 0;
+      &.fa-chevron-right {
+        transform: translate(50%, -50%);
+      }
+      &.fa-chevron-left {
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}

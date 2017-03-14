@@ -9,18 +9,29 @@
 
     @media (min-width: @screen-sm-min) {
       height: auto;
-      min-height: 50px;
+      min-height: 60px;
       background-color: @gray-dark;
 
       &:before {
         content: '';
         background-color: @brand-primary;
-        height: 50px;
+        height: 60px;
         width: 50vw;
         position: absolute;
-        left: -30vw;
+        left: -40vw;
         top: 0;
         transform: skew(-40deg);
+      }
+    }
+
+    @media (min-width: 1440px) {
+      &:before {
+        left: -35vw;
+      }
+    }
+    @media (min-width: 1600px) {
+      &:before {
+        left: -30vw;
       }
     }
 
@@ -134,8 +145,35 @@
 
       @media (min-width: @screen-sm-min) {
         .navbar-nav {
+          margin-left: 10vw;
+          .nav-item {
+            a {
+              padding-top: 20px;
+              padding-bottom: 20px;
+            }
+            .dropdown-menu {
+              li {
+                a {
+                  padding-top: 15px;
+                  padding-bottom: 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+      @media (min-width: 1440px) {
+        .navbar-nav {
+          margin-left: 15vw;
+        }
+      }
+      @media (min-width: 1600px) {
+        .navbar-nav {
           margin-left: 20vw;
           .nav-item {
+            a {
+              font-size: 18px;
+            }
           }
         }
       }

@@ -19,11 +19,33 @@
         max-height: 60px;
         width: auto;
       }
+      .brand {
+        text-indent: -99999px;
+        position: absolute;
+      }
+    }
+    @media (min-width: @screen-sm-min) {
+      .brand-logo {
+        img {
+          max-height: 70px;
+        }
+      }
     }
     @media (min-width: @screen-lg-min) {
       .brand-logo {
         img {
           max-height: 80px;
+        }
+      }
+    }
+    @media (min-width: 1440px) {
+      padding-left: 25px;
+    }
+    @media (min-width: 1600px) {
+      padding-left: 15px;
+      .brand-logo {
+        img {
+          max-height: 100px;
         }
       }
     }
@@ -48,8 +70,20 @@
         }
       }
     }
+    @media (min-width: @screen-sm-min) {
+      margin-top: 10px;
+    }
     @media (min-width: @screen-lg-min) {
       margin-top: 15px;
+    }
+    @media (min-width: 1600px) {
+      li {
+        a {
+          svg {
+            width: 60px;
+          }
+        }
+      }
     }
   } 
 }
