@@ -62,10 +62,55 @@
           width: 40px;
           height: auto;
           .icon-stroke {
-            stroke: @brand-primary;
+            stroke: fade(@brand-primary, 35%);
+            transition: all 0.25s ease-in-out;
           }
           .icon-main {
-            fill: @brand-primary;
+            fill: fade(@brand-primary, 35%);
+            transition: all 0.25s ease-in-out;
+          }
+        }
+        &:hover, &:active, &:focus {
+          background-color: transparent;
+          #facebook-icon{
+            .icon-stroke {
+              stroke: @facebook;
+            }
+            .icon-main {
+              fill: @facebook;
+            }
+          }
+          #instagram-icon {
+            .icon-stroke {
+              stroke: @instagram;
+            }
+            .icon-main {
+              fill: @instagram;
+            }
+          }
+          #twitter-icon {
+            .icon-stroke {
+              stroke: @twitter;
+            }
+            .icon-main {
+              fill: @twitter;
+            }
+          }
+          #youtube-icon {
+            .icon-stroke {
+              stroke: @youtube;
+            }
+            .icon-main {
+              fill: @youtube;
+            }
+          }
+          #snapchat-icon {
+            .icon-stroke {
+              stroke: @snapchat;
+            }
+            .icon-main {
+              fill: @snapchat;
+            }
           }
         }
       }

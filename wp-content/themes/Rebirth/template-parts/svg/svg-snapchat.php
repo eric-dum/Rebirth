@@ -9,7 +9,7 @@
 
 ?>
 
-<svg version="1.1" id="youtube-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 328 328" preserveAspectRatio="xMinYMin meet">
+<svg version="1.1" id="snapchat-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 328 328" preserveAspectRatio="xMinYMin meet">
 <path class="icon-stroke" fill="none" stroke="#000000" stroke-width="8" stroke-miterlimit="10" d="M324,164c0,88.4-71.6,160-160,160
 	C75.6,324,4,252.4,4,164C4,75.6,75.6,4,164,4C252.4,4,324,75.6,324,164z"/>
 <g id="snapchat-snapchat" class="icon-main">
