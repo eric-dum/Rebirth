@@ -1,0 +1,26 @@
+//animation.less
+
+//loop
+.animation-loop (@i) when (@i > 0) {
+
+  @stag: 50 * (@i - 1); // skip first
+  .nav-item:nth-child(@{i}){ animation-delay: ~"@{stag}ms"; }
+  .animation-loop(@i - 1);
+}
+
+@iterations: 4; // specify iteration count
+.animation-loop(@iterations); // execute loop
+
+
+
+//Keyframes
+@keyframes  navin {
+  0% { 
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

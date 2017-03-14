@@ -22,23 +22,23 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="primary-nav-items">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active">
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
           <a href="/">
             Home
           </a>
         </li>
-        <li>
+        <li class="nav-item">
           <a href="/about">
             About us
           </a>
         </li>
-        <li>
+        <li class="nav-item">
           <a href="/faq">
             FAQ
           </a>
         </li>
-        <li class="dropdown">
+        <li class="dropdown nav-item">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             Sports <span class="caret"></span>
           </a>
@@ -47,6 +47,16 @@
             <?php get_template_part( 'template-parts/navigation/navigation', 'sports' ); ?>
           
           </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/recent-work">
+            Recent Work
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/contact">
+            Contact
+          </a>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

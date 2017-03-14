@@ -12,52 +12,38 @@
   <div class="container-fluid max-contain">
     <div class="row">
 
-      <div class="col-sm-3 logo-contain">
+      <div class="col-sm-4 logo-contain">
         <a href="#" class="brand-logo">
           <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/brand/logo.png" alt="Rebirth Sports" class="img-responsive">
+          <h1 class="brand">Rebirth Sports</h1>
         </a>
       </div>
 
-      <div class="col-sm-4 col-sm-offset-5 hidden-xs">
+      <div class="col-sm-5 col-sm-offset-3 hidden-xs">
         <ul class="nav nav-pills">
           <li role="presentation" class="active">
             <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-o fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x"></i>
-              </span>
+              <?php get_template_part( 'template-parts/svg/svg', 'facebook' ); ?>
             </a>
           </li>
           <li role="presentation" class="active">
             <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-o fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x"></i>
-              </span>
+              <?php get_template_part( 'template-parts/svg/svg', 'instagram' ); ?>
             </a>
           </li>
           <li role="presentation" class="active">
             <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-o fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x"></i>
-              </span>
+              <?php get_template_part( 'template-parts/svg/svg', 'twitter' ); ?>
             </a>
           </li>
           <li role="presentation" class="active">
             <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-o fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x"></i>
-              </span>
+              <?php get_template_part( 'template-parts/svg/svg', 'youtube' ); ?>
             </a>
           </li>
           <li role="presentation" class="active">
             <a href="#">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-o fa-stack-2x"></i>
-                <i class="fa fa-twitter fa-stack-1x"></i>
-              </span>
+              <?php get_template_part( 'template-parts/svg/svg', 'snapchat' ); ?>
             </a>
           </li>
         </ul>
