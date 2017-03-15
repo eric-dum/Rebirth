@@ -1,0 +1,49 @@
+//forms.less
+
+.form {
+  label {
+    color: @brand-primary;
+    text-transform: uppercase;
+    width: 100%;
+    input, textarea {
+      padding: 10px 5px;
+      width: 100%;
+
+      &[type="submit"] {
+
+      }
+    }
+  }
+
+  @media (min-width: @screen-sm-min) {
+    label {
+      input {
+        padding: 5px 5px;
+      }
+    }
+  }
+  @media (min-width: @screen-md-min) {
+    label {
+      input {
+        padding: 10px 5px;
+      }
+    }
+  }
+
+  &#contact-form-footer {
+    @media (min-width: @screen-sm-min) {
+      p {
+        &:nth-child(-n+3) {
+          width: 50%;
+          float: left;
+        }
+        &:nth-child(2) {
+          padding-right: 5px;
+        }
+        &:nth-child(3) {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}
