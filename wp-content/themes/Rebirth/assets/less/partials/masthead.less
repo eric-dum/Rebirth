@@ -1,7 +1,7 @@
 //masthead.less
 
 .masthead {
-  z-index: 3;
+  z-index: 4;
   position: relative;
   border-top: 5px solid @brand-primary;
   padding-top: 20px;
@@ -51,84 +51,14 @@
     }
   }
 
-  .nav-pills {
+  .nav {
     float: right;
     margin-top: 5px;
-    li {
-      a {
-        background-color: transparent;
-        padding: 5px;
-        svg {
-          width: 40px;
-          height: auto;
-          .icon-stroke {
-            stroke: fade(@brand-primary, 35%);
-            transition: all 0.25s ease-in-out;
-          }
-          .icon-main {
-            fill: fade(@brand-primary, 35%);
-            transition: all 0.25s ease-in-out;
-          }
-        }
-        &:hover, &:active, &:focus {
-          background-color: transparent;
-          #facebook-icon{
-            .icon-stroke {
-              stroke: @facebook;
-            }
-            .icon-main {
-              fill: @facebook;
-            }
-          }
-          #instagram-icon {
-            .icon-stroke {
-              stroke: @instagram;
-            }
-            .icon-main {
-              fill: @instagram;
-            }
-          }
-          #twitter-icon {
-            .icon-stroke {
-              stroke: @twitter;
-            }
-            .icon-main {
-              fill: @twitter;
-            }
-          }
-          #youtube-icon {
-            .icon-stroke {
-              stroke: @youtube;
-            }
-            .icon-main {
-              fill: @youtube;
-            }
-          }
-          #snapchat-icon {
-            .icon-stroke {
-              stroke: @snapchat;
-            }
-            .icon-main {
-              fill: @snapchat;
-            }
-          }
-        }
-      }
-    }
     @media (min-width: @screen-sm-min) {
       margin-top: 10px;
     }
     @media (min-width: @screen-lg-min) {
       margin-top: 15px;
-    }
-    @media (min-width: 1600px) {
-      li {
-        a {
-          svg {
-            width: 60px;
-          }
-        }
-      }
     }
   } 
 }

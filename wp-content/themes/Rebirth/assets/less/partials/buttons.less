@@ -7,5 +7,89 @@
     background-color: transparent;
     border-color: @brand-primary;
     color: @brand-primary;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      background-color: @brand-primary;
+      color: white;
+    }
+  }
+
+  @media (min-width: @screen-md-min) {
+    &.btn-block {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-size: 21px;
+    }
+  }
+}
+
+
+//social icons
+.social-icon {
+  .nav-pills & {
+    background-color: transparent;
+    padding: 5px;
+    svg {
+      width: 40px;
+      height: auto;
+      .icon-stroke {
+        stroke: fade(@brand-primary, 35%);
+        transition: all 0.25s ease-in-out;
+      }
+      .icon-main {
+        fill: fade(@brand-primary, 35%);
+        transition: all 0.25s ease-in-out;
+      }
+    }
+    &:hover, &:active, &:focus {
+      background-color: transparent;
+      #facebook-icon{
+        .icon-stroke {
+          stroke: @facebook;
+        }
+        .icon-main {
+          fill: @facebook;
+        }
+      }
+      #instagram-icon {
+        .icon-stroke {
+          stroke: @instagram;
+        }
+        .icon-main {
+          fill: @instagram;
+        }
+      }
+      #twitter-icon {
+        .icon-stroke {
+          stroke: @twitter;
+        }
+        .icon-main {
+          fill: @twitter;
+        }
+      }
+      #youtube-icon {
+        .icon-stroke {
+          stroke: @youtube;
+        }
+        .icon-main {
+          fill: @youtube;
+        }
+      }
+      #snapchat-icon {
+        .icon-stroke {
+          stroke: @snapchat;
+        }
+        .icon-main {
+          fill: @snapchat;
+        }
+      }
+    }
+
+    @media (min-width: 1600px) {
+      svg {
+        width: 60px;
+      }
+    }
   }
 }

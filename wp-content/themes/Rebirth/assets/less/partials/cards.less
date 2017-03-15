@@ -1,0 +1,64 @@
+//cards.less
+
+.card {
+  margin-top: 35px;
+  .card-header {
+    padding: 15px 0;
+    height: 80px;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    .card-header {
+      height: 100px;
+    }
+  }
+  &.card-feed {
+    .card-header {
+      img {
+        width: 80%;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &.media-card {
+    margin-top: 30px;
+    .media-img {
+      img {
+        width: 100%;
+      }
+    }
+    .media-content {
+      .heading {
+        font-size: 18px;
+      }
+      .excerpt {
+        color: white;
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (min-width: @screen-sm-min) {
+      margin-top: 15px;
+    }
+  }
+}
+
+//specific mobile styling for contact card
+#contact-home {
+  background-color: @gray-med;
+  padding-bottom: 15px;
+  .card-header {
+    display: table-cell;
+    vertical-align: bottom;
+    &.center {
+      vertical-align: middle;
+    }
+  }
+
+  @media (min-width: @screen-sm-min) {
+    background-color: transparent;
+    padding-bottom: 0;
+  }
+}

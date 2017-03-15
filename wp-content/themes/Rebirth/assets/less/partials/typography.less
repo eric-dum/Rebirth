@@ -3,3 +3,29 @@
 body {
   font-family: 'Open Sans', sans-serif;
 } 
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-transform: uppercase;
+}
+
+.heading-zero-margin {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.heading {
+  color: @brand-primary;
+  font-weight: 700;
+}
+
+
+.contact-heading {
+  color: @brand-primary;
+  font-size: 21px;
+  font-weight: 700;
+
+  @media (min-width: @screen-md-min) {
+    font-size: 32px;
+  }
+}

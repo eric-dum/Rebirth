@@ -21,28 +21,28 @@
 
       <div class="col-sm-5 col-sm-offset-3 hidden-xs">
         <ul class="nav nav-pills">
-          <li role="presentation" class="active">
-            <a href="#">
+          <li role="presentation">
+            <a class="social-icon" href="#">
               <?php get_template_part( 'template-parts/svg/svg', 'facebook' ); ?>
             </a>
           </li>
-          <li role="presentation" class="active">
-            <a href="#">
+          <li role="presentation">
+            <a class="social-icon" href="#">
               <?php get_template_part( 'template-parts/svg/svg', 'instagram' ); ?>
             </a>
           </li>
-          <li role="presentation" class="active">
-            <a href="#">
+          <li role="presentation">
+            <a class="social-icon" href="#">
               <?php get_template_part( 'template-parts/svg/svg', 'twitter' ); ?>
             </a>
           </li>
-          <li role="presentation" class="active">
-            <a href="#">
+          <li role="presentation">
+            <a class="social-icon" href="#">
               <?php get_template_part( 'template-parts/svg/svg', 'youtube' ); ?>
             </a>
           </li>
-          <li role="presentation" class="active">
-            <a href="#">
+          <li role="presentation">
+            <a class="social-icon" href="#">
               <?php get_template_part( 'template-parts/svg/svg', 'snapchat' ); ?>
             </a>
           </li>
