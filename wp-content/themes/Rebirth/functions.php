@@ -88,6 +88,7 @@ function twentyseventeen_setup() {
 		'link',
 		'gallery',
 		'audio',
+		'work-items'
 	) );
 
 	// Add theme support for Custom Logo.
@@ -505,21 +506,34 @@ add_filter( 'wp_get_attachment_image_attributes', 'twentyseventeen_post_thumbnai
 
 
 /* CUSTOM POST TYPES */
-add_action( 'init', 'create_post_type' );
-function create_post_type() {
-  register_post_type( 'work_entry',
-    array(
-      'labels' => array(
-        'name' => __( 'Work Items' ),
-        'singular_name' => __( 'Work Items' )
-      ),
-      'public' => true,
-      'has_archive' => true,
-      'menu_icon' => 'dashicons-camera',
-      'supports' => array( 'title', 'custom-fields' )
-    )
+function my_custom_post_work_items() {
+  $labels = array(
+    'name'               => _x( 'Work Items', 'post type general name' ),
+    'singular_name'      => _x( 'Work Items', 'post type singular name' ),
+    'add_new'            => _x( 'Add New', 'book' ),
+    'add_new_item'       => __( 'Add New Work Item' ),
+    'edit_item'          => __( 'Edit Work Item' ),
+    'new_item'           => __( 'New Work Item' ),
+    'all_items'          => __( 'All Work Items' ),
+    'view_item'          => __( 'View Work Item' ),
+    'search_items'       => __( 'Search Work Items' ),
+    'not_found'          => __( 'No Work Items found' ),
+    'not_found_in_trash' => __( 'No Work Items found in the Trash' ), 
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Work Items'
   );
+  $args = array(
+    'labels'        => $labels,
+    'description'   => 'Holds our Work Items and Work Item specific data',
+    'public'        => true,
+    'menu_position' => 5,
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+    'menu_icon' => 'dashicons-camera',
+    'has_archive'   => true,
+  );
+  register_post_type( 'work-items', $args ); 
 }
+add_action( 'init', 'my_custom_post_work_items' );
 
 
 

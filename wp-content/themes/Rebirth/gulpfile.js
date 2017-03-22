@@ -112,6 +112,9 @@ gulp.task('scripts', function() {
     jQuery + '/dist/jquery.js',
     bootstrap + '/dist/js/bootstrap.min.js',
 
+    //ADDITIONAL VENDOR SCRIPTS NOT IN NPM PACKAGE
+    './assets/js/vendor/*.js',
+
     './assets/js/theme.js'
   ])
   .pipe(plumber({
