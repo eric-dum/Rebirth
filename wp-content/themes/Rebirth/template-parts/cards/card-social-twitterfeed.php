@@ -15,7 +15,7 @@
   </div>
   <div class="card-content">
     <a class="twitter-timeline" 
-      data-height="250" 
+      data-height="350" 
       data-theme="dark" 
       data-chrome="nofooter"  
       href="https://twitter.com/RebirthSports">Tweets by RebirthSports</a> 
