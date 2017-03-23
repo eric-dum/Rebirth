@@ -139,7 +139,7 @@ gulp.task('scripts', function() {
 //Watch Task
 //Watches less and js directories for change.
 gulp.task('watch', function() {
-  gulp.watch( '*.php', ['bs-reload'] );
+  gulp.watch( ['*.php', 'template-parts/**/*.php'], ['bs-reload'] );
   gulp.watch( './assets/less/**/*.less', ['less-main'] );
   gulp.watch( './assets/js/*.js', ['scripts'] );
 });
@@ -153,7 +153,7 @@ gulp.task('watch', function() {
 gulp.task('build', ['less-main', 'scripts']);
 
 //Start work with project using the default "gulp" command
-gulp.task('default', ['less-main', 'scripts', 'copy-fonts', 'watch']);
+gulp.task('default', ['less-main', 'scripts', 'copy-fonts', 'browser-sync', 'watch']);
 
 
 
