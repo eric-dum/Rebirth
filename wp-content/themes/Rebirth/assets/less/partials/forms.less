@@ -30,6 +30,40 @@
     }
   }
 
+  &#contact-form-main {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    p {
+      label {
+        color: white;
+      }
+    }
+    .btn-ghost {
+      display: block;
+      border-color: white;
+      color: white;
+      max-width: 400px;
+    }
+    @media (min-width: @screen-sm-min) {
+      .btn-ghost {
+        float: right;
+      }
+      p {
+        &:nth-child(2), &:nth-child(4) {
+          width: 48%;
+          float: left;
+          padding-right: 5px;
+        }
+        &:nth-child(3), &:nth-child(5) {
+          width: 48%;
+          float: right;
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+
   &#contact-form-footer {
     @media (min-width: @screen-sm-min) {
       p {
@@ -46,4 +80,5 @@
       }
     }
   }
+
 }

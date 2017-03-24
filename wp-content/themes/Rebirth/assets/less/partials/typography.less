@@ -1,11 +1,11 @@
 //typography.less
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: @font-main;
 } 
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: @font-condensed;
   text-transform: uppercase;
 }
 
@@ -28,4 +28,27 @@ h1, h2, h3, h4, h5, h6 {
   @media (min-width: @screen-md-min) {
     font-size: 32px;
   }
+}
+
+
+//FONT VARIANTS
+.font-light-condensed() {
+  font-family: @font-condensed;
+  font-weight: 300;
+}
+.font-bold-condensed() {
+  font-family: @font-condensed;
+  font-weight: 700;
+}
+.font-light() {
+  font-family: @font-main;
+  font-weight: 300;
+}
+.font-regular() {
+  font-family: @font-main;
+  font-weight: 400;
+}
+.font-bold() {
+  font-family: @font-main;
+  font-weight: 800;
 }
