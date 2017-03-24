@@ -3,13 +3,13 @@
 *
 * 
 * 
-* Template Name: Custom Template
+* Template Name: FAQ Template
 */
 ?>
 
 <?php get_header(); ?>
 
-<main class="container-fluid max-contain">
+<main class="container-fluid max-contain page-contain">
 
   <section class="row section-relative">
     <div class="col-sm-12">
