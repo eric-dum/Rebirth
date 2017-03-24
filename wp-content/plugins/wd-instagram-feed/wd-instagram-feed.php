@@ -1,9 +1,9 @@
-<?php 
+<?php
 /*
 Plugin Name: Instagram Feed WD
 Plugin URI: https://web-dorado.com/products/wordpress-instagram-feed-wd.html
 Description: WD Instagram Feed is a user-friendly tool for displaying user or hashtag-based feeds on your website. You can create feeds with one of the available layouts. It allows displaying image metadata, open up images in lightbox, download them and even share in social networking websites.
-Version: 1.1.23
+Version: 1.1.24
 Author: WebDorado
 Author URI: https://web-dorado.com
 License: GPLv2 or later
@@ -30,7 +30,7 @@ function wdi_use_home_url() {
   $pos = strpos($home_url, "/");
   if ($pos) {
     $home_url = substr($home_url, 0, $pos);
-  } 
+  }
   $site_url = str_replace("http://", "", WDI_URL);
   $site_url = str_replace("https://", "", $site_url);
   $pos = strpos($site_url, "/");
@@ -53,6 +53,7 @@ else {
 
 add_action('wp_ajax_WDIGalleryBox', 'wdi_ajax_frontend');
 add_action('wp_ajax_nopriv_WDIGalleryBox', 'wdi_ajax_frontend');
+add_action('admin_init', 'setup_redirect');
 function wdi_ajax_frontend() {
 
   /* reset from user to site locale*/
@@ -103,12 +104,21 @@ function wdi_instagram_activate($networkwide) {
       return;
     }
   }
- // wdi_activate();
+  add_option('wdi_do_activation_set_up_redirect', 1);
+  // wdi_activate();
   wdi_install();
+}
+function setup_redirect() {
+  if (get_option('wdi_do_activation_set_up_redirect')) {
+    update_option('wdi_do_activation_set_up_redirect',0);
+    //wp_safe_redirect( admin_url( 'index.php?page=gmwd_setup' ) );
+    wp_safe_redirect( admin_url( 'admin.php?page=wdi_subscribe' ) );
+    exit;
+  }
 }
 
 
- 
+
 
 
 
@@ -129,61 +139,70 @@ function wdi_register_settings(){
   //adding settings fileds form getted settings
   foreach($settings as $setting_name => $setting){
     if(isset($setting['field_or_not'])==true && $setting['field_or_not']!='no_field'){
-        add_settings_field(
+      add_settings_field(
         $setting_name,
         $setting['title'],
         'wdi_field_callback',
         'settings_wdi',
         $setting['section'],
         array($setting)
-        );
+      );
     }
   }
 
   //registering all settings
   register_setting( 'wdi_all_settings', 'wdi_instagram_options','wdi_sanitize_options');
 
-  wdi_get_options(); 
+  wdi_get_options();
 }
 
 
 //adding menues
-add_action('admin_menu', 'WDI_instagram_menu');
+add_action('admin_menu', 'WDI_instagram_menu', 9);
 add_action('admin_head-toplevel_page_wdi_feeds', 'wdi_check_necessary_params');
 function WDI_instagram_menu() {
-   $menu_icon = WDI_URL .'/images/menu_icon.png';
-   global $wdi_options;
-   $min_feeds_capability = isset($wdi_options['wdi_feeds_min_capability']) ? $wdi_options['wdi_feeds_min_capability'] : "manage_options";
-   $min_feeds_capability = $min_feeds_capability == 'publish_posts' ? 'publish_posts' :  "manage_options";
+  $menu_icon = WDI_URL .'/images/menu_icon.png';
+  $min_feeds_capability = wdi_get_create_feeds_cap();
 
-   $settings_page = add_menu_page(__('Instagram Feed WD',"wdi"), __('Instagram Feed WD',"wdi"),$min_feeds_capability,'wdi_feeds','WDI_instagram_feeds_page',$menu_icon);
-   add_submenu_page('wdi_feeds',__('Feeds',"wdi"),__('Feeds',"wdi"),$min_feeds_capability,'wdi_feeds','WDI_instagram_feeds_page');
-   add_submenu_page('wdi_feeds',__('Themes',"wdi"),__('Themes',"wdi"),$min_feeds_capability,'wdi_themes','WDI_instagram_themes_page');
-   add_submenu_page('wdi_feeds',__('Settings',"wdi"),__('Settings',"wdi"),'manage_options','wdi_settings','WDI_instagram_settings_page');
-   add_submenu_page('wdi_feeds',__('Featured Themes',"wdi"),__('Featured Themes',"wdi"),$min_feeds_capability,'wdi_featured_themes','wdi_featured_themes');
-   add_submenu_page('wdi_feeds',__('Featured Plugins',"wdi"),__('Featured Plugins',"wdi"),$min_feeds_capability,'wdi_featured_plugins','wdi_featured_plugins');
-   add_submenu_page('wdi_feeds',__('Upgrade to Pro',"wdi"),__('Upgrade to Pro',"wdi"),$min_feeds_capability,'wdi_licensing','WDI_instagram_licensing_page');
+
+
+  $parent_slug = null;
+  if( get_option( "wdi_subscribe_done" ) == 1 ){
+    $parent_slug = "wdi_feeds";
+    $settings_page = add_menu_page(__('Instagram Feed WD',"wdi"), __('Instagram Feed WD',"wdi"),$min_feeds_capability,'wdi_feeds','WDI_instagram_feeds_page',$menu_icon);
+  }
+  add_submenu_page($parent_slug,__('Feeds',"wdi"),__('Feeds',"wdi"),$min_feeds_capability,'wdi_feeds','WDI_instagram_feeds_page');
+  add_submenu_page($parent_slug,__('Themes',"wdi"),__('Themes',"wdi"),$min_feeds_capability,'wdi_themes','WDI_instagram_themes_page');
+  add_submenu_page($parent_slug,__('Settings',"wdi"),__('Settings',"wdi"),'manage_options','wdi_settings','WDI_instagram_settings_page');
+  //add_submenu_page('overview_wdi',__('Featured Themes',"wdi"),__('Featured Themes',"wdi"),$min_feeds_capability,'wdi_featured_themes','wdi_featured_themes');
+  //add_submenu_page('overview_wdi',__('Featured Plugins',"wdi"),__('Featured Plugins',"wdi"),$min_feeds_capability,'wdi_featured_plugins','wdi_featured_plugins');
+  add_submenu_page($parent_slug,__('Upgrade to Pro',"wdi"),__('Upgrade to Pro',"wdi"),$min_feeds_capability,'wdi_licensing','WDI_instagram_licensing_page');
 
 }
 
 
 add_action('admin_menu', 'WDI_add_uninstall',26);
 function WDI_add_uninstall(){
-  add_submenu_page('wdi_feeds',__('Uninstall',"wdi"),__('Uninstall',"wdi"),'manage_options','wdi_uninstall','WDI_instagram_uninstall_page');
+  $parent_slug = null;
+  if( get_option( "wdi_subscribe_done" ) == 1 ){
+    $parent_slug = "wdi_feeds";
+  }
+
+  add_submenu_page($parent_slug,__('Uninstall',"wdi"),__('Uninstall',"wdi"),'manage_options','wdi_uninstall','WDI_instagram_uninstall_page');
 }
 
 //Settings page callback
 function WDI_instagram_settings_page(){
 
- 
+
   //check if user has already unistalled plugin from settings
   wdi_check_uninstalled();
   require_once(WDI_DIR . '/framework/WDILibrary.php');
-	$controller_class = "WDIControllerSettings_wdi";
+  $controller_class = "WDIControllerSettings_wdi";
   require_once(WDI_DIR . '/admin/controllers/' . $controller_class . '.php');
   $controller = new $controller_class();
   $controller->execute();
-  
+
 }
 function WDI_instagram_feeds_page(){
   //check if user has already unistalled plugin from settings
@@ -210,17 +229,7 @@ function WDI_instagram_licensing_page(){
   $controller->execute();
 }
 
-function wdi_featured_themes(){
-  require_once(WDI_DIR . '/featured/WDIFeaturedThemes.php');
-  $controller = new WDIFeaturedThemes();
-  $controller->display();
-}
 
-function wdi_featured_plugins(){
-  require_once(WDI_DIR . '/featured/WDIFeaturedPlugins.php');
-  $controller = new WDIFeaturedPlugins();
-  $controller->display();
-}
 
 function WDI_instagram_uninstall_page(){
 
@@ -234,7 +243,8 @@ function WDI_instagram_uninstall_page(){
 //loading admin scripts
 add_action('admin_enqueue_scripts','wdi_load_scripts');
 
-function wdi_load_scripts(){
+function wdi_load_scripts($hook){
+
   require_once(WDI_DIR . '/framework/WDILibrary.php');
   global $wdi_options;
   $page = WDILibrary::get('page');
@@ -245,43 +255,55 @@ function wdi_load_scripts(){
     wp_enqueue_script('wdi_admin',plugins_url('js/wdi_admin.js', __FILE__),array("jquery",'wdi_instagram'), WDI_VERSION );
 
     $uninstall_url  = wp_nonce_url( admin_url( 'admin-ajax.php' ), 'wdiUninstallPlugin', 'uninstall_nonce' );
-    
+
     wp_enqueue_script('wdi_instagram',plugins_url('js/wdi_instagram.js', __FILE__),array("jquery"), WDI_VERSION );
 
 
-    wp_localize_script("wdi_admin", 'wdi_ajax',array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 
-                                                      'uninstall_url' => $uninstall_url,
-                                                      'is_pro' => WDI_IS_PRO
-                                                      ));
+    wp_localize_script("wdi_admin", 'wdi_ajax',array( 'ajax_url' => admin_url( 'admin-ajax.php' ),
+      'uninstall_url' => $uninstall_url,
+      'is_pro' => WDI_IS_PRO
+    ));
     wp_localize_script("wdi_admin", 'wdi_version',array('is_pro'=>WDI_IS_PRO));
 
-    wp_localize_script("wdi_admin", 'wdi_messages',array( 
-                                                    'uninstall_confirm' => __( "All the data will be removed from the database. Continue?", "wdi" ),
-                                                    'instagram_server_error' => __('Some error with instagram servers, try agian later :(', "wdi" ), 
-                                                    'invalid_user' => __('Invalid user:', "wdi" ),
-                                                    'already_added' =>  __('already added!', "wdi"),
-                                                    'user_not_exist' => __('User does not exist.', "wdi"),
-                                                    'network_error' => __("Network Error, please try again later. :(", "wdi"),
-                                                    'invalid_hashtag' => __('Invalid hashtag', "wdi"),
-                                                    'hashtag_no_data' => __('This hashtag currently has no posts. Are you sure you want to add it?','wdi'),
-                                                    'only_one_user_or_hashtag'=> __('You can add only one username or hashtag in FREE Version', "wdi"),
-                                                    'available_in_pro' => __('Available in PRO','wdi'),
-                                                    'username_hashtag_multiple' => __('Combined Usernames/Hashtags are available only in PRO version'),
-                                                    'theme_save_message_free' => __('Customizing Themes is available only in PRO version','wdi'),
-                                                    'invalid_url' => __('URL is not valid','wdi'),
-                                                    'selectConditionType' => __('Please Select Condition Type','wdi'), 
-                                                    'and_descr' => __('Show Posts Which Have All Of The Conditions','wdi'),
-                                                    'or_descr' => __('Show Posts Which Have At Least One Of The Conditions','wdi'),
-                                                    'nor_descr' => __('Hide Posts Which Have At Least One Of The Conditions','wdi'),
-                                                    'either' => __('EITHER','wdi'),
-                                                    'neither' => __('NEITHER','wdi'),
-                                                    'not' => __('EXCEPT','wdi'),
-                                                    'and' => __('AND','wdi'),
-                                                    'or' => __('OR','wdi'),
-                                                    'nor' => __('NOR','wdi')
-                                                    ));
+    wp_localize_script("wdi_admin", 'wdi_messages',array(
+      'uninstall_confirm' => __( "All the data will be removed from the database. Continue?", "wdi" ),
+      'instagram_server_error' => __('Some error with instagram servers, try agian later :(', "wdi" ),
+      'invalid_user' => __('Invalid user:', "wdi" ),
+      'already_added' =>  __('already added!', "wdi"),
+      'user_not_exist' => __('User does not exist.', "wdi"),
+      'network_error' => __("Network Error, please try again later. :(", "wdi"),
+      'invalid_hashtag' => __('Invalid hashtag', "wdi"),
+      'hashtag_no_data' => __('This hashtag currently has no posts. Are you sure you want to add it?','wdi'),
+      'only_one_user_or_hashtag'=> __('You can add only one username or hashtag in FREE Version', "wdi"),
+      'available_in_pro' => __('Available in PRO','wdi'),
+      'username_hashtag_multiple' => __('Combined Usernames/Hashtags are available only in PRO version'),
+      'theme_save_message_free' => __('Customizing Themes is available only in PRO version','wdi'),
+      'invalid_url' => __('URL is not valid','wdi'),
+      'selectConditionType' => __('Please Select Condition Type','wdi'),
+      'and_descr' => __('Show Posts Which Have All Of The Conditions','wdi'),
+      'or_descr' => __('Show Posts Which Have At Least One Of The Conditions','wdi'),
+      'nor_descr' => __('Hide Posts Which Have At Least One Of The Conditions','wdi'),
+      'either' => __('EITHER','wdi'),
+      'neither' => __('NEITHER','wdi'),
+      'not' => __('EXCEPT','wdi'),
+      'and' => __('AND','wdi'),
+      'or' => __('OR','wdi'),
+      'nor' => __('NOR','wdi')
+    ));
     wp_localize_script("wdi_admin", 'wdi_url',array('plugin_url'=>plugin_dir_url(__FILE__)));
     wp_localize_script("wdi_admin", 'wdi_admin',array('admin_url' =>get_admin_url()));
+  }
+
+  if($page == "wdi_uninstall") {
+    wp_enqueue_script('wdi-deactivate-popup', WDI_URL.'/wd/assets/js/deactivate_popup.js', array(), WDI_VERSION, true );
+    $admin_data = wp_get_current_user();
+
+    wp_localize_script( 'wdi-deactivate-popup', 'wdiWDDeactivateVars', array(
+      "prefix" => "wdi" ,
+      "deactivate_class" =>  'wdi_deactivate_link',
+      "email" => $admin_data->data->user_email,
+      "plugin_wd_url" => "https://web-dorado.com/products/wordpress-instagram-feed-wd.html",
+    ));
   }
 
 
@@ -296,12 +318,15 @@ function wdi_load_styles() {
   if($page === 'wdi_themes' || $page === 'wdi_feeds' || $page === 'wdi_settings' || $page==='wdi_uninstall'){
     wp_enqueue_style('wdi_backend', plugins_url('css/wdi_backend.css', __FILE__), array(), WDI_VERSION);
     wp_enqueue_style('wdi_tables', plugins_url('css/wdi_tables.css', __FILE__), array(), WDI_VERSION);
-    wp_enqueue_style('wdi_admin_notices', plugins_url('css/notices.css', __FILE__), array(), WDI_VERSION);
+    //wp_enqueue_style('wdi_admin_notices', plugins_url('css/notices.css', __FILE__), array(), WDI_VERSION);
   }
   if($page === 'wdi_licensing'){
     wp_enqueue_style('wdi_licensing', plugins_url('css/wdi_licensing.css', __FILE__), array(), WDI_VERSION);
   }
-  
+  if($page == "wdi_uninstall") {
+    wp_enqueue_style('wdi_deactivate-css',  WDI_URL . '/wd/assets/css/deactivate_popup.css', array(), WDI_VERSION);
+  }
+
 }
 
 
@@ -354,8 +379,8 @@ function wdi_editor_button(){
 }
 
 /**
-*  handle editor popup
-*/
+ *  handle editor popup
+ */
 add_action('admin_head', 'wdi_admin_ajax');
 
 function wdi_admin_ajax() {
@@ -406,8 +431,8 @@ add_action( 'init', 'wdi_load_textdomain' );
  *
  */
 function wdi_load_textdomain() {
-  load_plugin_textdomain( "wdi", false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
-  
+  load_plugin_textdomain( "wdi", false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+
 }
 
 add_action('init', 'wdi_check_silent_update');
@@ -427,4 +452,135 @@ function wdi_check_silent_update(){
     wdi_install();
   }
 }
+add_action('init', 'wdi_wd_lib_init');
+
+
+function wdi_wd_lib_init(){
+  if(!isset($_REQUEST['ajax']) && is_admin()){
+
+    if( !class_exists("DoradoWeb") ){
+      require_once(WDI_DIR . '/wd/start.php');
+    }
+    global $wdi_wd_plugin_options;
+    $wdi_wd_plugin_options = array (
+      "prefix" => "wdi",
+      "wd_plugin_id" => 121,
+      "plugin_title" => "Instagram WD",
+      "plugin_wordpress_slug" => "wd-instagram-feed",
+      "plugin_dir" => WDI_DIR,
+      "plugin_main_file" => __FILE__,
+      "description" => __("The most advanced and user-friendly Instagram plugin. Instagram Feed WD plugin allows you to display image feeds from single or multiple Instagram accounts on a WordPress site.", 'wdi'),
+      // from web-dorado.com
+      "plugin_features" => array(
+        0 => array(
+          "title" => __("Responsive", "wdi"),
+          "description" => __("Instagram feeds are not only elegantly designed to be displayed on your website, but also come fully responsive for better user experience when using mobile devices and tables.", "wdi"),
+        ),
+        1 => array(
+          "title" => __("SEO Friendly", "wdi"),
+          "description" => __("Instagram Feed WD uses clean coding and latest SEO techniques necessary to keep your pages and posts SEO-optimized.", "wdi"),
+        ),
+        2 => array(
+          "title" => __("4 Fully Customizable Layouts", "wdi"),
+          "description" => __("There are four layout options for Instagram feeds: Thumbnails, Image Browser, Blog Style and Masonry. Display a feed as a simply arranged thumbnails with captions. Use Masonry layout to create a beautiful combination of images and captions. Create a blog feed by simply sharing Instagram posts with captions using blog style layout. Image browser layout saves space, yet allows to display larger images. In addition users can choose the number of the displayed images, layout columns, image order and etc.", "wdi"),
+        ),
+        3 => array(
+          "title" => __("Individual and Mixed Feeds", "wdi"),
+          "description" => __("Create mixed and single feeds of Instagram posts. Single feeds can be based on public Instagram accounts and single Instagram hashtag. Mixed feeds can contain multiple public Instagram accounts and multiple Instagram hashtags. A front end filter is available for mixed feeds. Click to filter only one feed based on a single hashtag or account.", "wdi"),
+        ),
+        4 => array(
+          "title" => __("Advanced Lightbox", "wdi"),
+          "description" => __("Upon clicking on image thumbnails an elegant lightbox will be opened, where you will find control buttons for displaying images in larger view, read image comments, captions, view image metadata and easily navigate between images. Lightbox can serve as a slider with various stunning slide transition effects. If the feed contains video, the video will be played within the lightbox as an HTML5 video.", "wdi"),
+        )
+      ),
+      // user guide from web-dorado.com
+      "user_guide" => array(
+        0 => array(
+          "main_title" => __("Installation and configuration", "wdi"),
+          "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/installation-and-configuration/installation.html",
+          "titles" => array(
+            array(
+              "title" => __("Getting Instagram Access Token", "wdi"),
+              "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/installation-and-configuration/getting-access-token.html"
+            )
+          )
+        ),
+        1 => array(
+          "main_title" => __("Creating an Instagram Feed", "wdi"),
+          "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds.html",
+          "titles" => array(
+            array(
+              "title" => __("Thumbnails and Masonry Layouts", "wdi"),
+              "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds/thumbnails-and-masonry-layouts.html",
+            ),
+            array(
+              "title" => __("Blog Style Layout", "wdi"),
+              "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds/blog-style-layout.html",
+            ),
+            array(
+              "title" => __("Image Browser", "wdi"),
+              "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds/image-browser.html",
+            ),
+            array(
+              "title" => __("Lightbox Settings", "wdi"),
+              "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds/lightbox-settings.html",
+            ),
+            array(
+              "title" => __("Conditional Filters", "wdi"),
+              "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds/conditional-filters.html",
+            ),
+          )
+        ),
+        2 => array(
+          "main_title" => __("Publishing Instagram Feed", "wdi"),
+          "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/publishing-feed.html",
+          "titles" => array(
+            array(
+              "title" => __("Publishing in a Page/Post", "wdi"),
+              "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/publishing-feed/page-post.html",
+            ),
+            array(
+              "title" => __("Publishing as a Widget", "wdi"),
+              "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/publishing-feed/widget.html",
+            ),
+            array(
+              "title" => __("Publishing by PHP function", "wdi"),
+              "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/publishing-feed/php-function.html",
+            ),
+          )
+        ),
+        3 => array(
+          "main_title" => __("Styling with Themes", "wdi"),
+          "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/editing-themes.html",
+          "titles" => array()
+        ),
+        4 => array(
+          "main_title" => __("Advanced customizing options", "wdi"),
+          "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/advanced-customizing-options.html",
+          "titles" => array()
+        ),
+      ),
+      "overview_welcome_image" => null,
+      "video_youtube_id" => "ijdrpkVAfEw",  // e.g. https://www.youtube.com/watch?v=ijdrpkVAfEw youtube id is the ijdrpkVAfEw
+      "plugin_wd_url" => "https://web-dorado.com/products/wordpress-instagram-feed-wd.html",
+      "plugin_wd_demo_link" => "http://wpdemo.web-dorado.com/instagram-wd/?_ga=1.208438225.212018776.1470817467",
+      "plugin_wd_addons_link" => "",
+      "after_subscribe" => "admin.php?page=overview_wdi", // this can be plagin overview page or set up page
+      "plugin_wizard_link" => "",
+      "plugin_menu_title" => "Instagram Feed WD",
+      "plugin_menu_icon" => WDI_URL . '/images/menu_icon.png',
+      "deactivate" => true,
+      "subscribe" => true,
+      "custom_post" => 'wdi_feeds',  // if true => edit.php?post_type=contact
+      "menu_capability" => wdi_get_create_feeds_cap()
+    );
+
+    dorado_web_init($wdi_wd_plugin_options);
+
+  }
+
+
+}
+
+
 

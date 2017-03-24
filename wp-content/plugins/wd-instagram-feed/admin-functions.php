@@ -4,7 +4,6 @@
 */
 
 function wdi_check_necessary_params(){
-  
    global $wdi_options;
    if(!isset($wdi_options['wdi_access_token']) || !isset($wdi_options['wdi_user_name']) || $wdi_options['wdi_access_token']=='' || $wdi_options['wdi_user_name'] ==''){
       ?>
@@ -15,6 +14,14 @@ function wdi_check_necessary_params(){
    }
      
  }
+
+function wdi_get_create_feeds_cap(){
+  global $wdi_options;
+  $min_feeds_capability = isset($wdi_options['wdi_feeds_min_capability']) ? $wdi_options['wdi_feeds_min_capability'] : "manage_options";
+  $min_feeds_capability = $min_feeds_capability == 'publish_posts' ? 'publish_posts' :  "manage_options";
+
+  return $min_feeds_capability;
+}
 
 
 

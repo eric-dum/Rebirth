@@ -119,7 +119,7 @@ class WDI_Notices {
 					$output_css = true;
 				}
 				if ($output_css) {
-					wp_enqueue_style($this->prefix . '-admin-notices', $this->plugin_url . '/css/notices.css', array(), get_option($this->plugin_version));
+					//wp_enqueue_style($this->prefix . '-admin-notices', $this->plugin_url . '/css/notices.css', array(), get_option($this->plugin_version));
 				}
 			}
 		

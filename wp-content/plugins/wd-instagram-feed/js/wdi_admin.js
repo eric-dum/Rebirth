@@ -33,7 +33,7 @@ wdi_controller.getParameterByName = function(name) {
 }
 
 /**
- * Was tirggerd when redirected from api page 
+ * Was tirggerd when redirected from api page
  * Sets access token from query string to input
  */
 wdi_controller.apiRedirected = function() {
@@ -60,7 +60,7 @@ wdi_controller.apiRedirected = function() {
 /**
  * Used in Settings page for finding access token owners username
  * and and for filling it in username input field
- * 
+ *
  * @param  {String} access_token [Instagram API access token]
  */
 wdi_controller.getUserInfo = function(access_token) {
@@ -100,7 +100,7 @@ wdi_controller.switchFeedTabs = function(tabname, section) {
 	//showing only requested display_type tab elements
 	jQuery('.display_type[tab="' + tabname + '"]').css('display', 'block');
 
-	//swap active tab class 
+	//swap active tab class
 	jQuery('.wdi_feed_tabs').filter('.wdi_feed_tab_active').each(function() {
 		jQuery(this).removeClass('wdi_feed_tab_active');
 	});
@@ -199,7 +199,7 @@ wdi_controller.displaySettingsSection = function($this) {
 wdi_controller.switchThemeTabs = function(tabname, section) {
 
 
-	//swap active tab class 
+	//swap active tab class
 	jQuery('.wdi_feed_tabs').filter('.wdi_feed_tab_active').each(function() {
 		jQuery(this).removeClass('wdi_feed_tab_active');
 	});
@@ -344,10 +344,10 @@ wdi_controller.save_feed = function(task) {
  * instagram request for getting meta info such as username and user id
  * stores getted data in wdi_controller.feed_users array and updates some admin elements which
  * depend on users
- * 
+ *
  * @param  {String} user_input [username or hashtag, Note. hashtags should start with #]
  * @param {String} backend [if is set to 'backend' all confirms will be ignored while making requests]
- * @return {Void}  
+ * @return {Void}
  */
 wdi_controller.makeInstagramUserRequest = function(user_input, ignoreConfirm) {
 
@@ -519,7 +519,7 @@ wdi_controller.stringifyUserData = function(feed_users) {
 
 /**
  * Binds 'click' and 'enter' event to add user button
- * 
+ *
  */
 wdi_controller.bindAddNewUserOrHashtagEvent = function() {
 	jQuery('#wdi_add_user_ajax').on('click', function() {
@@ -539,7 +539,7 @@ wdi_controller.bindAddNewUserOrHashtagEvent = function() {
 /**
  * Removes users from internal wdi_controller.feed_users array and also
  * updates GUI (by removing user elements)
- * 
+ *
  * @param  {Object} $this [jQuery object of remove user button]
  */
 wdi_controller.removeFeedUser = function($this) {
@@ -567,7 +567,7 @@ wdi_controller.removeFeedUser = function($this) {
 		if( jQuery('.wdi_user').length == 0 ){
 			jQuery('#wdi_add_user_ajax_input').removeAttr('disabled');
 			jQuery('#wdi_add_user_ajax_input').attr('placeholder','');
-		}	
+		}
 	}
 
 }
@@ -575,7 +575,7 @@ wdi_controller.removeFeedUser = function($this) {
 
 /**
  * Adds or removes users from featured image select
- * 
+ *
  * @param  {String} username [username of user we want to add/remove]
  * @param  {String} action   [valid options are 'add' and 'remove']
  * @param  {String} selected [if is set 'selected' then user will be marked as selected in select element]
@@ -637,7 +637,7 @@ wdi_controller.bindSaveThemeEvent = function() {
  * it checks if user has typed any username in unsername input
  * but forgetted to add it then it creates an object called wdi_controller.waitingAjaxRequestEnd
  * which previous task
- * 
+ *
  * @param  {String} task [how to save element save/apply/reset]
  * @return {Boolean}     [1 if user forgotted to save and 0 if input field was empty]
  */
@@ -679,7 +679,7 @@ wdi_controller.checkIfUserNotSaved = function(task) {
 
 /**
  * if user was clicked save before ajax request then trigger save after getting info
- * 
+ *
  * @param  {String} correctUserFlag [if set to false form wouldn't be submitted]
  */
 wdi_controller.saveFeedAfterAjaxWait = function(correctUserFlag) {
@@ -710,7 +710,7 @@ wdi_controller.getCookie = function(name) {
  * Checks if response has meta code other then 200 or if it has not any data in it
  * then returns false
  * @param  {Object}  response [Instagram API response]
- * @return {Boolean}      
+ * @return {Boolean}
  */
 wdi_controller.isValidResponse = function(response) {
 
@@ -759,10 +759,10 @@ wdi_controller.thumbUser = function(user) {
 /**
  * finds user by username in instagram api request object
  * if user is found then returns user object otherwise returns false
- * 
+ *
  * @param  {String} username [username we are searching for]
  * @param  {Object} response [instagram API response]
- * @return {Boolenan || Object}     
+ * @return {Boolenan || Object}
  */
 wdi_controller.findUser = function(username, response) {
 	var data = [];
@@ -781,12 +781,12 @@ wdi_controller.findUser = function(username, response) {
 /**
  * Sanitizes hashtag and if it's ok then add it to internal wdi_controller.feed_users array
  * besodes that it also updates GUI
- * 
+ *
  * @param {String} tagname  [name of hashtag to add without '#']
  * @param {Object} response [instagram API response]
  */
 wdi_controller.addHashtag = function(tagname, response) {
-	//if tagname doesn't contain invalid characters 
+	//if tagname doesn't contain invalid characters
 	if (tagname.match(/[~!@$%&*#^()<>?]/) == null) {
 		if (this.checkForDuplicateUser('#' + tagname) == false) {
 			var newHashtag = jQuery('<div class="wdi_user"><a target="_blank" href="https://instagram.com/explore/tags/' + tagname + '">' + '<img class="wdi_profile_pic" src="' + wdi_url.plugin_url + '/images/hashtag.png"><span class="wdi_hashtag">' + tagname + '</span><i style="display:table-cell;width:25px;"></i></a><img class="wdi_remove_user" onclick="wdi_controller.removeFeedUser(jQuery(this))" src="' + wdi_url.plugin_url + '/images/delete_user.png"></div>');
@@ -825,7 +825,7 @@ wdi_controller.addHashtag = function(tagname, response) {
 
 /**
  * Adds given user to internal array wdi_controller.feed_users and also updates GUI
- * 
+ *
  * @param {Object} user [Object conatining user information such as id, username and profile picture]
  */
 wdi_controller.addUser = function(user) {
@@ -858,8 +858,8 @@ wdi_controller.addUser = function(user) {
 /**
  * Scans internal wdi_controller.feed_users array and return profile picture url of given user
  * if there is no profile picture then returns blank string
- * 
- * @param  {String} username 
+ *
+ * @param  {String} username
  * @return {String}    ['profile picture url of user']
  */
 wdi_controller.getUserProfilePic = function(username) {
@@ -904,10 +904,10 @@ wdi_controller.conditionalFiltersTabInit = function() {
 		}
 	});
 
-	
-	
-	
-	
+
+
+
+
 	conditional_filters_toggler();
 	jQuery('#WDI_wrap_conditional_filter_enable input').on('change',function(){
 		conditional_filters_toggler();
@@ -934,7 +934,7 @@ wdi_controller.conditionalFiltersTabInit = function() {
 
 	jQuery('#WDI_conditional_filter_type').on('change',function(){
 		if(jQuery(this).val() == 'none'){
-			
+
 		}else{
 			jQuery('#WDI_conditional_filters').css('display','block');
 		}
@@ -971,7 +971,7 @@ wdi_controller.conditionalFiltersTabInit = function() {
 				jQuery('#WDI_conditional_filters').css('display','block');
 				jQuery(this).parent().find('label').html(wdi_messages.nor_descr);
 				break;
-			}	
+			}
 		}
 
 		wdi_controller.updateFiltersUi();
@@ -1059,17 +1059,17 @@ wdi_controller.filterExists = function(filter) {
 
 
 /**
- * Updates #wdi_filters_ui div to the latest version of filters according wdi_controller.conditionalFilters 
+ * Updates #wdi_filters_ui div to the latest version of filters according wdi_controller.conditionalFilters
  */
 wdi_controller.updateFiltersUi = function(){
 	var uiElement = jQuery('#wdi_filters_ui').html('');
 	for( var i = 0; i < this.conditionalFilters.length; i++ ){
-		
+
 		if( i == 0 ){
 			if( this.conditionalFilters.length != 1 ){
 				switch( jQuery('#WDI_conditional_filter_type').val() ){
 					case 'AND':{
-						
+
 						break;
 					}
 					case 'OR':{
@@ -1095,7 +1095,7 @@ wdi_controller.updateFiltersUi = function(){
 					}
 				}
 			}
-			
+
 		}
 
 		var glue;
@@ -1236,14 +1236,14 @@ wdi_controller.updateFilterSource = function(){
 			username = jQuery( this ).find( '.wdi_username' ).text();
 		}else{
 			username = jQuery( this ).find( '.wdi_hashtag' ).text();
-		} 
+		}
 		userThumb = jQuery( this ).find( 'img' ).attr('src');
 		users.push( {
 			'username' : username,
 			'image'    : userThumb
 		} )
 	});
-	
+
 	var sourceDiv = jQuery('#wdi_filter_source').html('');
 	for ( var i = 0; i < users.length; i++ ){
 		var singleUserHtml = "<div class='wdi_source_user'><span class='wdi_source_img'><img src='" + users[i].image + "'></span><span class='wdi_source_username'>"+users[i].username+"</span></div>";
