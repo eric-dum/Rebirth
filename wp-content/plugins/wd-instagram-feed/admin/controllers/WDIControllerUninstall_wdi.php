@@ -6,7 +6,23 @@ class WDIControllerUninstall_wdi{
 ////////////////////////////////////////////////////////////////////////////////////////
 	function __construct(){
 
-	}
+    global  $wdi_wd_plugin_options;
+    if(!class_exists("DoradoWebConfig")){
+      include_once (WDI_DIR . "/wd/config.php");
+    }
+
+    if(!class_exists("DoradoWebDeactivate")) {
+      include_once(WDI_DIR . "/wd/includes/deactivate.php");
+    }
+    $config = new DoradoWebConfig();
+
+    $config->set_options( $wdi_wd_plugin_options );
+    $deactivate_reasons = new DoradoWebDeactivate($config);
+    //$deactivate_reasons->add_deactivation_feedback_dialog_box();
+    $deactivate_reasons->submit_and_deactivate();
+
+
+  }
  ////////////////////////////////////////////////////////////////////////////////////////
  // Public Methods                                                                     //
  ////////////////////////////////////////////////////////////////////////////////////////
@@ -96,6 +112,9 @@ class WDIControllerUninstall_wdi{
       }else{
             $this->already_uninstalled();
       }
+    delete_option('wdi_subscribe_done');
+    delete_option('wdi_redirect_to_settings');
+    delete_option('wdi_do_activation_set_up_redirect');
   }
 
   private function is_uninstalled(){

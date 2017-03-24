@@ -70,7 +70,8 @@ public function display(){
 		      <h2>
 		        <?php _e('Uninstalling Instagram Feed WD', "wdi"); ?>
 		 	  </h2>
-		 <p style="color:green;font-size:15px"> <?php _e('Instagram Feed WD is uninstalled','wdi') ?><a style="text-decoration:none;padding:3px;" href="<?php echo $deactivate_url ?>"> <?php _e('Click Here') ?> </a><?php _e('to deactivate it','wdi') ?></p>
+		 <!--<p style="color:green;font-size:15px"> <?php /*_e('Instagram Feed WD is uninstalled','wdi') */?><a style="text-decoration:none;padding:3px;" href="<?php /*echo $deactivate_url */?>"> <?php /*_e('Click Here') */?> </a><?php /*_e('to deactivate it','wdi') */?></p>-->
+    <p><strong><a href="#" class="wdi_deactivate_link" data-uninstall="1"><?php _e("Click Here","wdi"); ?></a><?php _e(" To Finish the Uninstallation and Instagram Feed WD  will be Deactivated Automatically.","wdi"); ?></strong></p>
 		
   		<?php
 	}
@@ -93,7 +94,8 @@ public function display(){
 			 		<li style="padding-bottom:5px;padding-left:5px;font-weight: bold;margin:0;">4)wdi_access_token</li>
 			 	</ul>
 			</div>
-			<p style="color:green;font-size:15px"> <?php _e('Instagram Feed WD is successfully uninstalled','wdi') ?><a style="text-decoration:none;padding:3px;" href="<?php echo $deactivate_url ?>"> <?php _e('Click Here') ?> </a><?php _e('to deactivate it','wdi') ?></p>
+			<!--<p style="color:green;font-size:15px"> <?php /*_e('Instagram Feed WD is successfully uninstalled','wdi') */?><a style="text-decoration:none;padding:3px;" href="<?php /*echo $deactivate_url */?>"> <?php /*_e('Click Here') */?> </a><?php /*_e('to deactivate it','wdi') */?></p>-->
+			<p><strong><a href="#" class="wdi_deactivate_link" data-uninstall="1"><?php _e("Click Here","wdi"); ?></a><?php _e(" To Finish the Uninstallation and Instagram Feed WD  will be Deactivated Automatically.","wdi"); ?></strong></p>
 
    		<?php
  	}
