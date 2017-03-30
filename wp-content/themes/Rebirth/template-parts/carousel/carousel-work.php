@@ -9,50 +9,87 @@
 
 ?>
 
-<div id="carousel-work" class="carousel slide" data-ride="carousel" data-interval="false">
+<!-- Work Marquee -->
+<div id="marquee-work" class="marquee-nav">
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="//placehold.it/1600x600" alt="...">
-      <div class="carousel-caption">
-        Owensboro Rampage
-      </div>
+  <!-- NAV BUTTONS -->
+  <button class="btn-nav btn-prev">
+    <i class="fa fa-chevron-left"></i>
+  </button>
+  <button class="btn-nav btn-next">
+    <i class="fa fa-chevron-right"></i>
+  </button>
+
+  <!-- Work Items -->
+  <div class="nav-container">
+
+    <div class="marquee-item active" data-index>
+      <a href="#">
+        <img src="http://placehold.it/350x350?text=Jersey" alt="" class="img-responsive">
+        <span class="marquee-caption org-name">
+          Owensboro Rampage
+        </span>
+      </a>
     </div>
-    <div class="item">
-      <img src="//placehold.it/1600x600" alt="...">
-      <div class="carousel-caption">
-        
-      </div>
+    <div class="marquee-item" data-index>
+      <a href="#">
+        <img src="http://placehold.it/350x350?text=Jersey" alt="" class="img-responsive">
+        <span class="marquee-caption org-name">
+          University of Michigan
+        </span>
+      </a>
     </div>
-    <div class="item">
-      <img src="//placehold.it/1600x600" alt="...">
-      <div class="carousel-caption">
-        
-      </div>
+    <div class="marquee-item" data-index>
+      <a href="#">
+        <img src="http://placehold.it/350x350?text=Jersey" alt="" class="img-responsive">
+        <span class="marquee-caption org-name">
+          Michigan State University
+        </span>
+      </a>
     </div>
-    <div class="item">
-      <img src="//placehold.it/1600x600" alt="...">
-      <div class="carousel-caption">
-        
-      </div>
+    <div class="marquee-item" data-index>
+      <a href="#">
+        <img src="http://placehold.it/350x350?text=Jersey" alt="" class="img-responsive">
+        <span class="marquee-caption org-name">
+          Ohio State University
+        </span>
+      </a>
     </div>
-    <div class="item">
-      <img src="//placehold.it/1600x600" alt="...">
-      <div class="carousel-caption">
-        
-      </div>
+    <div class="marquee-item" data-index>
+      <a href="#">
+        <img src="http://placehold.it/350x350?text=Jersey" alt="" class="img-responsive">
+        <span class="marquee-caption org-name">
+          Central Michigan University
+        </span>
+      </a>
     </div>
+    <div class="marquee-item" data-index>
+      <a href="#">
+        <img src="http://placehold.it/350x350?text=Jersey" alt="" class="img-responsive">
+        <span class="marquee-caption org-name">
+          Eastern Michigan University
+        </span>
+      </a>
+    </div>
+    <div class="marquee-item" data-index>
+      <a href="#">
+        <img src="http://placehold.it/350x350?text=Jersey" alt="" class="img-responsive">
+        <span class="marquee-caption org-name">
+          Ferris State University
+        </span>
+      </a>
+    </div>
+    <div class="marquee-item" data-index>
+      <a href="#">
+        <img src="http://placehold.it/350x350?text=Jersey" alt="" class="img-responsive">
+        <span class="marquee-caption org-name">
+          Albion College
+        </span>
+      </a>
+    </div>
+
   </div>
 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-work" role="button" data-slide="prev">
-    <i class="fa fa-chevron-left"></i>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-work" role="button" data-slide="next">
-    <i class="fa fa-chevron-right"></i>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
+
 <a href="" class="btn btn-primary btn-block">View More</a>

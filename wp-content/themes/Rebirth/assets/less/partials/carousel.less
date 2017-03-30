@@ -138,41 +138,88 @@
 
 
 //carousel variants
-#carousel-work {
-  .item {
-    .carousel-caption {
-      background-color: transparent;
-      position: absolute;
-      min-height: 0;
-      left: 50%;
-      right: auto;
-      bottom: 10px;
-      transform: translateX(-50%);
-      padding: 0;
+#marquee-work {
+  background-color: @gray-med;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  .nav-container {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .marquee-item {
+    width: 100vw;
+    float: left;
+    cursor: pointer;
+    img {
+      width: 100%;
+      opacity: 0.5;
+      transition: all 0.25s ease-in-out;
+    }
+    .marquee-caption {
+      display: block;
+      color: white;
+      text-align: center;
+      margin-top: 10px;
+      transition: all 0.25s ease-in-out;
+      opacity: 0.5;
+    }
+
+    &:hover, &:focus {
+      img {
+        opacity: 1;
+      }
+      .marquee-caption {
+        opacity: 1;
+      }
     }
   }
-  .carousel-control {
-    i {
-      top: 50%;
-      transform: translateY(-50%);
-      margin-top: 0;
+
+  //nav
+  .btn-nav {
+    color: white;
+    font-size: 32px;
+
+    //default resets
+    border: 0;
+    background-color: transparent;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &.btn-prev {
+      left: 0;
+    }
+    &.btn-next {
+      left: auto;
+      right: 0;
     }
   }
 
   @media (min-width: @screen-sm-min) {
-    .item {
-      .carousel-caption {
-        width: auto;
-        top: auto;
-      }
+    .marquee-item {
+      width: calc(~'100vw / 3');
+      padding: 0 10px;
     }
   }
   @media (min-width: @screen-md-min) {
-    .item {
-      .carousel-caption {
-        bottom: 30px;
-        font-size: 18px;
-      }
+    .marquee-item {
+      width: calc(~'100vw / 4');
+    }
+  }
+  @media (min-width: @screen-lg-min) {
+    .marquee-item {
+      width: calc(~'100vw / 6');
     }
   }
 }
