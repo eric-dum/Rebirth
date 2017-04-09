@@ -33,19 +33,12 @@ class WDIViewFeeds_wdi {
     $order_class = 'manage-column column-title sorted ' . $asc_or_desc;
     $ids_string = '';
     ?>
-    <!-- Banner Start -->
-    <div style="clear: both; float: left; width: 100%;">
-          <div style="float: left; font-size: 14px; font-weight: bold;">
-            <?php _e('This Section Allows You to Add/Edit Feeds','wdi') ?>
-            <a style="color: #15699F; text-decoration: none;" target="_blank" href="https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds.html"><?php _e('Read More in User Manual',"wdi"); ?></a>
-          </div>
-          <div style="float: right; text-align: right;margin-top:10px">
-            <a style="text-decoration: none;" target="_blank" href="https://web-dorado.com/files/fromInstagramFeedWD.php">
-              <img width="215" border="0" alt="web-dorado.com" src="<?php echo WDI_URL . '/images/wd_logo.png'; ?>" />
-            </a>
-          </div>
+    <div class="wdi_help_bar_wrap">
+      <span class="wdi_help_bar_text"><?php _e('This section allows you to create, edit and delete Feeds', "wdi"); ?></span>
+      <a class="wdi_hb_t_link" target="_blank" href="https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds.html"><?php _e('Read More in User Guide', "wdi"); ?></a>
+      <a class="wdi_hb_buy_pro" target="_blank" href="https://web-dorado.com/products/wordpress-instagram-feed-wd.html"><?php _e('Upgrade to Pro Version', "wdi"); ?></a>
+      <a class="wdi_hb_s_link" target="_blank" href="https://wordpress.org/support/plugin/wd-instagram-feed"><img src="<?php echo WDI_URL; ?>/images/i_support.png"><span class="wdi_hb_s_text"><?php _e('Support Forum', "wdi"); ?></span></a>
     </div>
-    <!-- Banner END -->
     <form class="wrap" id="sliders_form" method="post" action="admin.php?page=wdi_feeds" style="float: left; width: 99%;">
       <?php wp_nonce_field('nonce_wd', 'nonce_wd'); ?>
       <input type="hidden" id="wdi_access_token" name="access_token" value="<?php echo isset($wdi_options['wdi_access_token'])?$wdi_options['wdi_access_token']:'';?>">
@@ -325,19 +318,13 @@ public function generateForm($current_id = ''){
     $feed_row = '';
   }
   ?>
-    <!-- Banner Start -->
-    <div style="clear: both; float: left; width: 100%;">
-          <div style="float: left; font-size: 14px; font-weight: bold;">
-            <?php _e('Here You Can Change Feed Parameters','wdi') ?>
-            <a style="color: #15699F; text-decoration: none;" target="_blank" href="https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds.html"><?php _e('Read More in User Manual',"wdi"); ?></a>
-          </div>
-          <div style="float: right; text-align: right;margin-top:10px">
-            <a style="text-decoration: none;" target="_blank" href="https://web-dorado.com/files/fromInstagramFeedWD.php">
-              <img width="215" border="0" alt="web-dorado.com" src="<?php echo WDI_URL . '/images/wd_logo.png'; ?>" />
-            </a>
-          </div>
-    </div>
-    <!-- Banner END -->
+        <div class="wdi_help_bar_wrap">
+          <span class="wdi_help_bar_text"><?php _e('Here You Can Change Feed Parameters', "wdi"); ?></span>
+          <a class="wdi_hb_t_link" target="_blank" href="https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds.html"><?php _e('Read More in User Guide', "wdi"); ?></a>
+          <a class="wdi_hb_buy_pro" target="_blank" href="https://web-dorado.com/products/wordpress-instagram-feed-wd.html"><?php _e('Upgrade to Pro Version', "wdi"); ?></a>
+          <a class="wdi_hb_s_link" target="_blank" href="https://wordpress.org/support/plugin/wd-instagram-feed"><img src="<?php echo WDI_URL; ?>/images/i_support.png"><span class="wdi_hb_s_text"><?php _e('Support Forum', "wdi"); ?></span></a>
+        </div>
+
     <div class="wrap">
     <h2><?php if($edit==true && isset($feed_row['feed_name'])){
       echo __('Edit feed',"wdi").' <b style="font-size:23px;color:rgb(255, 97, 0);">' .$feed_row['feed_name'].'</b>';

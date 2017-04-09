@@ -3,7 +3,7 @@
 Plugin Name: Instagram Feed WD
 Plugin URI: https://web-dorado.com/products/wordpress-instagram-feed-wd.html
 Description: WD Instagram Feed is a user-friendly tool for displaying user or hashtag-based feeds on your website. You can create feeds with one of the available layouts. It allows displaying image metadata, open up images in lightbox, download them and even share in social networking websites.
-Version: 1.1.24
+Version: 1.1.25
 Author: WebDorado
 Author URI: https://web-dorado.com
 License: GPLv2 or later
@@ -20,7 +20,7 @@ define("WDI_META", "_".WDI_VAR."_meta");
 //define("wdi",'wdi');
 define('WDI_FEED_TABLE','wdi_feeds');
 define('WDI_THEME_TABLE','wdi_themes');
-define('WDI_VERSION','1.1.23');
+define('WDI_VERSION','1.1.25');
 define('WDI_IS_PRO','false');
 
 
@@ -53,7 +53,7 @@ else {
 
 add_action('wp_ajax_WDIGalleryBox', 'wdi_ajax_frontend');
 add_action('wp_ajax_nopriv_WDIGalleryBox', 'wdi_ajax_frontend');
-add_action('admin_init', 'setup_redirect');
+add_action('admin_init', 'wdi_setup_redirect');
 function wdi_ajax_frontend() {
 
   /* reset from user to site locale*/
@@ -108,10 +108,15 @@ function wdi_instagram_activate($networkwide) {
   // wdi_activate();
   wdi_install();
 }
-function setup_redirect() {
-  if (get_option('wdi_do_activation_set_up_redirect')) {
+function wdi_setup_redirect() {
+
+  if (get_option('wdi_do_activation_set_up_redirect') ) {
     update_option('wdi_do_activation_set_up_redirect',0);
     //wp_safe_redirect( admin_url( 'index.php?page=gmwd_setup' ) );
+
+    if(get_option( "wdi_subscribe_done" ) == 1){
+      return;
+    }
     wp_safe_redirect( admin_url( 'admin.php?page=wdi_subscribe' ) );
     exit;
   }
@@ -177,7 +182,7 @@ function WDI_instagram_menu() {
   //add_submenu_page('overview_wdi',__('Featured Themes',"wdi"),__('Featured Themes',"wdi"),$min_feeds_capability,'wdi_featured_themes','wdi_featured_themes');
   //add_submenu_page('overview_wdi',__('Featured Plugins',"wdi"),__('Featured Plugins',"wdi"),$min_feeds_capability,'wdi_featured_plugins','wdi_featured_plugins');
   add_submenu_page($parent_slug,__('Upgrade to Pro',"wdi"),__('Upgrade to Pro',"wdi"),$min_feeds_capability,'wdi_licensing','WDI_instagram_licensing_page');
-
+  add_submenu_page($parent_slug,__('Uninstall',"wdi"),__('Uninstall',"wdi"),'manage_options','wdi_uninstall','WDI_instagram_uninstall_page');
 }
 
 
@@ -188,7 +193,7 @@ function WDI_add_uninstall(){
     $parent_slug = "wdi_feeds";
   }
 
-  add_submenu_page($parent_slug,__('Uninstall',"wdi"),__('Uninstall',"wdi"),'manage_options','wdi_uninstall','WDI_instagram_uninstall_page');
+
 }
 
 //Settings page callback
@@ -270,7 +275,7 @@ function wdi_load_scripts($hook){
       'instagram_server_error' => __('Some error with instagram servers, try agian later :(', "wdi" ),
       'invalid_user' => __('Invalid user:', "wdi" ),
       'already_added' =>  __('already added!', "wdi"),
-      'user_not_exist' => __('User does not exist.', "wdi"),
+      'user_not_exist' => __('User %s does not exist.', "wdi"),
       'network_error' => __("Network Error, please try again later. :(", "wdi"),
       'invalid_hashtag' => __('Invalid hashtag', "wdi"),
       'hashtag_no_data' => __('This hashtag currently has no posts. Are you sure you want to add it?','wdi'),
@@ -318,10 +323,10 @@ function wdi_load_styles() {
   if($page === 'wdi_themes' || $page === 'wdi_feeds' || $page === 'wdi_settings' || $page==='wdi_uninstall'){
     wp_enqueue_style('wdi_backend', plugins_url('css/wdi_backend.css', __FILE__), array(), WDI_VERSION);
     wp_enqueue_style('wdi_tables', plugins_url('css/wdi_tables.css', __FILE__), array(), WDI_VERSION);
-    //wp_enqueue_style('wdi_admin_notices', plugins_url('css/notices.css', __FILE__), array(), WDI_VERSION);
   }
   if($page === 'wdi_licensing'){
     wp_enqueue_style('wdi_licensing', plugins_url('css/wdi_licensing.css', __FILE__), array(), WDI_VERSION);
+    wp_enqueue_style('wdi_backend', plugins_url('css/wdi_backend.css', __FILE__), array(), WDI_VERSION);
   }
   if($page == "wdi_uninstall") {
     wp_enqueue_style('wdi_deactivate-css',  WDI_URL . '/wd/assets/css/deactivate_popup.css', array(), WDI_VERSION);
@@ -412,16 +417,6 @@ function wdi_admin_ajax() {
 }
 
 
-
-
-
-
-
-
-if (is_admin() && (!defined('DOING_AJAX') || !DOING_AJAX)) {
-  include_once(WDI_DIR . '/instagram-wdi-notices.php');
-  new WDI_Notices();
-}
 
 
 

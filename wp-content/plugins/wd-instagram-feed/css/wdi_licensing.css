@@ -16,7 +16,6 @@ div#featurs_table1 {
   position: relative;
   vertical-align: top;
   width: 380px;
-  height: 684px;
   z-index: 10;
 }
 
@@ -156,4 +155,8 @@ span.no {
 .price {
   display: block;
   color: #F47629;
+}
+
+.wdi_hb_buy_pro{
+  float: left !important;
 }

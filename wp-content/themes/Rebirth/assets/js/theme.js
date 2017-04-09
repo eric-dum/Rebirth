@@ -57,4 +57,21 @@ $(function() {
     }
   });
 
+  //initiate the plugin and pass the id of the div containing gallery images
+  $("#work-zoom").elevateZoom({
+    gallery:'gal1',
+    zoomType: 'inner',
+    cursor: 'pointer', 
+    galleryActiveClass: 'active', 
+    imageCrossfade: true, 
+    loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'
+  }); 
+
+  //pass the images to Fancybox
+  $("#work-zoom").bind("click", function(e) {  
+    var ez =   $('#work-zoom').data('elevateZoom'); 
+    $.fancybox(ez.getGalleryList());
+    return false;
+  });
+
 });  

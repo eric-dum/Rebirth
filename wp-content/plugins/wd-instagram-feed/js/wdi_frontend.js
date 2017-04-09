@@ -28,6 +28,7 @@ wdi_front.show_alert = function (message)
 
 wdi_front.globalInit = function ()
 {
+  
   var num = wdi_front['feed_counter'];
 
   if (typeof wdi_ajax.ajax_response != "undefined") {
@@ -196,7 +197,7 @@ wdi_front.globalInit = function ()
 wdi_front.init = function (currentFeed)
 {
 
-
+  jQuery('.wdi_js_error').remove();
   //some varables used in code
   currentFeed.photoCounter = currentFeed.feed_row["number_of_photos"];
 

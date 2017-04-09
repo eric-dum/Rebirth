@@ -57,6 +57,7 @@ public function display(){
 				?><div id="wdi_infinite_scroll" class="wdi_infinite_scroll"></div> <?php
 			}
 			}?>
+			<div class="wdi_js_error <?php echo is_user_logged_in() ? '' : 'wdi_hidden'; ?>"><?php _e("Something is wrong. Response takes too long or there is JS error. Press Ctrl+Shift+J or Cmd+Shift+J on a Mac.", "wdi"); ?> </div>
 		</div>
 	</div>
 	<?php

@@ -388,7 +388,7 @@ wdi_controller.makeInstagramUserRequest = function(user_input, ignoreConfirm) {
 
 						} else {
 							if (!user) {
-								alert(wdi_messages.user_not_exist)
+								alert( wdi_messages.user_not_exist.replace("%s",'"'+ user_input + '"'))
 							} else {
 								alert(vObj.msg);
 							}
@@ -404,6 +404,7 @@ wdi_controller.makeInstagramUserRequest = function(user_input, ignoreConfirm) {
 			{
 
 				var tagname = user_input.substr(1, user_input.length);
+				tagname = tagname.replace(" ",'');
 				this.instagram.getTagRecentMedia(tagname, {
 					success: function(response) {
 						//contain information about response such as error messages and if

@@ -22,7 +22,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="//placehold.it/1600x600" alt="...">
+      <img src="//placehold.it/1440x600" alt="...">
       <div class="carousel-caption">
         <h2 class="carousel-heading">
           Redefine, Reawaken, Reinvent
@@ -38,25 +38,25 @@
       </div>
     </div>
     <div class="item">
-      <img src="//placehold.it/1600x600" alt="...">
+      <img src="//placehold.it/1440x600" alt="...">
       <div class="carousel-caption">
         
       </div>
     </div>
     <div class="item">
-      <img src="//placehold.it/1600x600" alt="...">
+      <img src="//placehold.it/1440x600" alt="...">
       <div class="carousel-caption">
         
       </div>
     </div>
     <div class="item">
-      <img src="//placehold.it/1600x600" alt="...">
+      <img src="//placehold.it/1440x600" alt="...">
       <div class="carousel-caption">
         
       </div>
     </div>
     <div class="item">
-      <img src="//placehold.it/1600x600" alt="...">
+      <img src="//placehold.it/1440x600" alt="...">
       <div class="carousel-caption">
         
       </div>

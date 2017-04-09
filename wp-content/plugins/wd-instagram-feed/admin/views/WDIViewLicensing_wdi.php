@@ -24,6 +24,9 @@ class WDIViewLicensing_wdi {
   ////////////////////////////////////////////////////////////////////////////////////////
   public function display() {
     ?>
+    <div class="wdi_help_bar_wrap">
+      <a class="wdi_hb_buy_pro" target="_blank" href="https://web-dorado.com/products/wordpress-instagram-feed-wd.html"><?php _e('Upgrade to Pro Version', "wdi"); ?></a>
+    </div>
     <div id="featurs_tables">
       <div id="featurs_table1">
         <span>WordPress 4.0+ <?php _e("ready", 'wdi'); ?></span>
@@ -111,14 +114,11 @@ class WDIViewLicensing_wdi {
         <span> <?php _e('Full Support',"wdi"); ?> </span>
       </div>
 
-      <div style=" text-align: right;position: relative;top:-30px;">
-        <a style="text-decoration: none;" target="_blank" href="https://web-dorado.com/files/fromInstagramFeedWD.php">
-          <img width="215" border="0" alt="web-dorado.com" src="<?php echo WDI_URL . '/images/wd_logo.png'; ?>" />
-        </a>
-      </div>
+
+
 
     </div>
-    
+
     <div style="float: left; clear: both;">
       <p><?php _e("After purchasing the commercial version follow these steps:", 'wdi'); ?></p>
       <ol>

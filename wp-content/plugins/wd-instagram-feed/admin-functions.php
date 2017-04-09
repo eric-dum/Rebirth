@@ -478,12 +478,12 @@ function wdi_configure_section_callback(){
   $new_url = urlencode(admin_url('admin.php?page=wdi_settings')) . '&response_type=token';
     ?> 
         <div id="login_with_instagram">
-                <a onclick="document.cookie = 'wdi_autofill=true'" href="https://api.instagram.com/oauth/authorize/?client_id=54da896cf80343ecb0e356ac5479d9ec&scope=basic+public_content&redirect_uri=http://api.web-dorado.com/instagram/?return_url=<?php echo $new_url;?>"><img src="<?php echo plugins_url('/images/sign_in_with_instagram.png',__FILE__)?>" alt=""></a>
+                <a onclick="document.cookie = 'wdi_autofill=true'" href="https://api.instagram.com/oauth/authorize/?client_id=54da896cf80343ecb0e356ac5479d9ec&scope=basic+public_content&redirect_uri=http://api.web-dorado.com/instagram/?return_url=<?php echo $new_url;?>" style="display:inline-block;"><img src="<?php echo plugins_url('/images/sign_in_with_instagram.png',__FILE__)?>" alt=""></a>
         </div>
         <div class="wdi_access_token_missing"><?php
             $options = get_option(WDI_OPT);
             if(!isset($options['wdi_access_token']) || $options['wdi_access_token'] == '' || !isset($options['wdi_user_name']) || $options['wdi_user_name'] == '')
-             _e('You need Access Token for using plugin, click sign in with Instagram button above to get yours', "wdi"); 
+              _e('You need Access Token for using Instagram API. Click sign in with Instagram button above to get yours. This will not show your Instagram media. After that you may create feed with desired user or hashtag media.', "wdi");
             ?></div>
     <?php
 }

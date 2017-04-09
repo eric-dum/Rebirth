@@ -139,7 +139,6 @@
 
 //carousel variants
 #marquee-work {
-  background-color: @gray-med;
   padding-top: 30px;
   padding-bottom: 30px;
   width: 100%;
@@ -170,6 +169,7 @@
     }
 
     &:hover, &:focus {
+      text-decoration: none;
       img {
         opacity: 1;
       }
@@ -219,7 +219,7 @@
   }
   @media (min-width: @screen-lg-min) {
     .marquee-item {
-      width: calc(~'100vw / 6');
+      width: calc(~'100vw / 5');
     }
   }
 }

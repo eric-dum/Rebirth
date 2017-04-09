@@ -1,14 +1,14 @@
-=== Instagram ===
+=== Instagram Feed WD - Instagram Gallery for WordPress ===
 Contributors: webdorado, progmastery 
 Donate link: https://web-dorado.com/products/wordpress-instagram-feed-wd.html
 Tags: : custom instagram feed, feed, instagram, hashtag, Instagram feed, instagram gallery, instagram posts, Instagram images, Instagram photos, Instagram wall, lightbox, photos
 Requires at least: 3.9
 Tested up to: 4.7
-Stable tag: 1.1.24
+Stable tag: 1.1.25
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Instagram Feed WD plugin  is a user-friendly tool for displaying user or hashtag-based feeds on your website with only few clicks.
+Instagram Feed WD is a user-friendly plugin to display user or hashtag-based Instagram feeds as a responsive customizable gallery.
 
 == Description ==
 
@@ -106,6 +106,13 @@ After downloading the ZIP file of the Instagram Feed WD plugin,
 5.  WordPress Instagram Feed WD - Theme Settings   
 
 == Changelog ==
+
+= 1.1.25 =
+New: UX improvements: when authorizing and editing feeds    
+Changed: JavaScript error notices on frontend    
+Fixed: Updates page restored (PRO)   
+Fixed: Deactivation popup in uninstall page (PRO)   
+Fixed: Subscribe after uninstall   
 
 = 1.1.24 =
 Added: Overview page  

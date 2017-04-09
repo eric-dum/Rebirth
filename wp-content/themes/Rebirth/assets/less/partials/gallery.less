@@ -17,3 +17,36 @@
     }
   }
 }
+
+
+//Zoom Gallery
+.zoom-gallery {
+  img {
+    border: 2px solid transparent;
+  }
+  .zoom-thumbs {
+    a {
+      display: block;
+      &.active {
+        img {
+          border-color: @gray-light;
+        }
+      }
+    }
+  }
+  .zoom-main {
+    .zoomWrapper {
+      position: relative;
+      width: 100% !important;
+      overflow: hidden;
+    }
+  }
+
+  @media (min-width: @screen-md-min) {
+    .zoom-thumbs {
+      a:nth-child(n+2) {
+        margin-top: 5px;
+      }
+    }
+  }
+}

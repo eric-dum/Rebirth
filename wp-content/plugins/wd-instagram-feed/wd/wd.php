@@ -55,10 +55,12 @@
            
             $capability = $wd_options->menu_capability ? $wd_options->menu_capability : "manage_options";
             if( get_option( $wd_options->prefix . "_subscribe_done" ) == 1 || $wd_options->subscribe === false ){
-                    $parent_slug = $wd_options->custom_post;            
+                    $parent_slug = $wd_options->custom_post;
+
+              
             }
             else{
-
+              
                 $subscribe_page = add_menu_page( $wd_options->plugin_menu_title, $wd_options->plugin_menu_title, "manage_options", $wd_options->prefix . '_subscribe' , array( $this, 'display_subscribew_page' ), $wd_options->plugin_menu_icon, $wd_options->menu_position );
 
                 $subscribe_instance = new DoradoWebSubscribe($this->config); 

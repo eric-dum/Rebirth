@@ -178,7 +178,7 @@ class WDIControllerFeeds_wdi {
     if($action==''){
         $wpdb->insert($wpdb->prefix. WDI_FEED_TABLE, $settings,$this->dataFormat);
         if($wpdb->insert_id == false){
-        $this->message(__('Cannot Write on database',"wdi"),'error');
+        $this->message(__('Cannot Write on database. Check database permissions.',"wdi"),'error');
       }
     }else{
         $msg = $wpdb->update($wpdb->prefix. WDI_FEED_TABLE, $settings, array('id'=>$action), $this->dataFormat,array('%d'));
@@ -208,7 +208,7 @@ class WDIControllerFeeds_wdi {
     if($action==''){
         $wpdb->insert($wpdb->prefix. WDI_FEED_TABLE, $settings,$this->dataFormat);
          if($wpdb->insert_id == false){
-          $this->message(__("Cannot Write on database","wdi"),'error');
+          $this->message(__("Cannot Write on database. Check database permissions.","wdi"),'error');
           $this->display();
         }else{
            $this->edit($wpdb->insert_id);
@@ -243,7 +243,7 @@ class WDIControllerFeeds_wdi {
     if($action==''){
         $wpdb->insert($wpdb->prefix. WDI_FEED_TABLE, $defaults,$this->dataFormat);
         if($wpdb->insert_id == false){
-          $this->message(__('Cannot Write on database',"wdi"),'error');
+          $this->message(__('Cannot Write on database. Check database permissions.',"wdi"),'error');
           $this->display();
         }else{
            $this->edit($wpdb->insert_id);

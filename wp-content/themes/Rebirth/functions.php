@@ -527,7 +527,8 @@ function my_custom_post_work_items() {
     'description'   => 'Holds our Work Items and Work Item specific data',
     'public'        => true,
     'menu_position' => 5,
-    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+    'taxonomies'    => array( 'category' ),
     'menu_icon' => 'dashicons-camera',
     'has_archive'   => true,
   );

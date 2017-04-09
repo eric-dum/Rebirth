@@ -343,3 +343,59 @@ padding: 5px;
 	-webkit-box-shadow:none;
 	box-shadow:none;
 }
+
+
+.wdi_help_bar_wrap{
+	clear: both;
+	float: left;
+	width: 99%;
+	background-color: #ffffff;
+	padding: 12px 10px 8px;
+	box-sizing: border-box;
+	margin-bottom: 12px;
+	margin-top:5px;
+
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+}
+
+.wdi_help_bar_wrap > *{
+	display: block;
+	min-height:25px;
+}
+.wdi_help_bar_wrap * {
+	font-size: 16px !important;
+}
+
+.wdi_help_bar_text{
+	float:left;
+	padding:0 6px;
+}
+.wdi_hb_t_link{
+	float: left;
+	color: #00a0d2;
+	text-decoration: underline;
+}
+.wdi_hb_s_link{
+	float: right;
+}
+.wdi_hb_s_text{
+	display: block;
+	float: right;
+	padding-top: 2px;
+}
+
+.wdi_hb_buy_pro{
+	color: #ffffff;
+	background-color: #45A6B7;
+	float: right;
+	margin: -2px 0 0 10px;
+	padding: 2px 7px 0;
+	text-decoration: none;
+	border-radius: 3px;
+}
+.wdi_hb_buy_pro:hover {
+	color: #ffffff;
+	background-color: #008EC2;
+}

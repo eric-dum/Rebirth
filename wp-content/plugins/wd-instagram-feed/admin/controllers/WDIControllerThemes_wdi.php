@@ -345,7 +345,7 @@ class WDIControllerThemes_wdi {
        echo WDILibrary::message(__('Please select at least one item',"wdi"), 'error');
     }
     elseif($msg['msg'] == false){
-      echo WDILibrary::message(__('Cannot Write on database',"wdi"), 'error');
+      echo WDILibrary::message(__('Cannot Write on database. Check database permissions.',"wdi"), 'error');
     }else{
       echo WDILibrary::message(__('Items Succesfully Duplicated.', "wdi"), 'updated');
     }

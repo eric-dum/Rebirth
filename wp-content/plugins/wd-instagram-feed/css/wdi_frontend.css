@@ -315,3 +315,26 @@ div[id^="wdi_container"] p {
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
+
+.wdi_js_error{
+  text-align: center;
+  animation-name: wdi_js_error;
+  animation-duration: 0.5s;
+  animation-delay: 20s;
+  color: #cc0000;
+  transform: scale(0);
+  -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+  animation-fill-mode: forwards;
+  font-size: 12px;
+}
+
+@keyframes wdi_js_error {
+  from {
+    visibility: hidden;
+    transform: scale(0);
+  }
+  to {
+    visibility: visible;
+    transform: scale(1);
+  }
+}

@@ -13,7 +13,7 @@
     <div class="row">
 
       <div class="col-sm-4 logo-contain">
-        <a href="#" class="brand-logo">
+        <a href="/" class="brand-logo">
           <img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/brand/logo.png" alt="Rebirth Sports" class="img-responsive">
           <h1 class="brand">Rebirth Sports</h1>
         </a>
