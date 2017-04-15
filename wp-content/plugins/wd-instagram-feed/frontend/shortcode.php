@@ -44,7 +44,7 @@ function wdi_feed($atts, $widget_params = '')
   ), $atts);
   if ($attributes['id'] == 'no_id') {
     ob_get_clean();
-    return __('Invalid shortcode', "wdi");
+    return __('Invalid shortcode', "wd-instagram-feed");
   }
 
 
@@ -59,12 +59,12 @@ function wdi_feed($atts, $widget_params = '')
   global $wdi_options;
   if (!isset($wdi_options['wdi_access_token']) || $wdi_options['wdi_access_token'] == '') {
     ob_get_clean();
-    return __('Access Token is invalid, please get it again ', "wdi");
+    return __('Access Token is invalid, please get it again ', "wd-instagram-feed");
   }
 
   if (!isset($feed_row) || $feed_row == NULL) {
     ob_get_clean();
-    return __('Feed Doesn\'t exists ', "wdi");
+    return __('Feed with such ID does not exist', "wd-instagram-feed");
   }
 
 
@@ -86,7 +86,7 @@ function wdi_feed($atts, $widget_params = '')
 
   if (isset($feed_row['published']) && $feed_row['published'] === '0') {
     ob_get_clean();
-    return __('Unable to display unpublished feed ', "wdi");
+    return __('Unable to display unpublished feed ', "wd-instagram-feed");
   }
   //checking feed type and using proper MVC
   $feed_type = isset($feed_row['feed_type']) ? $feed_row['feed_type'] : '';
@@ -109,7 +109,7 @@ function wdi_feed($atts, $widget_params = '')
     }
     default: {
       ob_get_clean();
-      return __('Invalid feed type', "wdi");
+      return __('Invalid feed type', "wd-instagram-feed");
     }
 
   }
@@ -149,18 +149,14 @@ function wdi_load_frontend_scripts()
   wp_localize_script("wdi_frontend", 'wdi_url', array('plugin_url' => plugin_dir_url(__FILE__),
     'ajax_url' => admin_url('admin-ajax.php')), WDI_VERSION);
 
-  $user_is_admin = false;
-  $user = wp_get_current_user();
-  if (in_array('administrator', (array)$user->roles)) {
-    $user_is_admin = true;
-  }
+  $user_is_admin = current_user_can('manage_options');
 
   wp_localize_script("wdi_frontend", 'wdi_front_messages',
-    array('connection_error' => __('Connection Error, try again later :(', 'wdi'),
-      'user_not_found' => __('Username not found', 'wdi'),
-      'network_error' => __('Network error, please try again later :(', 'wdi'),
-      'hashtag_nodata' => __('There is no data for that hashtag', 'wdi'),
-      'filter_title' => __('Click to filter images by this user', 'wdi'),
+    array('connection_error' => __('Connection Error, try again later :(', 'wd-instagram-feed'),
+      'user_not_found' => __('Username not found', 'wd-instagram-feed'),
+      'network_error' => __('Network error, please try again later :(', 'wd-instagram-feed'),
+      'hashtag_nodata' => __('There is no data for that hashtag', 'wd-instagram-feed'),
+      'filter_title' => __('Click to filter images by this user', 'wd-instagram-feed'),
       'show_alerts' => $user_is_admin,
     ), WDI_VERSION);
 
@@ -199,9 +195,9 @@ function wdi_front_end_scripts()
   /*ttt!!! gallery fullscreeni het conflict chka ?? arje stugel ete fullscreen script ka, apa el chavelacnel*/
   wp_enqueue_script('wdi_gallery_box', WDI_FRONT_URL . '/js/gallerybox/wdi_gallery_box.js', array('jquery'), WDI_VERSION);
   wp_localize_script('wdi_gallery_box', 'wdi_objectL10n', array(
-    'wdi_field_required' => __('Field is required.', "wdi"),
-    'wdi_mail_validation' => __('This is not a valid email address.', "wdi"),
-    'wdi_search_result' => __('There are no images matching your search.', "wdi"),
+    'wdi_field_required' => __('Field is required.', "wd-instagram-feed"),
+    'wdi_mail_validation' => __('This is not a valid email address.', "wd-instagram-feed"),
+    'wdi_search_result' => __('There are no images matching your search.', "wd-instagram-feed"),
   ));
 
 }
@@ -228,18 +224,14 @@ function wdi_load_frontend_scripts_styles_ajax()
   wp_localize_script("wdi_frontend", 'wdi_url', array('plugin_url' => plugin_dir_url(__FILE__),
     'ajax_url' => admin_url('admin-ajax.php')), WDI_VERSION);
 
-  $user_is_admin = false;
-  $user = wp_get_current_user();
-  if (in_array('administrator', (array)$user->roles)) {
-    $user_is_admin = true;
-  }
+  $user_is_admin = current_user_can('manage_options');
 
   wp_localize_script("wdi_frontend", 'wdi_front_messages',
-    array('connection_error' => __('Connection Error, try again later :(', 'wdi'),
-      'user_not_found' => __('Username not found', 'wdi'),
-      'network_error' => __('Network error, please try again later :(', 'wdi'),
-      'hashtag_nodata' => __('There is no data for that hashtag', 'wdi'),
-      'filter_title' => __('Click to filter images by this user', 'wdi'),
+    array('connection_error' => __('Connection Error, try again later :(', 'wd-instagram-feed'),
+      'user_not_found' => __('Username not found', 'wd-instagram-feed'),
+      'network_error' => __('Network error, please try again later :(', 'wd-instagram-feed'),
+      'hashtag_nodata' => __('There is no data for that hashtag', 'wd-instagram-feed'),
+      'filter_title' => __('Click to filter images by this user', 'wd-instagram-feed'),
       'show_alerts' => $user_is_admin,
     ), WDI_VERSION);
 
@@ -251,9 +243,9 @@ function wdi_load_frontend_scripts_styles_ajax()
   /*ttt!!! gallery fullscreeni het conflict chka ?? arje stugel ete fullscreen script ka, apa el chavelacnel*/
   wp_enqueue_script('wdi_gallery_box', WDI_FRONT_URL . '/js/gallerybox/wdi_gallery_box.js', array(), WDI_VERSION);
   wp_localize_script('wdi_gallery_box', 'wdi_objectL10n', array(
-    'wdi_field_required' => __('Field is required.', "wdi"),
-    'wdi_mail_validation' => __('This is not a valid email address.', "wdi"),
-    'wdi_search_result' => __('There are no images matching your search.', "wdi"),
+    'wdi_field_required' => __('Field is required.', "wd-instagram-feed"),
+    'wdi_mail_validation' => __('This is not a valid email address.', "wd-instagram-feed"),
+    'wdi_search_result' => __('There are no images matching your search.', "wd-instagram-feed"),
   ));
 
 
@@ -261,4 +253,14 @@ function wdi_load_frontend_scripts_styles_ajax()
 
 }
 
-?>
+
+function wdi_feed_frontend_messages(){
+
+  $class = current_user_can('manage_options') ? '' : 'wdi_hidden';
+  $js_error_message = __("Something is wrong. Response takes too long or there is JS error. Press Ctrl+Shift+J or Cmd+Shift+J on a Mac.", "wd-instagram-feed");
+  $ajax_error_message = (defined('DOING_AJAX') && DOING_AJAX) ? __("Warning: Instagram Feed is loaded using AJAX request. It might not display properly.", "wd-instagram-feed") : '';
+
+  echo '<div class="wdi_js_error '.$class.'">'.
+    $js_error_message ."<br/>". $ajax_error_message .'</div>';
+
+}

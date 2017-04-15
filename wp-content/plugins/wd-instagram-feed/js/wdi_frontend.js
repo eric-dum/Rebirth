@@ -4,7 +4,6 @@ if (typeof wdi_front == 'undefined') {
   };
 }
 
-
 wdi_front.detectEvent = function ()
 {
   var isMobile = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));

@@ -1010,7 +1010,7 @@ class WDIViewGalleryBox {
 
     <?php
     if (!$image_id_exist) {
-      echo WDILibrary::message(__('The image has been deleted.', "wdi"), 'error');
+      echo WDILibrary::message(__('The image has been deleted.', "wd-instagram-feed"), 'error');
       die();
     }
     ?>
@@ -1031,56 +1031,56 @@ class WDIViewGalleryBox {
               <?php
             }
             ?>
-            <i title="<?php echo __('Play', "wdi"); ?>" class="wdi_ctrl_btn wdi_play_pause fa fa-play"></i>
+            <i title="<?php echo __('Play', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn wdi_play_pause fa fa-play"></i>
             <?php if ($enable_image_fullscreen) {
               if (!$open_with_fullscreen) {
                 ?>
-                <i title="<?php echo __('Maximize', "wdi"); ?>" class="wdi_ctrl_btn wdi_resize-full fa fa-expand "></i>
+                <i title="<?php echo __('Maximize', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn wdi_resize-full fa fa-expand "></i>
                 <?php
               }
               ?>
-              <i title="<?php echo __('Fullscreen', "wdi"); ?>" class="wdi_ctrl_btn wdi_fullscreen fa fa-arrows-alt"></i>
+              <i title="<?php echo __('Fullscreen', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn wdi_fullscreen fa fa-arrows-alt"></i>
             <?php } if ($popup_enable_info) { ?>
-              <i title="<?php echo __('Show info', "wdi"); ?>" class="wdi_ctrl_btn wdi_info fa fa-info"></i>
+              <i title="<?php echo __('Show info', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn wdi_info fa fa-info"></i>
             <?php } if ($enable_comment_social) { ?>
-              <i title="<?php echo __('Show comments', "wdi"); ?>" class="wdi_ctrl_btn wdi_comment fa fa-comment"></i>
+              <i title="<?php echo __('Show comments', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn wdi_comment fa fa-comment"></i>
             <?php } if ($popup_enable_rate) { ?>
-              <i title="<?php echo __('Show rating', "wdi"); ?>" class="wdi_ctrl_btn wdi_rate fa fa-star"></i>
+              <i title="<?php echo __('Show rating', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn wdi_rate fa fa-star"></i>
             <?php }
             $is_embed = preg_match('/EMBED/', $current_filetype) == 1 ? TRUE : FALSE;
             $share_image_url = urlencode( $is_embed ? $current_thumb_url : site_url() . '/' . $WD_WDI_UPLOAD_DIR . $current_image_url);
             if ($enable_image_facebook) {
               ?>
-              <a id="wdi_facebook_a" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($share_url); ?>" target="_blank" title="<?php echo __('Share on Facebook', "wdi"); ?>">
-                <i title="<?php echo __('Share on Facebook', "wdi"); ?>" class="wdi_ctrl_btn wdi_facebook fa fa-facebook"></i>
+              <a id="wdi_facebook_a" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($share_url); ?>" target="_blank" title="<?php echo __('Share on Facebook', "wd-instagram-feed"); ?>">
+                <i title="<?php echo __('Share on Facebook', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn wdi_facebook fa fa-facebook"></i>
               </a>
               <?php
             }
             if ($enable_image_twitter) {
               ?>
-              <a id="wdi_twitter_a" href="https://twitter.com/share?url=<?php echo urlencode($share_url); ?>" target="_blank" title="<?php echo __('Share on Twitter', "wdi"); ?>">
-                <i title="<?php echo __('Share on Twitter', "wdi"); ?>" class="wdi_ctrl_btn wdi_twitter fa fa-twitter"></i>
+              <a id="wdi_twitter_a" href="https://twitter.com/share?url=<?php echo urlencode($share_url); ?>" target="_blank" title="<?php echo __('Share on Twitter', "wd-instagram-feed"); ?>">
+                <i title="<?php echo __('Share on Twitter', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn wdi_twitter fa fa-twitter"></i>
               </a>
               <?php
             }
             if ($enable_image_google) {
               ?>
-              <a id="wdi_google_a" href="https://plus.google.com/share?url=<?php echo urlencode($share_url); ?>" target="_blank" title="<?php echo __('Share on Google+', "wdi"); ?>">
-                <i title="<?php echo __('Share on Google+', "wdi"); ?>" class="wdi_ctrl_btn wdi_google fa fa-google-plus"></i>
+              <a id="wdi_google_a" href="https://plus.google.com/share?url=<?php echo urlencode($share_url); ?>" target="_blank" title="<?php echo __('Share on Google+', "wd-instagram-feed"); ?>">
+                <i title="<?php echo __('Share on Google+', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn wdi_google fa fa-google-plus"></i>
               </a>
               <?php
             }
             if ($enable_image_pinterest) {
               ?>
-              <a id="wdi_pinterest_a" href="http://pinterest.com/pin/create/button/?s=100&url=<?php echo urlencode($share_url); ?>&media=<?php echo $share_image_url; ?>&description=<?php echo $current_image_description; ?>" target="_blank" title="<?php echo __('Share on Pinterest', "wdi"); ?>">
-                <i title="<?php echo __('Share on Pinterest', "wdi"); ?>" class="wdi_ctrl_btn wdi_pinterest fa fa-pinterest"></i>
+              <a id="wdi_pinterest_a" href="http://pinterest.com/pin/create/button/?s=100&url=<?php echo urlencode($share_url); ?>&media=<?php echo $share_image_url; ?>&description=<?php echo $current_image_description; ?>" target="_blank" title="<?php echo __('Share on Pinterest', "wd-instagram-feed"); ?>">
+                <i title="<?php echo __('Share on Pinterest', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn wdi_pinterest fa fa-pinterest"></i>
               </a>
               <?php
             }
             if ($enable_image_tumblr) {
               ?>
-              <a id="wdi_tumblr_a" href="https://www.tumblr.com/share/photo?source=<?php echo $share_image_url; ?>&caption=<?php echo urlencode($current_image_alt); ?>&clickthru=<?php echo urlencode($share_url); ?>" target="_blank" title="<?php echo __('Share on Tumblr', "wdi"); ?>">
-                <i title="<?php echo __('Share on Tumblr', "wdi"); ?>" class="wdi_ctrl_btn wdi_tumblr fa fa-tumblr"></i>
+              <a id="wdi_tumblr_a" href="https://www.tumblr.com/share/photo?source=<?php echo $share_image_url; ?>&caption=<?php echo urlencode($current_image_alt); ?>&clickthru=<?php echo urlencode($share_url); ?>" target="_blank" title="<?php echo __('Share on Tumblr', "wd-instagram-feed"); ?>">
+                <i title="<?php echo __('Share on Tumblr', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn wdi_tumblr fa fa-tumblr"></i>
               </a>
               <?php
             }
@@ -1088,7 +1088,7 @@ class WDIViewGalleryBox {
             if ($enable_share_buttons) {
               ?>
               <span class="wdi_share_btns_container">
-              <i onclick="jQuery(this).parent().find('.wdi_share_btns').toggleClass('wdi_share_toggler');jQuery(this).parent().find('.wdi_share_caret').toggleClass('wdi_share_toggler')" title="<?php echo __('Share', "wdi"); ?>" class="wdi_ctrl_btn fa fa-share"></i>
+              <i onclick="jQuery(this).parent().find('.wdi_share_btns').toggleClass('wdi_share_toggler');jQuery(this).parent().find('.wdi_share_caret').toggleClass('wdi_share_toggler')" title="<?php echo __('Share', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn fa fa-share"></i>
               <p class="wdi_share_btns" style="display:none">
                 <a id="wdi_popup_fb" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $current_image_url;?>" target="_blank" class='wdi_share_popup_btn wdi_facebook fa fa-facebook'></a>
                 <a id="wdi_popup_tw" href="https://twitter.com/home?status=<?php echo $current_image_url;?>" target="_blank" class='wdi_share_popup_btn wdi_twitter fa fa-twitter'></a>
@@ -1107,7 +1107,7 @@ class WDIViewGalleryBox {
             if ($option_row->popup_enable_fullsize_image) {
               ?>
               <a id="wdi_fullsize_image" href="<?php echo !$is_embed ? site_url() . '/' . $WD_WDI_UPLOAD_DIR . $current_image_url : $current_image_url; ?>" target="_blank">
-                <i title="<?php echo __('Open image in Instagram.', "wdi"); ?>" class="wdi_ctrl_btn fa fa-instagram"></i>
+                <i title="<?php echo __('Open image in Instagram.', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn fa fa-instagram"></i>
               </a>
               <?php
             }
@@ -1135,7 +1135,7 @@ class WDIViewGalleryBox {
               }
               ?>
               <a id="wdi_download" href="<?php echo $download_href; ?>" target="_blank" download="<?php echo end($current_image_arr); ?>" style="display: <?php echo $style; ?>;">
-                <i title="<?php echo __('Download original image', "wdi"); ?>" class="wdi_ctrl_btn fa fa-download"></i>
+                <i title="<?php echo __('Download original image', "wd-instagram-feed"); ?>" class="wdi_ctrl_btn fa fa-download"></i>
               </a>
               <?php
             }
@@ -1332,14 +1332,14 @@ class WDIViewGalleryBox {
                 @session_start();
                 $wdi_captcha_code = (isset($_SESSION['wdi_captcha_code']) ? esc_html(stripslashes($_SESSION['wdi_captcha_code'])) : '');
                 if ($wdi_captcha_input !== $wdi_captcha_code) {
-                  $captcha_error_message = __('Error. Incorrect Verification Code.', "wdi");
+                  $captcha_error_message = __('Error. Incorrect Verification Code.', "wd-instagram-feed");
                   $wdi_name = (isset($_POST['wdi_name']) ? esc_html(stripslashes($_POST['wdi_name'])) : '');
                   $wdi_comment = (isset($_POST['wdi_comment']) ? esc_html(stripslashes($_POST['wdi_comment'])) : '');
                   $wdi_email = (isset($_POST['wdi_email']) ? esc_html(stripslashes($_POST['wdi_email'])) : '');
                 }
               }
               if ($option_row->popup_enable_email && isset($_POST['wdi_email']) && !is_email(stripslashes($_POST['wdi_email']))) {
-                $email_error_message = __( 'This is not a valid email address.', "wdi" );
+                $email_error_message = __( 'This is not a valid email address.', "wd-instagram-feed" );
                 $wdi_name = (isset($_POST['wdi_name']) ? esc_html(stripslashes($_POST['wdi_name'])) : '');
                 $wdi_comment = (isset($_POST['wdi_comment']) ? esc_html(stripslashes($_POST['wdi_comment'])) : '');
                 $wdi_email = (isset($_POST['wdi_email']) ? esc_html(stripslashes($_POST['wdi_email'])) : '');
@@ -1347,30 +1347,30 @@ class WDIViewGalleryBox {
             }
             ?>
             <div id="wdi_comments">
-              <div title="<?php echo __('Hide Comments', "wdi"); ?>" class="wdi_comments_close">
+              <div title="<?php echo __('Hide Comments', "wd-instagram-feed"); ?>" class="wdi_comments_close">
                 <i class="wdi_comments_close_btn fa fa-arrow-<?php echo $theme_row->lightbox_comment_pos; ?>"></i>
               </div>
 
               <form id="wdi_comment_form" style="display:none !important;"> method="post" action="<?php echo $popup_url; ?>"><!--Deprecated-->
-                <p><label for="wdi_name"><?php echo __('Name', "wdi"); ?> * </label></p>
+                <p><label for="wdi_name"><?php echo __('Name', "wd-instagram-feed"); ?> * </label></p>
                 <p><input type="text" name="wdi_name" id="wdi_name" <?php echo ((get_current_user_id() != 0) ? 'readonly="readonly"' : ''); ?>
                           value="<?php echo ((get_current_user_id() != 0) ? get_userdata(get_current_user_id())->display_name : $wdi_name); ?>" /></p>
                 <?php
                 if ($option_row->popup_enable_email) {
                   ?>
-                  <p><label for="wdi_email"><?php echo __('Email', "wdi"); ?> * </label></p>
+                  <p><label for="wdi_email"><?php echo __('Email', "wd-instagram-feed"); ?> * </label></p>
                   <p><input type="text" name="wdi_email" id="wdi_email"
                             value="<?php echo ((get_current_user_id() != 0) ? get_userdata(get_current_user_id())->user_email : $wdi_email); ?>" /></p>
                   <p><span class="wdi_comment_error"><?php echo $email_error_message; ?></span></p>
                   <?php
                 }
                 ?>
-                <p><label for="wdi_comment"><?php echo __('Comment', "wdi"); ?> * </label></p>
+                <p><label for="wdi_comment"><?php echo __('Comment', "wd-instagram-feed"); ?> * </label></p>
                 <p><textarea class="wdi_comment_textarea" name="wdi_comment" id="wdi_comment"><?php echo $wdi_comment; ?></textarea></p>
                 <?php
                 if ($option_row->popup_enable_captcha) {
                   ?>
-                  <p><label for="wdi_captcha_input"><?php echo __('Verification Code', "wdi"); ?></label></p>
+                  <p><label for="wdi_captcha_input"><?php echo __('Verification Code', "wd-instagram-feed"); ?></label></p>
                   <p>
                     <input id="wdi_captcha_input" name="wdi_captcha_input" class="wdi_captcha_input" type="text">
                     <img id="wdi_captcha_img" class="wdi_captcha_img" type="captcha" digit="6" src="<?php echo add_query_arg(array('action' => 'wdi_captcha', 'digit' => 6, 'i' => ''), admin_url('admin-ajax.php')); ?>" onclick="wdi_captcha_refresh('wdi_captcha')" ontouchend="wdi_captcha_refresh('wdi_captcha')" />
@@ -1380,28 +1380,28 @@ class WDIViewGalleryBox {
                   <?php
                 }
                 ?>
-                <p><input onclick="if (wdi_spider_check_required('wdi_name', '<?php echo __('Name', "wdi"); ?>') <?php if ($option_row->popup_enable_email) { ?> || wdi_spider_check_required('wdi_email', '<?php echo __('Email', "wdi"); ?>') || wdi_spider_check_email('wdi_email') <?php } ?> || wdi_spider_check_required('wdi_comment', '<?php echo __('Comment', "wdi"); ?>')) { return false;}
+                <p><input onclick="if (wdi_spider_check_required('wdi_name', '<?php echo __('Name', "wd-instagram-feed"); ?>') <?php if ($option_row->popup_enable_email) { ?> || wdi_spider_check_required('wdi_email', '<?php echo __('Email', "wd-instagram-feed"); ?>') || wdi_spider_check_email('wdi_email') <?php } ?> || wdi_spider_check_required('wdi_comment', '<?php echo __('Comment', "wd-instagram-feed"); ?>')) { return false;}
                     var cur_image_key = parseInt(jQuery('#wdi_current_image_key').val());
                     ++wdi_data[cur_image_key]['comment_count'];
                     wdi_spider_set_input_value('ajax_task', 'save');
                     wdi_spider_set_input_value('image_id', jQuery('#wdi_popup_image').attr('image_id'));
                     wdi_spider_ajax_save('wdi_comment_form');
                     return false;"
-                          ontouchend="if (wdi_spider_check_required('wdi_name', '<?php echo __('Name', "wdi"); ?>') <?php if ($option_row->popup_enable_email) { ?> || wdi_spider_check_required('wdi_email', '<?php echo __('Email', "wdi"); ?>') || wdi_spider_check_email('wdi_email') <?php } ?> || wdi_spider_check_required('wdi_comment', '<?php echo __('Comment', "wdi"); ?>')) {return false;}
+                          ontouchend="if (wdi_spider_check_required('wdi_name', '<?php echo __('Name', "wd-instagram-feed"); ?>') <?php if ($option_row->popup_enable_email) { ?> || wdi_spider_check_required('wdi_email', '<?php echo __('Email', "wd-instagram-feed"); ?>') || wdi_spider_check_email('wdi_email') <?php } ?> || wdi_spider_check_required('wdi_comment', '<?php echo __('Comment', "wd-instagram-feed"); ?>')) {return false;}
                                  var cur_image_key = parseInt(jQuery('#wdi_current_image_key').val());
                                  ++wdi_data[cur_image_key]['comment_count'];
                                  wdi_spider_set_input_value('ajax_task', 'save');
                                  wdi_spider_set_input_value('image_id', jQuery('#wdi_popup_image').attr('image_id'));
                                  wdi_spider_ajax_save('wdi_comment_form');
-                                 return false;" class="wdi_submit" type="submit" name="wdi_submit" id="wdi_submit" value="<?php echo __('Submit', "wdi"); ?>" /></p>
-                <?php echo (!current_user_can('manage_options') && ($comment_moderation && (isset($_POST['wdi_comment']) && esc_html($_POST['wdi_comment'])))) ? __('Your comment is awaiting moderation', "wdi") : ''; ?>
+                                 return false;" class="wdi_submit" type="submit" name="wdi_submit" id="wdi_submit" value="<?php echo __('Submit', "wd-instagram-feed"); ?>" /></p>
+                <?php echo (!current_user_can('manage_options') && ($comment_moderation && (isset($_POST['wdi_comment']) && esc_html($_POST['wdi_comment'])))) ? __('Your comment is awaiting moderation', "wd-instagram-feed") : ''; ?>
                 <input id="ajax_task" name="ajax_task" type="hidden" value="" />
                 <input id="image_id" name="image_id" type="hidden" value="<?php echo $image_id; ?>" />
                 <input id="comment_id" name="comment_id" type="hidden" value="" />
               </form>
             </div>
             <div id="wdi_added_comments">
-              <p class="wdi_no_comment"><?php _e('There are no comments to show','wdi');?></p>
+              <p class="wdi_no_comment"><?php _e('There are no comments to show','wd-instagram-feed');?></p>
             </div>
           </div>
         </div>
@@ -1410,14 +1410,7 @@ class WDIViewGalleryBox {
 
     <a class="wdi_spider_popup_close" onclick="wdi_spider_destroypopup(1000); return false;" ontouchend="wdi_spider_destroypopup(1000); return false;"><span><i class="wdi_close_btn fa fa-times"></i></span></a>
 
-    <script language="javascript" type="text/javascript" src="<?php echo WDI_URL . '/js/gallerybox/wdi_embed.js?ver=' . WDI_VERSION; ?>"></script>
     <script>
-
-
-
-
-
-
 
       <?php
       if ($option_row->enable_addthis && $option_row->addthis_profile_id) {
@@ -2070,7 +2063,7 @@ class WDIViewGalleryBox {
               /* Load comments.*/
               if (jQuery(".wdi_comment_container").hasClass("wdi_open")) {
                 if (wdi_data[key]["comment_count"] == 0) {
-                  jQuery("#wdi_added_comments").html('<p class="wdi_no_comment"><?php _e('There are no comments to show','wdi');?></p>');
+                  jQuery("#wdi_added_comments").html('<p class="wdi_no_comment"><?php _e('There are no comments to show','wd-instagram-feed');?></p>');
                 }
                 else {
                   jQuery("#wdi_added_comments").show();
@@ -2165,9 +2158,9 @@ class WDIViewGalleryBox {
             if (!jQuery.fullscreen.isFullScreen()) {
               jQuery(".wdi_resize-full").show();
               jQuery(".wdi_resize-full").attr("class", "wdi_ctrl_btn wdi_resize-full fa fa-expand");
-              jQuery(".wdi_resize-full").attr("title", "<?php echo __('Maximize', "wdi"); ?>");
+              jQuery(".wdi_resize-full").attr("title", "<?php echo __('Maximize', "wd-instagram-feed"); ?>");
               jQuery(".wdi_fullscreen").attr("class", "wdi_ctrl_btn wdi_fullscreen fa fa-arrows-alt");
-              jQuery(".wdi_fullscreen").attr("title", "<?php echo __('Fullscreen', "wdi"); ?>");
+              jQuery(".wdi_fullscreen").attr("title", "<?php echo __('Fullscreen', "wd-instagram-feed"); ?>");
             }
           }
         }
@@ -2337,7 +2330,7 @@ class WDIViewGalleryBox {
           /* Set filmstrip initial position.*/
           wdi_set_filmstrip_pos(jQuery(".wdi_spider_popup_wrap").width() - 40);
           jQuery(".wdi_comment_container").attr("class", "wdi_comment_container wdi_close");
-          jQuery(".wdi_comment").attr("title", "<?php echo __('Show Comments', "wdi"); ?>");
+          jQuery(".wdi_comment").attr("title", "<?php echo __('Show Comments', "wd-instagram-feed"); ?>");
           jQuery(".wdi_spider_popup_close_fullscreen").show();
           // console.log("has open:"+jQuery(".wdi_comment_container").hasClass("wdi_open"));
           // console.log("has clos:"+jQuery(".wdi_comment_container").hasClass("wdi_close"));
@@ -2385,7 +2378,7 @@ class WDIViewGalleryBox {
           /* Set filmstrip initial position.*/
           wdi_set_filmstrip_pos(jQuery(".wdi_filmstrip_container").<?php echo $width_or_height; ?>() - 40);
           jQuery(".wdi_comment_container").attr("class", "wdi_comment_container wdi_open");
-          jQuery(".wdi_comment").attr("title", "<?php echo __('Hide Comments', "wdi"); ?>");
+          jQuery(".wdi_comment").attr("title", "<?php echo __('Hide Comments', "wd-instagram-feed"); ?>");
           /* Load comments.*/
 
           var cur_image_key = parseInt(jQuery("#wdi_current_image_key").val());
@@ -2395,7 +2388,7 @@ class WDIViewGalleryBox {
             wdi_spider_set_input_value('image_id', jQuery('#wdi_popup_image').attr('image_id'));/*deprecated*/
             wdi_spider_ajax_save('wdi_comment_form',cur_image_key);/*deprecated*/
           }else{
-            jQuery("#wdi_added_comments").html('<p class="wdi_no_comment"><?php _e('There are no comments to show','wdi');?></p>');
+            jQuery("#wdi_added_comments").html('<p class="wdi_no_comment"><?php _e('There are no comments to show','wd-instagram-feed');?></p>');
           }
           // console.log("has open:"+jQuery(".wdi_comment_container").hasClass("wdi_open"));
           // console.log("has clos:"+jQuery(".wdi_comment_container").hasClass("wdi_close"));
@@ -2571,7 +2564,7 @@ class WDIViewGalleryBox {
         jQuery(".wdi_info").on(wdi_click, function() {
           if (jQuery(".wdi_image_info_container1").css("display") == 'none') {
             jQuery(".wdi_image_info_container1").css("display", "table-cell");
-            jQuery(".wdi_info").attr("title", "<?php echo __('Hide info', "wdi"); ?>");
+            jQuery(".wdi_info").attr("title", "<?php echo __('Hide info', "wd-instagram-feed"); ?>");
 
 
 
@@ -2585,7 +2578,7 @@ class WDIViewGalleryBox {
           }
           else {
             jQuery(".wdi_image_info_container1").css("display", "none");
-            jQuery(".wdi_info").attr("title", "<?php echo __('Show info', "wdi"); ?>");
+            jQuery(".wdi_info").attr("title", "<?php echo __('Show info', "wd-instagram-feed"); ?>");
           }
 
 
@@ -2594,11 +2587,11 @@ class WDIViewGalleryBox {
         jQuery(".wdi_rate").on(wdi_click, function() {
           if (jQuery(".wdi_image_rate_container1").css("display") == 'none') {
             jQuery(".wdi_image_rate_container1").css("display", "table-cell");
-            jQuery(".wdi_rate").attr("title", "<?php echo __('Hide rating', "wdi"); ?>");
+            jQuery(".wdi_rate").attr("title", "<?php echo __('Hide rating', "wd-instagram-feed"); ?>");
           }
           else {
             jQuery(".wdi_image_rate_container1").css("display", "none");
-            jQuery(".wdi_rate").attr("title", "<?php echo __('Show rating', "wdi"); ?>");
+            jQuery(".wdi_rate").attr("title", "<?php echo __('Show rating', "wd-instagram-feed"); ?>");
           }
         });
         /* Open/close comments.*/
@@ -2721,7 +2714,7 @@ class WDIViewGalleryBox {
             /* Set filmstrip initial position.*/
             wdi_set_filmstrip_pos(wdi_popup_current_<?php echo $width_or_height; ?> - 40);
             jQuery(".wdi_resize-full").attr("class", "wdi_ctrl_btn wdi_resize-full fa fa-expand");
-            jQuery(".wdi_resize-full").attr("title", "<?php echo __('Maximize', "wdi"); ?>");
+            jQuery(".wdi_resize-full").attr("title", "<?php echo __('Maximize', "wd-instagram-feed"); ?>");
           }
           else {
             wdi_popup_current_width = jQuery(window).width();
@@ -2758,7 +2751,7 @@ class WDIViewGalleryBox {
             /* Set filmstrip initial position.*/
             wdi_set_filmstrip_pos(jQuery(window).<?php echo $width_or_height; ?>() - <?php echo ($filmstrip_direction == 'horizontal' ? 'comment_container_width' : 0); ?> - 40);
             jQuery(".wdi_resize-full").attr("class", "wdi_ctrl_btn wdi_resize-full fa fa-compress");
-            jQuery(".wdi_resize-full").attr("title", "<?php echo __('Restore', "wdi"); ?>");
+            jQuery(".wdi_resize-full").attr("title", "<?php echo __('Restore', "wd-instagram-feed"); ?>");
             jQuery(".wdi_spider_popup_close").attr("class", "wdi_ctrl_btn wdi_spider_popup_close_fullscreen");
           }
         });
@@ -2818,9 +2811,9 @@ class WDIViewGalleryBox {
               wdi_set_filmstrip_pos(wdi_popup_current_<?php echo $width_or_height; ?> - 40);
               jQuery(".wdi_resize-full").show();
               jQuery(".wdi_resize-full").attr("class", "wdi_ctrl_btn wdi_resize-full fa fa-expand");
-              jQuery(".wdi_resize-full").attr("title", "<?php echo __('Maximize', "wdi"); ?>");
+              jQuery(".wdi_resize-full").attr("title", "<?php echo __('Maximize', "wd-instagram-feed"); ?>");
               jQuery(".wdi_fullscreen").attr("class", "wdi_ctrl_btn wdi_fullscreen fa fa-arrows-alt");
-              jQuery(".wdi_fullscreen").attr("title", "<?php echo __('Fullscreen', "wdi"); ?>");
+              jQuery(".wdi_fullscreen").attr("title", "<?php echo __('Fullscreen', "wd-instagram-feed"); ?>");
               if (jQuery("#wdi_spider_popup_wrap").width() < jQuery(window).width()) {
                 if (jQuery("#wdi_spider_popup_wrap").height() < jQuery(window).height()) {
                   jQuery(".wdi_spider_popup_close_fullscreen").attr("class", "wdi_spider_popup_close");
@@ -2873,7 +2866,7 @@ class WDIViewGalleryBox {
                 wdi_set_filmstrip_pos(screen_<?php echo $width_or_height; ?> - <?php echo ($filmstrip_direction == 'horizontal' ? 'comment_container_width' : 0); ?> - 40);
                 jQuery(".wdi_resize-full").hide();
                 jQuery(".wdi_fullscreen").attr("class", "wdi_ctrl_btn wdi_fullscreen fa fa-compress");
-                jQuery(".wdi_fullscreen").attr("title", "<?php echo __('Exit Fullscreen', "wdi"); ?>");
+                jQuery(".wdi_fullscreen").attr("title", "<?php echo __('Exit Fullscreen', "wd-instagram-feed"); ?>");
                 jQuery(".wdi_spider_popup_close").attr("class", "wdi_ctrl_btn wdi_spider_popup_close_fullscreen");
                 /*});
                  }*/
@@ -2888,13 +2881,13 @@ class WDIViewGalleryBox {
 
             /* PLay.*/
             wdi_play();
-            jQuery(".wdi_play_pause").attr("title", "<?php echo __('Pause', "wdi"); ?>");
+            jQuery(".wdi_play_pause").attr("title", "<?php echo __('Pause', "wd-instagram-feed"); ?>");
             jQuery(".wdi_play_pause").attr("class", "wdi_ctrl_btn wdi_play_pause fa fa-pause");
           }
           else {
             /* Pause.*/
             window.clearInterval(wdi_playInterval);
-            jQuery(".wdi_play_pause").attr("title", "<?php echo __('Play', "wdi"); ?>");
+            jQuery(".wdi_play_pause").attr("title", "<?php echo __('Play', "wd-instagram-feed"); ?>");
             jQuery(".wdi_play_pause").attr("class", "wdi_ctrl_btn wdi_play_pause fa fa-play");
           }
         });
@@ -2905,7 +2898,7 @@ class WDIViewGalleryBox {
         ?>
 
         wdi_play();
-        jQuery(".wdi_play_pause").attr("title", "<?php echo __('Pause', "wdi"); ?>");
+        jQuery(".wdi_play_pause").attr("title", "<?php echo __('Pause', "wd-instagram-feed"); ?>");
         jQuery(".wdi_play_pause").attr("class", "wdi_ctrl_btn wdi_play_pause fa fa-pause");
         <?php
         }
@@ -2978,7 +2971,7 @@ class WDIViewGalleryBox {
         wdi_set_filmstrip_pos(jQuery(window).<?php echo $width_or_height; ?>() - <?php echo ($filmstrip_direction == 'horizontal' ? 'comment_container_width' : 0); ?> - 40);
 
         jQuery(".wdi_resize-full").attr("class", "wdi_ctrl_btn wdi_resize-full fa fa-compress");
-        jQuery(".wdi_resize-full").attr("title", "<?php echo __('Restore', "wdi"); ?>");
+        jQuery(".wdi_resize-full").attr("title", "<?php echo __('Restore', "wd-instagram-feed"); ?>");
         jQuery(".wdi_spider_popup_close").attr("class", "wdi_ctrl_btn wdi_spider_popup_close_fullscreen");
       }
 

@@ -178,14 +178,14 @@ class WDIControllerFeeds_wdi {
     if($action==''){
         $wpdb->insert($wpdb->prefix. WDI_FEED_TABLE, $settings,$this->dataFormat);
         if($wpdb->insert_id == false){
-        $this->message(__('Cannot Write on database. Check database permissions.',"wdi"),'error');
+        $this->message(__('Cannot Write on database. Check database permissions.',"wd-instagram-feed"),'error');
       }
     }else{
         $msg = $wpdb->update($wpdb->prefix. WDI_FEED_TABLE, $settings, array('id'=>$action), $this->dataFormat,array('%d'));
         if($msg == false){
-         $this->message(__("You have not made new changes","wdi"),'notice');
+         $this->message(__("You have not made new changes","wd-instagram-feed"),'notice');
         }else{
-          $this->message(__("Successfully saved","wdi"),"updated");
+          $this->message(__("Successfully saved","wd-instagram-feed"),"updated");
         }
     }
     $this->display();
@@ -208,7 +208,7 @@ class WDIControllerFeeds_wdi {
     if($action==''){
         $wpdb->insert($wpdb->prefix. WDI_FEED_TABLE, $settings,$this->dataFormat);
          if($wpdb->insert_id == false){
-          $this->message(__("Cannot Write on database. Check database permissions.","wdi"),'error');
+          $this->message(__("Cannot Write on database. Check database permissions.","wd-instagram-feed"),'error');
           $this->display();
         }else{
            $this->edit($wpdb->insert_id);
@@ -216,10 +216,10 @@ class WDIControllerFeeds_wdi {
     }else{
         $msg = $wpdb->update($wpdb->prefix. WDI_FEED_TABLE, $settings, array('id'=>$action), $this->dataFormat,array('%d'));
          if($msg == false){
-          $this->message(__("You have not made new changes","wdi"),'notice');
+          $this->message(__("You have not made new changes","wd-instagram-feed"),'notice');
           $this->edit();
         }else{
-          $this->message(__("Changes have been successfully applied","wdi"),"updated");
+          $this->message(__("Changes have been successfully applied","wd-instagram-feed"),"updated");
           $this->edit();
         }
         
@@ -243,7 +243,7 @@ class WDIControllerFeeds_wdi {
     if($action==''){
         $wpdb->insert($wpdb->prefix. WDI_FEED_TABLE, $defaults,$this->dataFormat);
         if($wpdb->insert_id == false){
-          $this->message(__('Cannot Write on database. Check database permissions.',"wdi"),'error');
+          $this->message(__('Cannot Write on database. Check database permissions.',"wd-instagram-feed"),'error');
           $this->display();
         }else{
            $this->edit($wpdb->insert_id);
@@ -251,10 +251,10 @@ class WDIControllerFeeds_wdi {
     }else{
         $msg = $wpdb->update($wpdb->prefix. WDI_FEED_TABLE, $defaults, array('id'=>$action), $this->dataFormat,array('%d'));
         if($msg == false){
-          $this->message(__("You have not made new changes","wdi"),'notice');
+          $this->message(__("You have not made new changes","wd-instagram-feed"),'notice');
 +         $this->edit();
         }else{
-          $this->message(__("Feed successfully reseted","wdi"),"updated");
+          $this->message(__("Feed successfully reseted","wd-instagram-feed"),"updated");
           $this->edit();
         }
     }
@@ -269,7 +269,7 @@ class WDIControllerFeeds_wdi {
         $this->duplicate_tabels($slider_id);
       }
     }
-    echo WDILibrary::message(__('Item Succesfully Duplicated.', "wdi"), 'updated');
+    echo WDILibrary::message(__('Item Succesfully Duplicated.', "wd-instagram-feed"), 'updated');
     $this->display();
   }
 
@@ -292,10 +292,10 @@ class WDIControllerFeeds_wdi {
     global $wpdb;
     $query = $wpdb->prepare('DELETE FROM ' . $wpdb->prefix . WDI_FEED_TABLE. ' WHERE id="%d"', $id);
     if ($wpdb->query($query)) {
-      echo WDILibrary::message(__('Item Succesfully Deleted.',"wdi"), 'updated');
+      echo WDILibrary::message(__('Item Succesfully Deleted.',"wd-instagram-feed"), 'updated');
     }
     else {
-      echo WDILibrary::message(__('Error. Please install plugin again.', "wdi"), 'error');
+      echo WDILibrary::message(__('Error. Please install plugin again.', "wd-instagram-feed"), 'error');
     }
     $this->display();
   }
@@ -312,10 +312,10 @@ class WDIControllerFeeds_wdi {
       }
     }
     if ($flag) {
-      echo WDILibrary::message(__('Items Succesfully Deleted.', "wdi"), 'updated');
+      echo WDILibrary::message(__('Items Succesfully Deleted.', "wd-instagram-feed"), 'updated');
     }
     else {
-      echo WDILibrary::message(__('You must select at least one item.', "wdi"), 'error');
+      echo WDILibrary::message(__('You must select at least one item.', "wd-instagram-feed"), 'error');
     }
     $this->display();
   }
@@ -324,10 +324,10 @@ class WDIControllerFeeds_wdi {
     global $wpdb;
     $save = $wpdb->update($wpdb->prefix . WDI_FEED_TABLE, array('published' => 1), array('id' => $id));
     if ($save !== FALSE) {
-      echo WDILibrary::message(__('Item Succesfully Published.', "wdi"), 'updated');
+      echo WDILibrary::message(__('Item Succesfully Published.', "wd-instagram-feed"), 'updated');
     }
     else {
-      echo WDILibrary::message(__('Error. Please install plugin again.', "wdi"), 'error');
+      echo WDILibrary::message(__('Error. Please install plugin again.', "wd-instagram-feed"), 'error');
     }
     $this->display();
   }
@@ -349,10 +349,10 @@ class WDIControllerFeeds_wdi {
       }
     }
     if ($flag) {
-      echo WDILibrary::message(__('Items Succesfully Published.', "wdi"), 'updated');
+      echo WDILibrary::message(__('Items Succesfully Published.', "wd-instagram-feed"), 'updated');
     }
     else {
-      echo WDILibrary::message(__('You must select at least one item.', "wdi"), 'error');
+      echo WDILibrary::message(__('You must select at least one item.', "wd-instagram-feed"), 'error');
     }
     $this->display();
   }
@@ -361,10 +361,10 @@ class WDIControllerFeeds_wdi {
     global $wpdb;
     $save = $wpdb->update($wpdb->prefix . WDI_FEED_TABLE, array('published' => 0), array('id' => $id));
     if ($save !== FALSE) {
-      echo WDILibrary::message(__('Item Succesfully Unpublished.', "wdi"), 'updated');
+      echo WDILibrary::message(__('Item Succesfully Unpublished.', "wd-instagram-feed"), 'updated');
     }
     else {
-      echo WDILibrary::message(__('Error. Please install plugin again.', "wdi"), 'error');
+      echo WDILibrary::message(__('Error. Please install plugin again.', "wd-instagram-feed"), 'error');
     }
     $this->display();
   }
@@ -386,10 +386,10 @@ class WDIControllerFeeds_wdi {
       }
     }
     if ($flag) {
-      echo WDILibrary::message(__('Items Succesfully Unpublished.', "wdi"), 'updated');
+      echo WDILibrary::message(__('Items Succesfully Unpublished.', "wd-instagram-feed"), 'updated');
     }
     else {
-      echo WDILibrary::message(__('You must select at least one item.', "wdi"), 'error');
+      echo WDILibrary::message(__('You must select at least one item.', "wd-instagram-feed"), 'error');
     }
     $this->display();
   }

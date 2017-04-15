@@ -19,12 +19,12 @@ class WDIControllerWidget extends WP_Widget {
 
     $widget_ops = array(
       'classname' => 'wdi_instagram_widget',
-      'description' => __('Show your instagram feeds in your widget area',"wdi")
+      'description' => __('Show your instagram feeds in your widget area',"wd-instagram-feed")
     );
     // Widget Control Settings.
     $control_ops = array('id_base' => 'wdi_instagram_widget');
     // Create the widget.
-    parent::__construct('wdi_instagram_widget', __('Instagram WD Widget',"wdi"), $widget_ops, $control_ops);
+    parent::__construct('wdi_instagram_widget', __('Instagram WD Widget',"wd-instagram-feed"), $widget_ops, $control_ops);
     require_once WDI_DIR . "/admin/models/WDIModelWidget.php";
     $this->model = new WDIModelWidget();
     require_once WDI_DIR . "/admin/views/WDIViewWidget.php";

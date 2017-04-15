@@ -185,8 +185,8 @@ class WDILibrary {
         <input type="text" id="search_value" name="search_value" class="wdi_spider_search_value" onkeypress="return check_search_key(event, this);" value="<?php echo esc_html($search_value); ?>" style="width: 150px;<?php echo (get_bloginfo('version') > '3.7') ? ' height: 28px;' : ''; ?>" />
       </div>
       <div class="alignleft actions">
-        <input type="button" value="<?php _e('Search',"wdi");?>" onclick="wdi_spider_search()" class="button-secondary action">
-        <input type="button" value="<?php _e('Reset',"wdi");?>" onclick="wdi_spider_reset()" class="button-secondary action">
+        <input type="button" value="<?php _e('Search',"wd-instagram-feed");?>" onclick="wdi_spider_search()" class="button-secondary action">
+        <input type="button" value="<?php _e('Reset',"wd-instagram-feed");?>" onclick="wdi_spider_reset()" class="button-secondary action">
       </div>
     </div>
     <?php
@@ -508,15 +508,15 @@ class WDILibrary {
       <?php
       if ($theme_row->page_nav_number) {
       ?>
-      <span class="displaying-num_<?php echo $current_view; ?>"><?php echo $count_items . __(' item(s)', 'wdi'); ?></span>
+      <span class="displaying-num_<?php echo $current_view; ?>"><?php echo $count_items . __(' item(s)', 'wd-instagram-feed'); ?></span>
       <?php
       }
       if ($count_items > $limit) {
         if ($theme_row->page_nav_button_text) {
-          $first_button = __('First', 'wdi');
-          $previous_button = __('Previous', 'wdi');
-          $next_button = __('Next', 'wdi');
-          $last_button = __('Last', 'wdi');
+          $first_button = __('First', 'wd-instagram-feed');
+          $previous_button = __('Previous', 'wd-instagram-feed');
+          $next_button = __('Next', 'wd-instagram-feed');
+          $last_button = __('Last', 'wd-instagram-feed');
         }
         else {
           $first_button = '«';
@@ -534,15 +534,15 @@ class WDILibrary {
         }
       ?>
       <span class="pagination-links_<?php echo $current_view; ?>">
-        <a class="<?php echo $first_page; ?>" title="<?php echo __('Go to the first page', 'wdi'); ?>"><?php echo $first_button; ?></a>
-        <a class="<?php echo $prev_page; ?>" title="<?php echo __('Go to the previous page', 'wdi'); ?>" <?php echo  $page_number > 1 && $enable_seo ? 'href="' . add_query_arg(array("page_number_" . $current_view => $page_number - 1), $_SERVER['REQUEST_URI']) . '"' : ""; ?>><?php echo $previous_button; ?></a>
+        <a class="<?php echo $first_page; ?>" title="<?php echo __('Go to the first page', 'wd-instagram-feed'); ?>"><?php echo $first_button; ?></a>
+        <a class="<?php echo $prev_page; ?>" title="<?php echo __('Go to the previous page', 'wd-instagram-feed'); ?>" <?php echo  $page_number > 1 && $enable_seo ? 'href="' . add_query_arg(array("page_number_" . $current_view => $page_number - 1), $_SERVER['REQUEST_URI']) . '"' : ""; ?>><?php echo $previous_button; ?></a>
         <span class="paging-input_<?php echo $current_view; ?>">
-          <span class="total-pages_<?php echo $current_view; ?>"><?php echo $page_number; ?></span> <?php echo __('of', 'wdi'); ?> <span class="total-pages_<?php echo $current_view; ?>">
+          <span class="total-pages_<?php echo $current_view; ?>"><?php echo $page_number; ?></span> <?php echo __('of', 'wd-instagram-feed'); ?> <span class="total-pages_<?php echo $current_view; ?>">
             <?php echo $items_county; ?>
           </span>
         </span>
-        <a class="<?php echo $next_page ?>" title="<?php echo __('Go to the next page', 'wdi'); ?>" <?php echo  $page_number + 1 <= $items_county && $enable_seo ? 'href="' . add_query_arg(array("page_number_" . $current_view => $page_number + 1), $_SERVER['REQUEST_URI']) . '"' : ""; ?>><?php echo $next_button; ?></a>
-        <a class="<?php echo $last_page ?>" title="<?php echo __('Go to the last page', 'wdi'); ?>"><?php echo $last_button; ?></a>
+        <a class="<?php echo $next_page ?>" title="<?php echo __('Go to the next page', 'wd-instagram-feed'); ?>" <?php echo  $page_number + 1 <= $items_county && $enable_seo ? 'href="' . add_query_arg(array("page_number_" . $current_view => $page_number + 1), $_SERVER['REQUEST_URI']) . '"' : ""; ?>><?php echo $next_button; ?></a>
+        <a class="<?php echo $last_page ?>" title="<?php echo __('Go to the last page', 'wd-instagram-feed'); ?>"><?php echo $last_button; ?></a>
       </span>
       <?php
       }
@@ -554,7 +554,7 @@ class WDILibrary {
       if ($count_items > $limit * $page_number) {
         ?>
 		<div id="wdi_load_<?php echo $current_view; ?>" class="tablenav-pages_<?php echo $current_view; ?>">
-			<a class="wdi_load_btn_<?php echo $current_view; ?> wdi_load_btn" href="javascript:void(0);"><?php echo __('Load More...', 'wdi'); ?></a>
+			<a class="wdi_load_btn_<?php echo $current_view; ?> wdi_load_btn" href="javascript:void(0);"><?php echo __('Load More...', 'wd-instagram-feed'); ?></a>
 			<input type="hidden" id="wdi_load_more_<?php echo $current_view; ?>" name="wdi_load_more_<?php echo $current_view; ?>" value="on" />
 		</div>
     <?php
@@ -714,10 +714,10 @@ class WDILibrary {
     <div class="wdi_search_container_1" id="wdi_search_container_1_<?php echo $current_view; ?>">
       <div class="wdi_search_container_2" id="wdi_search_container_2_<?php echo $current_view; ?>">
         <span class="wdi_search_reset_container" >
-          <i title="<?php echo __('Reset', 'wdi'); ?>" class="wdi_reset fa fa-times" onclick="clear_input_<?php echo $current_view; ?>('<?php echo $current_view; ?>'),wdi_spider_frontend_ajax('<?php echo $form_id; ?>', '<?php echo $current_view; ?>', '<?php echo $cur_gal_id; ?>', <?php echo $album_gallery_id; ?>, '', '<?php echo $type; ?>', 1)"></i>
+          <i title="<?php echo __('Reset', 'wd-instagram-feed'); ?>" class="wdi_reset fa fa-times" onclick="clear_input_<?php echo $current_view; ?>('<?php echo $current_view; ?>'),wdi_spider_frontend_ajax('<?php echo $form_id; ?>', '<?php echo $current_view; ?>', '<?php echo $cur_gal_id; ?>', <?php echo $album_gallery_id; ?>, '', '<?php echo $type; ?>', 1)"></i>
         </span>
         <span class="wdi_search_loupe_container" >
-          <i title="<?php echo __('Search', 'wdi'); ?>" class="wdi_search fa fa-search" onclick="wdi_spider_frontend_ajax('<?php echo $form_id; ?>', '<?php echo $current_view; ?>', '<?php echo $cur_gal_id; ?>', <?php echo $album_gallery_id; ?>, '', '<?php echo $type; ?>', 1)"></i>
+          <i title="<?php echo __('Search', 'wd-instagram-feed'); ?>" class="wdi_search fa fa-search" onclick="wdi_spider_frontend_ajax('<?php echo $form_id; ?>', '<?php echo $current_view; ?>', '<?php echo $cur_gal_id; ?>', <?php echo $album_gallery_id; ?>, '', '<?php echo $type; ?>', 1)"></i>
         </span>
         <span class="wdi_search_input_container">
           <input id="wdi_search_input_<?php echo $current_view; ?>" class="wdi_search_input_<?php echo $current_view; ?>" type="text" onkeypress="return check_enter_key(event)" name="wdi_search_<?php echo $current_view; ?>" value="<?php echo $wdi_search; ?>" >
@@ -759,12 +759,12 @@ class WDILibrary {
       }
     </style>
     <div class="wdi_order_cont_<?php echo $current_view; ?>">
-      <span class="wdi_order_label_<?php echo $current_view; ?>"><?php echo __('Order by: ', 'wdi'); ?></span>
+      <span class="wdi_order_label_<?php echo $current_view; ?>"><?php echo __('Order by: ', 'wd-instagram-feed'); ?></span>
       <select class="wdi_order_<?php echo $current_view; ?>" onchange="wdi_spider_frontend_ajax('<?php echo $form_id; ?>', '<?php echo $current_view; ?>', '<?php echo $cur_gal_id; ?>', <?php echo $album_gallery_id; ?>, '', '<?php echo $type; ?>', 1, '', this.value)">
-        <option <?php if ($sort_by == 'default') echo 'selected'; ?> value="default"><?php echo __('Default', 'wdi'); ?></option>
-        <option <?php if ($sort_by == 'filename') echo 'selected'; ?> value="filename"><?php echo __('Filename', 'wdi'); ?></option>								
-        <option <?php if ($sort_by == 'size') echo 'selected'; ?> value="size"><?php echo __('Size', 'wdi'); ?></option>
-        <option <?php if ($sort_by == 'RAND()') echo 'selected'; ?> value="random"><?php echo __('Random', 'wdi'); ?></option>
+        <option <?php if ($sort_by == 'default') echo 'selected'; ?> value="default"><?php echo __('Default', 'wd-instagram-feed'); ?></option>
+        <option <?php if ($sort_by == 'filename') echo 'selected'; ?> value="filename"><?php echo __('Filename', 'wd-instagram-feed'); ?></option>								
+        <option <?php if ($sort_by == 'size') echo 'selected'; ?> value="size"><?php echo __('Size', 'wd-instagram-feed'); ?></option>
+        <option <?php if ($sort_by == 'RAND()') echo 'selected'; ?> value="random"><?php echo __('Random', 'wd-instagram-feed'); ?></option>
       </select>
     </div>
     <?php

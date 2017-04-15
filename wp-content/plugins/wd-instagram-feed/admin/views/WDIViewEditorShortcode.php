@@ -97,7 +97,7 @@ class WDIViewEditorShortcode {
     <div id="wdi_editor_popup">
       <div class="editor_popup_container styled-select">
         <div class="wdi_feed_select table-row">
-          <label for="wdi_feed_select" class="wdi_editor_label  table-cell"><?php _e('Select Feed:', 'wdi'); ?></label>
+          <label for="wdi_feed_select" class="wdi_editor_label  table-cell"><?php _e('Select Feed:', 'wd-instagram-feed'); ?></label>
           <span class="wdi_feed_thumb table-cell"></span>
           <span class="table-cell"><select name="wdi_feed_select" onchange="wdi_selectChange()" id="wdi_feed_select">
             <?php foreach ($rows as $row) {

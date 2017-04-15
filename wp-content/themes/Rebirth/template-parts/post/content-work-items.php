@@ -14,25 +14,151 @@
   <div class="zoom-gallery">
     <div class="col-sm-1 zoom-thumbs">
       <div id="gal1">
-        <a href="#" class="active" data-image="<?php echo get_field('main_gallery_image_1_sm') ?>" data-zoom-image="<?php echo get_field('main_gallery_image_1_lg') ?>">
-          <img id="img_01" class="img-responsive" src="<?php echo get_field('main_gallery_image_1_sm') ?>" />
-        </a>
+        
+        <?php 
 
-        <a href="#" data-image="<?php echo get_field('main_gallery_image_2_sm') ?>" data-zoom-image="<?php echo get_field('main_gallery_image_2_lg') ?>">
-          <img id="img_02" class="img-responsive" src="<?php echo get_field('main_gallery_image_2_sm') ?>" />
-        </a>
+          $image = get_field('main_gallery_image_1');
 
-        <a href="#" data-image="<?php echo get_field('main_gallery_image_3_sm') ?>" data-zoom-image="<?php echo get_field('main_gallery_image_3_lg') ?>">
-          <img id="img_03" class="img-responsive" src="<?php echo get_field('main_gallery_image_3_sm') ?>" />
-        </a>
+          // vars
+          $url = $image['url'];
+          $title = $image['title'];
+          $alt = $image['alt'];
+          $caption = $image['caption'];
 
-        <a href="#" data-image="<?php echo get_field('main_gallery_image_4_sm') ?>" data-zoom-image="<?php echo get_field('main_gallery_image_4_lg') ?>">
-          <img id="img_04" class="img-responsive" src="<?php echo get_field('main_gallery_image_4_sm') ?>" />
-        </a>
+          // thumbnail
+          $small = 'zoom-gallery-thumb';
+          $thumbsm = $image['sizes'][ $small ];
+          $widthsm = $image['sizes'][ $small . '-width' ];
+          $heightsm = $image['sizes'][ $small . '-height' ];
+          $large = 'zoom-gallery-full';
+          $thumblg = $image['sizes'][ $large ];
+          $widthlg = $image['sizes'][ $large . '-width' ];
+          $heightlg = $image['sizes'][ $large . '-height' ];
+          
+
+          if( !empty($image) ): ?>
+
+            <a href="#" class="active" data-image="<?php echo $thumbsm; ?>" data-zoom-image="<?php echo $thumblg; ?>">
+              <img id="img_01" class="img-responsive" src="<?php echo $thumbsm; ?>" />
+            </a>
+
+        <?php endif; ?>
+
+        <?php 
+
+          $image = get_field('main_gallery_image_2');
+
+          // vars
+          $url = $image['url'];
+          $title = $image['title'];
+          $alt = $image['alt'];
+          $caption = $image['caption'];
+
+          // thumbnail
+          $small = 'zoom-gallery-thumb';
+          $thumbsm = $image['sizes'][ $small ];
+          $widthsm = $image['sizes'][ $small . '-width' ];
+          $heightsm = $image['sizes'][ $small . '-height' ];
+          $large = 'zoom-gallery-full';
+          $thumblg = $image['sizes'][ $large ];
+          $widthlg = $image['sizes'][ $large . '-width' ];
+          $heightlg = $image['sizes'][ $large . '-height' ];
+          
+
+          if( !empty($image) ): ?>
+
+            <a href="#" data-image="<?php echo $thumbsm; ?>" data-zoom-image="<?php echo $thumblg; ?>">
+              <img id="img_02" class="img-responsive" src="<?php echo $thumbsm; ?>" />
+            </a>
+
+        <?php endif; ?>
+
+        <?php 
+
+          $image = get_field('main_gallery_image_3');
+
+          // vars
+          $url = $image['url'];
+          $title = $image['title'];
+          $alt = $image['alt'];
+          $caption = $image['caption'];
+
+          // thumbnail
+          $small = 'zoom-gallery-thumb';
+          $thumbsm = $image['sizes'][ $small ];
+          $widthsm = $image['sizes'][ $small . '-width' ];
+          $heightsm = $image['sizes'][ $small . '-height' ];
+          $large = 'zoom-gallery-full';
+          $thumblg = $image['sizes'][ $large ];
+          $widthlg = $image['sizes'][ $large . '-width' ];
+          $heightlg = $image['sizes'][ $large . '-height' ];
+          
+
+          if( !empty($image) ): ?>
+
+            <a href="#" data-image="<?php echo $thumbsm; ?>" data-zoom-image="<?php echo $thumblg; ?>">
+              <img id="img_03" class="img-responsive" src="<?php echo $thumbsm; ?>" />
+            </a>
+
+        <?php endif; ?>
+
+        <?php 
+
+          $image = get_field('main_gallery_image_4');
+
+          // vars
+          $url = $image['url'];
+          $title = $image['title'];
+          $alt = $image['alt'];
+          $caption = $image['caption'];
+
+          // thumbnail
+          $small = 'zoom-gallery-thumb';
+          $thumbsm = $image['sizes'][ $small ];
+          $widthsm = $image['sizes'][ $small . '-width' ];
+          $heightsm = $image['sizes'][ $small . '-height' ];
+          $large = 'zoom-gallery-full';
+          $thumblg = $image['sizes'][ $large ];
+          $widthlg = $image['sizes'][ $large . '-width' ];
+          $heightlg = $image['sizes'][ $large . '-height' ];
+          
+
+          if( !empty($image) ): ?>
+
+            <a href="#" data-image="<?php echo $thumbsm; ?>" data-zoom-image="<?php echo $thumblg; ?>">
+              <img id="img_04" class="img-responsive" src="<?php echo $thumbsm; ?>" />
+            </a>
+
+        <?php endif; ?>
       </div>
     </div>
     <div class="col-sm-5 zoom-main">
-      <img id="work-zoom" class="img-responsive" src="<?php echo get_field('main_gallery_image_1_sm') ?>" data-zoom-image="<?php echo get_field('main_gallery_image_1_lg') ?>"/>
+      <?php 
+
+          $image = get_field('main_gallery_image_1');
+
+          // vars
+          $url = $image['url'];
+          $title = $image['title'];
+          $alt = $image['alt'];
+          $caption = $image['caption'];
+
+          // thumbnail
+          $small = 'zoom-gallery-thumb';
+          $thumbsm = $image['sizes'][ $small ];
+          $widthsm = $image['sizes'][ $small . '-width' ];
+          $heightsm = $image['sizes'][ $small . '-height' ];
+          $large = 'zoom-gallery-full';
+          $thumblg = $image['sizes'][ $large ];
+          $widthlg = $image['sizes'][ $large . '-width' ];
+          $heightlg = $image['sizes'][ $large . '-height' ];
+          
+
+          if( !empty($image) ): ?>
+
+            <img id="work-zoom" class="img-responsive" src="<?php echo $thumbsm ?>" data-zoom-image="<?php echo $thumblg ?>"/>
+
+        <?php endif; ?>
     </div>
   </div>
   <div class="col-sm-6 post-content">
@@ -57,22 +183,102 @@
   <div class="gallery-items">
     <div class="col-xs-6 col-md-3">
       <div class="item">
-        <img src="<?php echo get_field('gallery_item_1') ?>" alt="<?php echo get_image_tag($alt) ?>">
+        <?php 
+
+          $image = get_field('gallery_item_1');
+
+          // vars
+          $url = $image['url'];
+          $title = $image['title'];
+          $alt = $image['alt'];
+          $caption = $image['caption'];
+
+          // thumbnail
+          $size = 'action-gallery-thumb';
+          $thumb = $image['sizes'][ $size ];
+          $width = $image['sizes'][ $size . '-width' ];
+          $height = $image['sizes'][ $size . '-height' ];
+
+          if( !empty($image) ): ?>
+
+            <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>">
+
+        <?php endif; ?>
       </div>
     </div>
     <div class="col-xs-6 col-md-3">
       <div class="item">
-        <img src="<?php echo get_field('gallery_item_2') ?>" alt="">
+        <?php 
+
+          $image = get_field('gallery_item_2');
+
+          // vars
+          $url = $image['url'];
+          $title = $image['title'];
+          $alt = $image['alt'];
+          $caption = $image['caption'];
+
+          // thumbnail
+          $size = 'action-gallery-thumb';
+          $thumb = $image['sizes'][ $size ];
+          $width = $image['sizes'][ $size . '-width' ];
+          $height = $image['sizes'][ $size . '-height' ];
+
+          if( !empty($image) ): ?>
+
+            <img src="<?php echo $thumb; ?>" alt="<?php echo $image['alt']; ?>">
+
+        <?php endif; ?>
       </div>
     </div>
     <div class="col-xs-6 col-md-3">
       <div class="item">
-        <img src="<?php echo get_field('gallery_item_3') ?>" alt="">
+        <?php 
+
+          $image = get_field('gallery_item_3');
+
+          // vars
+          $url = $image['url'];
+          $title = $image['title'];
+          $alt = $image['alt'];
+          $caption = $image['caption'];
+
+          // thumbnail
+          $size = 'action-gallery-thumb';
+          $thumb = $image['sizes'][ $size ];
+          $width = $image['sizes'][ $size . '-width' ];
+          $height = $image['sizes'][ $size . '-height' ];
+
+          if( !empty($image) ): ?>
+
+            <img src="<?php echo $thumb; ?>" alt="<?php echo $image['alt']; ?>">
+
+        <?php endif; ?>
       </div>
     </div>
     <div class="col-xs-6 col-md-3">
       <div class="item">
-        <img src="<?php echo get_field('gallery_item_4') ?>" alt="">
+        <?php 
+
+          $image = get_field('gallery_item_4');
+
+          // vars
+          $url = $image['url'];
+          $title = $image['title'];
+          $alt = $image['alt'];
+          $caption = $image['caption'];
+
+          // thumbnail
+          $size = 'action-gallery-thumb';
+          $thumb = $image['sizes'][ $size ];
+          $width = $image['sizes'][ $size . '-width' ];
+          $height = $image['sizes'][ $size . '-height' ];
+
+          if( !empty($image) ): ?>
+
+            <img src="<?php echo $thumb; ?>" alt="<?php echo $image['alt']; ?>">
+
+        <?php endif; ?>
       </div>
     </div>
   </div>

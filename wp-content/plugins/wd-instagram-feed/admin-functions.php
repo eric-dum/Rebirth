@@ -34,13 +34,13 @@ function wdi_uninstall_notice($arg) {
   if($arg == 1){
     ?>
     <div class="updated">
-        <p><?php _e( 'Succesfully Uninstalled!', "wdi"); ?></p>
+        <p><?php _e( 'Succesfully Uninstalled!', "wd-instagram-feed"); ?></p>
     </div>
     <?php
   }else{
      ?>
       <div class="error">
-          <p><?php _e( 'Already Unistalled', "wdi"); ?></p>
+          <p><?php _e( 'Already Unistalled', "wd-instagram-feed"); ?></p>
       </div>
     <?php
   }
@@ -483,7 +483,7 @@ function wdi_configure_section_callback(){
         <div class="wdi_access_token_missing"><?php
             $options = get_option(WDI_OPT);
             if(!isset($options['wdi_access_token']) || $options['wdi_access_token'] == '' || !isset($options['wdi_user_name']) || $options['wdi_user_name'] == '')
-              _e('You need Access Token for using Instagram API. Click sign in with Instagram button above to get yours. This will not show your Instagram media. After that you may create feed with desired user or hashtag media.', "wdi");
+              _e('You need Access Token for using Instagram API. Click sign in with Instagram button above to get yours. This will not show your Instagram media. After that you may create feed with desired user or hashtag media.', "wd-instagram-feed");
             ?></div>
     <?php
 }
@@ -563,17 +563,17 @@ function wdi_sanitize_options($input){
 //Sets all settings for admin pages and returns associative array of settings
 function wdi_get_settings(){
   $settings = array(
-      'wdi_access_token' => array('name' => 'wdi_access_token','sanitize_type'=>'text', 'required' =>'required','input_size'=>'55','type'=>'input','readonly'=>'readonly','default'=>'','field_or_not'=>'field','section'=>'wdi_configure_section','title'=>__('Access Token',"wdi")),
-      'wdi_user_name' => array('name' => 'wdi_user_name','sanitize_type'=>'text','required' =>'required','type'=>'input','section'=>'wdi_configure_section','readonly'=>'readonly','field_or_not'=>'field','default'=>'','title'=>__('Username',"wdi")),
-      'wdi_feeds_min_capability' => array('name'=>'wdi_feeds_min_capability',"sanitize_type"=> "text",'title'=>__('Minimal role to add and manage Feeds or Themes',"wdi"),'type'=>'select','field_or_not'=>'field',"default"=>"manage_options",'section'=>'wdi_configure_section','valid_options'=>array('manage_options'=>__('Administrator', 'wdi'),'publish_posts'=>__('Author', 'wdi'))),
+      'wdi_access_token' => array('name' => 'wdi_access_token','sanitize_type'=>'text', 'required' =>'required','input_size'=>'55','type'=>'input','readonly'=>'readonly','default'=>'','field_or_not'=>'field','section'=>'wdi_configure_section','title'=>__('Access Token',"wd-instagram-feed")),
+      'wdi_user_name' => array('name' => 'wdi_user_name','sanitize_type'=>'text','required' =>'required','type'=>'input','section'=>'wdi_configure_section','readonly'=>'readonly','field_or_not'=>'field','default'=>'','title'=>__('Username',"wd-instagram-feed")),
+      'wdi_feeds_min_capability' => array('name'=>'wdi_feeds_min_capability',"sanitize_type"=> "text",'title'=>__('Minimal role to add and manage Feeds or Themes',"wd-instagram-feed"),'type'=>'select','field_or_not'=>'field',"default"=>"manage_options",'section'=>'wdi_configure_section','valid_options'=>array('manage_options'=>__('Administrator', 'wd-instagram-feed'),'publish_posts'=>__('Author', 'wd-instagram-feed'))),
 
       'wdi_user_id' => array('name' => 'wdi_user_id','sanitize_type'=>'text','type'=>'input','section'=>'wdi_configure_section','readonly'=>'readonly','default'=>'','field_or_not'=>'no_field'),
-      'wdi_custom_css'=>array('name'=>'wdi_custom_css','sanitize_type'=>'css','type'=>'textarea','section'=>'wdi_customize_section','field_or_not'=>'field','default'=>'','title'=>__('Custom CSS',"wdi")),
-      //'wdi_preserve_settings_when_remove'=>array('name'=>'wdi_preserve_settings_when_remove','field_or_not'=>'field','type'=>'checkbox','default'=>'1', 'section'=>'wdi_configure_section','title'=>__('Preserve Settings When Remove',"wdi")),
+      'wdi_custom_css'=>array('name'=>'wdi_custom_css','sanitize_type'=>'css','type'=>'textarea','section'=>'wdi_customize_section','field_or_not'=>'field','default'=>'','title'=>__('Custom CSS',"wd-instagram-feed")),
+      //'wdi_preserve_settings_when_remove'=>array('name'=>'wdi_preserve_settings_when_remove','field_or_not'=>'field','type'=>'checkbox','default'=>'1', 'section'=>'wdi_configure_section','title'=>__('Preserve Settings When Remove',"wd-instagram-feed")),
       'wdi_plugin_uninstalled' => array('name'=>'wdi_plugin_uninstalled','sanitize_type'=>'bool','field_or_not'=>'field','type'=>'input','input_type'=>'hidden','section'=>'wdi_customize_section','title'=>'','default'=>'false','value'=>'false'),
       //'wdi_version' => array('name'=>'wdi_version','field_or_not'=>'no_field','default'=>WDI_VERSION),
       //'wdi_first_time'=>array('name'=>'wdi_first_time','field_or_not'=>'no_field','default'=>'1')
-      'wdi_custom_js'=>array('name'=>'wdi_custom_js','sanitize_type'=>'css','type'=>'textarea','section'=>'wdi_customize_section','field_or_not'=>'field','default'=>'','title'=>__('Custom JavaScript',"wdi")),
+      'wdi_custom_js'=>array('name'=>'wdi_custom_js','sanitize_type'=>'css','type'=>'textarea','section'=>'wdi_customize_section','field_or_not'=>'field','default'=>'','title'=>__('Custom JavaScript',"wd-instagram-feed")),
     );
   return $settings;
 }
@@ -624,7 +624,7 @@ function wdi_get_options() {
             $table_name = $wpdb->prefix. WDI_THEME_TABLE;
             if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
                 require_once(WDI_DIR . '/framework/WDILibrary.php');
-                echo WDILibrary::message(__('Database error, please uninstall the plugin and install again', "wdi"), 'error');
+                echo WDILibrary::message(__('Database error, please uninstall the plugin and install again', "wd-instagram-feed"), 'error');
             }else{
                 $wpdb->insert($table_name, $theme);
             }

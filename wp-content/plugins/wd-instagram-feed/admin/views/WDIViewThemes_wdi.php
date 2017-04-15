@@ -25,12 +25,12 @@ class WDIViewThemes_wdi {
 
     ?>
     <div class="wdi_help_bar_wrap">
-      <span class="wdi_help_bar_text"><?php _e('This section allows you to create, edit and delete Themes', "wdi"); ?></span>
-      <a class="wdi_hb_t_link" target="_blank" href="https://web-dorado.com/wordpress-instagram-feed-wd/editing-themes.html"><?php _e('Read More in User Guide', "wdi"); ?></a>
-      <a class="wdi_hb_buy_pro" target="_blank" href="https://web-dorado.com/products/wordpress-instagram-feed-wd.html"><?php _e('Upgrade to Pro Version', "wdi"); ?></a>
-      <a class="wdi_hb_s_link" target="_blank" href="https://wordpress.org/support/plugin/wd-instagram-feed"><img src="<?php echo WDI_URL; ?>/images/i_support.png"><span class="wdi_hb_s_text"><?php _e('Support Forum', "wdi"); ?></span></a>
+      <span class="wdi_help_bar_text"><?php _e('This section allows you to create, edit and delete Themes', "wd-instagram-feed"); ?></span>
+      <a class="wdi_hb_t_link" target="_blank" href="https://web-dorado.com/wordpress-instagram-feed-wd/editing-themes.html"><?php _e('Read More in User Guide', "wd-instagram-feed"); ?></a>
+      <a class="wdi_hb_buy_pro" target="_blank" href="https://web-dorado.com/products/wordpress-instagram-feed-wd.html"><?php _e('Upgrade to Pro Version', "wd-instagram-feed"); ?></a>
+      <a class="wdi_hb_s_link" target="_blank" href="https://wordpress.org/support/plugin/wd-instagram-feed"><img src="<?php echo WDI_URL; ?>/images/i_support.png"><span class="wdi_hb_s_text"><?php _e('Support Forum', "wd-instagram-feed"); ?></span></a>
     </div>
-    <div class="wdi_pro_notice"> <?php _e("This is FREE version, Customizing themes is available only in PRO version","wdi"); ?> </div>
+    <div class="wdi_pro_notice"> <?php _e("This is FREE version, Customizing themes is available only in PRO version","wd-instagram-feed"); ?> </div>
     
 
 <?php

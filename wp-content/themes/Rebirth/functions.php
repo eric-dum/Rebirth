@@ -51,9 +51,14 @@ function twentyseventeen_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	add_image_size( 'twentyseventeen-featured-image', 2000, 1200, true );
+	add_image_size( 'product-image', 800, 800, array( 'center', 'center' ) );
+	add_image_size( 'zoom-gallery-thumb', 800, 600, true );
+	add_image_size( 'action-gallery-thumb', 400, 200, array( 'center', 'center' ) );
+	add_image_size( 'promo-carousel', 1440, 600, array( 'center', 'center' ) );
 
-	add_image_size( 'twentyseventeen-thumbnail-avatar', 100, 100, true );
+	//add_image_size( 'twentyseventeen-featured-image', 2000, 1200, true );
+
+	//add_image_size( 'twentyseventeen-thumbnail-avatar', 100, 100, true );
 
 	// Set the default content width.
 	$GLOBALS['content_width'] = 525;
@@ -526,7 +531,7 @@ function my_custom_post_work_items() {
     'labels'        => $labels,
     'description'   => 'Holds our Work Items and Work Item specific data',
     'public'        => true,
-    'menu_position' => 5,
+    'menu_position' => 3,
     'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
     'taxonomies'    => array( 'category' ),
     'menu_icon' => 'dashicons-camera',
@@ -535,6 +540,37 @@ function my_custom_post_work_items() {
   register_post_type( 'work-items', $args ); 
 }
 add_action( 'init', 'my_custom_post_work_items' );
+
+
+
+function my_custom_post_promo() {
+  $labels = array(
+    'name'               => _x( 'Promos', 'post type general name' ),
+    'singular_name'      => _x( 'Promo', 'post type singular name' ),
+    'add_new'            => _x( 'New Promo', 'book' ),
+    'add_new_item'       => __( 'Add New Promo' ),
+    'edit_item'          => __( 'Edit Promo' ),
+    'new_item'           => __( 'New Promo' ),
+    'all_items'          => __( 'All Promos' ),
+    'view_item'          => __( 'View Promo' ),
+    'search_items'       => __( 'Search Promos' ),
+    'not_found'          => __( 'No Promos found' ),
+    'not_found_in_trash' => __( 'No Promos found in the Trash' ), 
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Promos'
+  );
+  $args = array(
+    'labels'        => $labels,
+    'description'   => 'Holds our Promos and Promo specific data',
+    'public'        => true,
+    'menu_position' => 3,
+    'supports'      => array( 'title', 'editor' ),
+    'menu_icon' => 'dashicons-star-filled',
+    'has_archive'   => true
+  );
+  register_post_type( 'promo', $args ); 
+}
+add_action( 'init', 'my_custom_post_promo' );
 
 
 
@@ -558,10 +594,10 @@ function my_custom_post_faq() {
     'labels'        => $labels,
     'description'   => 'Holds our FAQs and FAQ specific data',
     'public'        => true,
-    'menu_position' => 5,
-    'supports'      => array( 'title', 'editor',  ),
+    'menu_position' => 3,
+    'supports'      => array( 'title', 'editor' ),
     'menu_icon' => 'dashicons-format-status',
-    'has_archive'   => true,
+    'has_archive'   => true
   );
   register_post_type( 'faq', $args ); 
 }

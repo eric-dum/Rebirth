@@ -75,12 +75,12 @@ class WDIViewWidget {
     ?>
 
     <p>
-      <label for="<?php echo $id_title; ?>"><?php _e("Title", 'wdi'); ?></label>
-      <input class="widefat" id="<?php echo $id_title; ?>" name="<?php echo $name_title; ?>'" type="text" value="<?php echo $instance['title']; ?>"/>
+      <label for="<?php echo $id_title; ?>"><?php _e("Title", 'wd-instagram-feed'); ?></label>
+      <input class="widefat" id="<?php echo $id_title; ?>" name="<?php echo $name_title; ?>" type="text" value="<?php echo $instance['title']; ?>"/>
     </p>
     <p>
-      <label for="<?php echo $id_feed_id; ?>"><?php _e("Feed", 'wdi'); ?></label>
-      <select onchange="wdi_toggle(jQuery(this));" class="widefat" id="<?php echo $id_feed_id; ?>" name="<?php echo $name_feed_id; ?>'" type="text"?>">
+      <label for="<?php echo $id_feed_id; ?>"><?php _e("Feed", 'wd-instagram-feed'); ?></label>
+      <select onchange="wdi_toggle(jQuery(this));" class="widefat" id="<?php echo $id_feed_id; ?>" name="<?php echo $name_feed_id; ?>">
         <?php foreach ($feeds as $feed) {
           ?>
           <option <?php if($instance['feed_id'] == $feed['id']) echo 'selected'?> value="<?php echo $feed['id'];?>"><?php echo $feed['feed_name'];?></option>
@@ -90,8 +90,8 @@ class WDIViewWidget {
     </p>
     
     <p class="wdi_number_of_columns">
-      <label for="<?php echo $id_number_of_columns; ?>"><?php _e("Number of columns", 'wdi'); ?></label>
-      <select class="widefat" id="<?php echo $id_number_of_columns; ?>" name="<?php echo $name_number_of_columns; ?>'" type="text" >
+      <label for="<?php echo $id_number_of_columns; ?>"><?php _e("Number of columns", 'wd-instagram-feed'); ?></label>
+      <select class="widefat" id="<?php echo $id_number_of_columns; ?>" name="<?php echo $name_number_of_columns; ?>" >
         <?php for ($k = 1 ;$k <= 10; $k++) {
           ?>
           <option <?php if($instance['number_of_columns'] == $k) echo 'selected'?> value="<?php echo $k?>"><?php echo $k;?></option>
@@ -102,23 +102,24 @@ class WDIViewWidget {
 
 
     <p>
-      <label for="<?php echo $id_img_number; ?>"><?php _e("Number of images to show", 'wdi'); ?></label>
-      <input class="widefat" id="<?php echo $id_img_number; ?>" name="<?php echo $name_img_number; ?>'" type="text" value="<?php echo $instance['img_number']; ?>"/>
+      <label for="<?php echo $id_img_number; ?>"><?php _e("Number of images to show", 'wd-instagram-feed'); ?></label>
+      <input class="widefat" id="<?php echo $id_img_number; ?>" name="<?php echo $name_img_number; ?>" type="text" value="<?php echo $instance['img_number']; ?>"/>
     </p>
     <p>
-      <input <?php if($instance['show_likes_comments']=='1') echo "checked"?> class="widefat" id="<?php echo $id_show_likes_comments; ?>" name="<?php echo $name_show_likes_comments; ?>'" type="checkbox" value="<?php echo $instance['show_likes_comments']; ?>"/>
-      <label for="<?php echo $id_show_likes_comments; ?>"><?php _e("Show likes and comments", 'wdi'); ?></label>
+      <input <?php if($instance['show_likes_comments']=='1') echo "checked"?> class="widefat" id="<?php echo $id_show_likes_comments; ?>" name="<?php echo $name_show_likes_comments; ?>" type="checkbox" value="<?php echo $instance['show_likes_comments']; ?>"/>
+      <label for="<?php echo $id_show_likes_comments; ?>"><?php _e("Show likes and comments", 'wd-instagram-feed'); ?></label>
     </p>
     <p>
-      <input <?php if($instance['enable_loading_buttons']=='1') echo "checked"?> class="widefat" id="<?php echo $id_enable_loading_buttons; ?>" name="<?php echo $name_enable_loading_buttons; ?>'" type="checkbox" value="<?php echo $instance['enable_loading_buttons']; ?>"/>
-      <label for="<?php echo $id_enable_loading_buttons; ?>"><?php _e("Enable loading new images", 'wdi'); ?></label>
+      <input <?php if($instance['enable_loading_buttons']=='1') echo "checked"?> class="widefat" id="<?php echo $id_enable_loading_buttons; ?>" name="<?php echo $name_enable_loading_buttons; ?>" type="checkbox" value="<?php echo $instance['enable_loading_buttons']; ?>"/>
+      <label for="<?php echo $id_enable_loading_buttons; ?>"><?php _e("Enable loading new images", 'wd-instagram-feed'); ?></label>
     </p>
     <script>
     jQuery(document).ready(function(){
       wdi_toggle(jQuery('#<?php echo $id_feed_id; ?>'));
     });
-    var feed_list = <?php echo json_encode($feeds);?>;
+
     function wdi_toggle(select){
+      var feed_list = <?php echo json_encode($feeds);?>;
       var id = select.val();
       for(var i = 0 ; i < feed_list.length; i++){
         if(feed_list[i]['id'] == id){

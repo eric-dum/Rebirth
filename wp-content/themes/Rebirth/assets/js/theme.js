@@ -8,6 +8,9 @@ $(function() {
 
 
 
+
+
+
   //jersey carousel
   var item =        $('.marquee-item');
   var container =   $('.nav-container');
@@ -16,28 +19,20 @@ $(function() {
   var index =       0; //Starting index
   var endIndex =    item.length - 1; //End index
 
-  //Set active class to vehicle based on data-vehicle attribute on body
-  //$('.vehicle[data-vehicle="' + activeVehicle + '"]').addClass('active');
-
 
   //Set width of container based on number of elements
   container.width((itemWidth * item.length));
-
 
   //Add index value for each element as data attribute
   $(item).each(function() {
     $(this).attr('data-index', $(this).index());
   });
 
-
-
   //adds a class to currently active element
   function activeIndex() {
     item.removeClass('active');
     $('.marquee-item[data-index="' + index + '"]').addClass('active');
   }
-
-
 
   //Next/Prev Arrows
   $('.btn-next').on('click', function() {
@@ -56,6 +51,30 @@ $(function() {
       container.animate({left: '+=' + itemWidth + 'px'});
     }
   });
+
+
+
+
+  // auto-generate carousel indicator html
+  var heroCarousel = $('#carousel-hero');
+  heroCarousel.append("<ol class='carousel-indicators'></ol>");
+  var indicators = $(".carousel-indicators"); 
+  heroCarousel.find('.carousel-inner').children('.item').each(function(index) {
+      (index === 0) ? 
+      indicators.append("<li data-target='#carousel-hero' data-slide-to='"+index+"' class='active'></li>") : 
+      indicators.append("<li data-target='#carousel-hero' data-slide-to='"+index+"'></li>");
+  });
+
+  $(function() {
+    $('#carousel-hero .carousel-inner .item').first().addClass('active');
+    // $('#carousel-hero .carousel-indicators li').first().addClass('active');
+  });
+  
+
+  // then call carousel
+  heroCarousel.carousel();
+
+
 
   //initiate the plugin and pass the id of the div containing gallery images
   $("#work-zoom").elevateZoom({

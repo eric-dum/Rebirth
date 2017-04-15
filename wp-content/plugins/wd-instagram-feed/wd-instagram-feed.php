@@ -3,10 +3,11 @@
 Plugin Name: Instagram Feed WD
 Plugin URI: https://web-dorado.com/products/wordpress-instagram-feed-wd.html
 Description: WD Instagram Feed is a user-friendly tool for displaying user or hashtag-based feeds on your website. You can create feeds with one of the available layouts. It allows displaying image metadata, open up images in lightbox, download them and even share in social networking websites.
-Version: 1.1.25
+Version: 1.1.26
 Author: WebDorado
 Author URI: https://web-dorado.com
 License: GPLv2 or later
+Text Domain: wd-instagram-feed
 */
 
 //define constants
@@ -20,7 +21,7 @@ define("WDI_META", "_".WDI_VAR."_meta");
 //define("wdi",'wdi');
 define('WDI_FEED_TABLE','wdi_feeds');
 define('WDI_THEME_TABLE','wdi_themes');
-define('WDI_VERSION','1.1.25');
+define('WDI_VERSION','1.1.26');
 define('WDI_IS_PRO','false');
 
 
@@ -136,10 +137,10 @@ function wdi_register_settings(){
   $settings = wdi_get_settings();
 
   //adding configure section
-  add_settings_section('wdi_configure_section',__('Configure', "wdi"),'wdi_configure_section_callback','settings_wdi');
+  add_settings_section('wdi_configure_section',__('Configure', "wd-instagram-feed"),'wdi_configure_section_callback','settings_wdi');
 
   //adding customize section
-  add_settings_section('wdi_customize_section',__('Customize', "wdi"),'wdi_customize_section_callback','settings_wdi');
+  add_settings_section('wdi_customize_section',__('Customize', "wd-instagram-feed"),'wdi_customize_section_callback','settings_wdi');
 
   //adding settings fileds form getted settings
   foreach($settings as $setting_name => $setting){
@@ -174,15 +175,15 @@ function WDI_instagram_menu() {
   $parent_slug = null;
   if( get_option( "wdi_subscribe_done" ) == 1 ){
     $parent_slug = "wdi_feeds";
-    $settings_page = add_menu_page(__('Instagram Feed WD',"wdi"), __('Instagram Feed WD',"wdi"),$min_feeds_capability,'wdi_feeds','WDI_instagram_feeds_page',$menu_icon);
+    $settings_page = add_menu_page(__('Instagram Feed WD',"wd-instagram-feed"), __('Instagram Feed WD',"wd-instagram-feed"),$min_feeds_capability,'wdi_feeds','WDI_instagram_feeds_page',$menu_icon);
   }
-  add_submenu_page($parent_slug,__('Feeds',"wdi"),__('Feeds',"wdi"),$min_feeds_capability,'wdi_feeds','WDI_instagram_feeds_page');
-  add_submenu_page($parent_slug,__('Themes',"wdi"),__('Themes',"wdi"),$min_feeds_capability,'wdi_themes','WDI_instagram_themes_page');
-  add_submenu_page($parent_slug,__('Settings',"wdi"),__('Settings',"wdi"),'manage_options','wdi_settings','WDI_instagram_settings_page');
-  //add_submenu_page('overview_wdi',__('Featured Themes',"wdi"),__('Featured Themes',"wdi"),$min_feeds_capability,'wdi_featured_themes','wdi_featured_themes');
-  //add_submenu_page('overview_wdi',__('Featured Plugins',"wdi"),__('Featured Plugins',"wdi"),$min_feeds_capability,'wdi_featured_plugins','wdi_featured_plugins');
-  add_submenu_page($parent_slug,__('Upgrade to Pro',"wdi"),__('Upgrade to Pro',"wdi"),$min_feeds_capability,'wdi_licensing','WDI_instagram_licensing_page');
-  add_submenu_page($parent_slug,__('Uninstall',"wdi"),__('Uninstall',"wdi"),'manage_options','wdi_uninstall','WDI_instagram_uninstall_page');
+  add_submenu_page($parent_slug,__('Feeds',"wd-instagram-feed"),__('Feeds',"wd-instagram-feed"),$min_feeds_capability,'wdi_feeds','WDI_instagram_feeds_page');
+  add_submenu_page($parent_slug,__('Themes',"wd-instagram-feed"),__('Themes',"wd-instagram-feed"),$min_feeds_capability,'wdi_themes','WDI_instagram_themes_page');
+  add_submenu_page($parent_slug,__('Settings',"wd-instagram-feed"),__('Settings',"wd-instagram-feed"),'manage_options','wdi_settings','WDI_instagram_settings_page');
+  //add_submenu_page('overview_wdi',__('Featured Themes',"wd-instagram-feed"),__('Featured Themes',"wd-instagram-feed"),$min_feeds_capability,'wdi_featured_themes','wdi_featured_themes');
+  //add_submenu_page('overview_wdi',__('Featured Plugins',"wd-instagram-feed"),__('Featured Plugins',"wd-instagram-feed"),$min_feeds_capability,'wdi_featured_plugins','wdi_featured_plugins');
+  add_submenu_page($parent_slug,__('Upgrade to Pro',"wd-instagram-feed"),__('Upgrade to Pro',"wd-instagram-feed"),$min_feeds_capability,'wdi_licensing','WDI_instagram_licensing_page');
+  add_submenu_page($parent_slug,__('Uninstall',"wd-instagram-feed"),__('Uninstall',"wd-instagram-feed"),'manage_options','wdi_uninstall','WDI_instagram_uninstall_page');
 }
 
 
@@ -271,29 +272,29 @@ function wdi_load_scripts($hook){
     wp_localize_script("wdi_admin", 'wdi_version',array('is_pro'=>WDI_IS_PRO));
 
     wp_localize_script("wdi_admin", 'wdi_messages',array(
-      'uninstall_confirm' => __( "All the data will be removed from the database. Continue?", "wdi" ),
-      'instagram_server_error' => __('Some error with instagram servers, try agian later :(', "wdi" ),
-      'invalid_user' => __('Invalid user:', "wdi" ),
-      'already_added' =>  __('already added!', "wdi"),
-      'user_not_exist' => __('User %s does not exist.', "wdi"),
-      'network_error' => __("Network Error, please try again later. :(", "wdi"),
-      'invalid_hashtag' => __('Invalid hashtag', "wdi"),
-      'hashtag_no_data' => __('This hashtag currently has no posts. Are you sure you want to add it?','wdi'),
-      'only_one_user_or_hashtag'=> __('You can add only one username or hashtag in FREE Version', "wdi"),
-      'available_in_pro' => __('Available in PRO','wdi'),
+      'uninstall_confirm' => __( "All the data will be removed from the database. Continue?", "wd-instagram-feed" ),
+      'instagram_server_error' => __('Some error with instagram servers, try agian later :(', "wd-instagram-feed" ),
+      'invalid_user' => __('Invalid user:', "wd-instagram-feed" ),
+      'already_added' =>  __('already added!', "wd-instagram-feed"),
+      'user_not_exist' => __('User %s does not exist.', "wd-instagram-feed"),
+      'network_error' => __("Network Error, please try again later. :(", "wd-instagram-feed"),
+      'invalid_hashtag' => __('Invalid hashtag', "wd-instagram-feed"),
+      'hashtag_no_data' => __('This hashtag currently has no posts. Are you sure you want to add it?','wd-instagram-feed'),
+      'only_one_user_or_hashtag'=> __('You can add only one username or hashtag in FREE Version', "wd-instagram-feed"),
+      'available_in_pro' => __('Available in PRO','wd-instagram-feed'),
       'username_hashtag_multiple' => __('Combined Usernames/Hashtags are available only in PRO version'),
-      'theme_save_message_free' => __('Customizing Themes is available only in PRO version','wdi'),
-      'invalid_url' => __('URL is not valid','wdi'),
-      'selectConditionType' => __('Please Select Condition Type','wdi'),
-      'and_descr' => __('Show Posts Which Have All Of The Conditions','wdi'),
-      'or_descr' => __('Show Posts Which Have At Least One Of The Conditions','wdi'),
-      'nor_descr' => __('Hide Posts Which Have At Least One Of The Conditions','wdi'),
-      'either' => __('EITHER','wdi'),
-      'neither' => __('NEITHER','wdi'),
-      'not' => __('EXCEPT','wdi'),
-      'and' => __('AND','wdi'),
-      'or' => __('OR','wdi'),
-      'nor' => __('NOR','wdi')
+      'theme_save_message_free' => __('Customizing Themes is available only in PRO version','wd-instagram-feed'),
+      'invalid_url' => __('URL is not valid','wd-instagram-feed'),
+      'selectConditionType' => __('Please Select Condition Type','wd-instagram-feed'),
+      'and_descr' => __('Show Posts Which Have All Of The Conditions','wd-instagram-feed'),
+      'or_descr' => __('Show Posts Which Have At Least One Of The Conditions','wd-instagram-feed'),
+      'nor_descr' => __('Hide Posts Which Have At Least One Of The Conditions','wd-instagram-feed'),
+      'either' => __('EITHER','wd-instagram-feed'),
+      'neither' => __('NEITHER','wd-instagram-feed'),
+      'not' => __('EXCEPT','wd-instagram-feed'),
+      'and' => __('AND','wd-instagram-feed'),
+      'or' => __('OR','wd-instagram-feed'),
+      'nor' => __('NOR','wd-instagram-feed')
     ));
     wp_localize_script("wdi_admin", 'wdi_url',array('plugin_url'=>plugin_dir_url(__FILE__)));
     wp_localize_script("wdi_admin", 'wdi_admin',array('admin_url' =>get_admin_url()));
@@ -426,7 +427,7 @@ add_action( 'init', 'wdi_load_textdomain' );
  *
  */
 function wdi_load_textdomain() {
-  load_plugin_textdomain( "wdi", false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+  load_plugin_textdomain( "wd-instagram-feed", false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
 }
 
@@ -464,93 +465,93 @@ function wdi_wd_lib_init(){
       "plugin_wordpress_slug" => "wd-instagram-feed",
       "plugin_dir" => WDI_DIR,
       "plugin_main_file" => __FILE__,
-      "description" => __("The most advanced and user-friendly Instagram plugin. Instagram Feed WD plugin allows you to display image feeds from single or multiple Instagram accounts on a WordPress site.", 'wdi'),
+      "description" => __("The most advanced and user-friendly Instagram plugin. Instagram Feed WD plugin allows you to display image feeds from single or multiple Instagram accounts on a WordPress site.", 'wd-instagram-feed'),
       // from web-dorado.com
       "plugin_features" => array(
         0 => array(
-          "title" => __("Responsive", "wdi"),
-          "description" => __("Instagram feeds are not only elegantly designed to be displayed on your website, but also come fully responsive for better user experience when using mobile devices and tables.", "wdi"),
+          "title" => __("Responsive", "wd-instagram-feed"),
+          "description" => __("Instagram feeds are not only elegantly designed to be displayed on your website, but also come fully responsive for better user experience when using mobile devices and tables.", "wd-instagram-feed"),
         ),
         1 => array(
-          "title" => __("SEO Friendly", "wdi"),
-          "description" => __("Instagram Feed WD uses clean coding and latest SEO techniques necessary to keep your pages and posts SEO-optimized.", "wdi"),
+          "title" => __("SEO Friendly", "wd-instagram-feed"),
+          "description" => __("Instagram Feed WD uses clean coding and latest SEO techniques necessary to keep your pages and posts SEO-optimized.", "wd-instagram-feed"),
         ),
         2 => array(
-          "title" => __("4 Fully Customizable Layouts", "wdi"),
-          "description" => __("There are four layout options for Instagram feeds: Thumbnails, Image Browser, Blog Style and Masonry. Display a feed as a simply arranged thumbnails with captions. Use Masonry layout to create a beautiful combination of images and captions. Create a blog feed by simply sharing Instagram posts with captions using blog style layout. Image browser layout saves space, yet allows to display larger images. In addition users can choose the number of the displayed images, layout columns, image order and etc.", "wdi"),
+          "title" => __("4 Fully Customizable Layouts", "wd-instagram-feed"),
+          "description" => __("There are four layout options for Instagram feeds: Thumbnails, Image Browser, Blog Style and Masonry. Display a feed as a simply arranged thumbnails with captions. Use Masonry layout to create a beautiful combination of images and captions. Create a blog feed by simply sharing Instagram posts with captions using blog style layout. Image browser layout saves space, yet allows to display larger images. In addition users can choose the number of the displayed images, layout columns, image order and etc.", "wd-instagram-feed"),
         ),
         3 => array(
-          "title" => __("Individual and Mixed Feeds", "wdi"),
-          "description" => __("Create mixed and single feeds of Instagram posts. Single feeds can be based on public Instagram accounts and single Instagram hashtag. Mixed feeds can contain multiple public Instagram accounts and multiple Instagram hashtags. A front end filter is available for mixed feeds. Click to filter only one feed based on a single hashtag or account.", "wdi"),
+          "title" => __("Individual and Mixed Feeds", "wd-instagram-feed"),
+          "description" => __("Create mixed and single feeds of Instagram posts. Single feeds can be based on public Instagram accounts and single Instagram hashtag. Mixed feeds can contain multiple public Instagram accounts and multiple Instagram hashtags. A front end filter is available for mixed feeds. Click to filter only one feed based on a single hashtag or account.", "wd-instagram-feed"),
         ),
         4 => array(
-          "title" => __("Advanced Lightbox", "wdi"),
-          "description" => __("Upon clicking on image thumbnails an elegant lightbox will be opened, where you will find control buttons for displaying images in larger view, read image comments, captions, view image metadata and easily navigate between images. Lightbox can serve as a slider with various stunning slide transition effects. If the feed contains video, the video will be played within the lightbox as an HTML5 video.", "wdi"),
+          "title" => __("Advanced Lightbox", "wd-instagram-feed"),
+          "description" => __("Upon clicking on image thumbnails an elegant lightbox will be opened, where you will find control buttons for displaying images in larger view, read image comments, captions, view image metadata and easily navigate between images. Lightbox can serve as a slider with various stunning slide transition effects. If the feed contains video, the video will be played within the lightbox as an HTML5 video.", "wd-instagram-feed"),
         )
       ),
       // user guide from web-dorado.com
       "user_guide" => array(
         0 => array(
-          "main_title" => __("Installation and configuration", "wdi"),
+          "main_title" => __("Installation and configuration", "wd-instagram-feed"),
           "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/installation-and-configuration/installation.html",
           "titles" => array(
             array(
-              "title" => __("Getting Instagram Access Token", "wdi"),
+              "title" => __("Getting Instagram Access Token", "wd-instagram-feed"),
               "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/installation-and-configuration/getting-access-token.html"
             )
           )
         ),
         1 => array(
-          "main_title" => __("Creating an Instagram Feed", "wdi"),
+          "main_title" => __("Creating an Instagram Feed", "wd-instagram-feed"),
           "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds.html",
           "titles" => array(
             array(
-              "title" => __("Thumbnails and Masonry Layouts", "wdi"),
+              "title" => __("Thumbnails and Masonry Layouts", "wd-instagram-feed"),
               "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds/thumbnails-and-masonry-layouts.html",
             ),
             array(
-              "title" => __("Blog Style Layout", "wdi"),
+              "title" => __("Blog Style Layout", "wd-instagram-feed"),
               "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds/blog-style-layout.html",
             ),
             array(
-              "title" => __("Image Browser", "wdi"),
+              "title" => __("Image Browser", "wd-instagram-feed"),
               "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds/image-browser.html",
             ),
             array(
-              "title" => __("Lightbox Settings", "wdi"),
+              "title" => __("Lightbox Settings", "wd-instagram-feed"),
               "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds/lightbox-settings.html",
             ),
             array(
-              "title" => __("Conditional Filters", "wdi"),
+              "title" => __("Conditional Filters", "wd-instagram-feed"),
               "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/creating-feeds/conditional-filters.html",
             ),
           )
         ),
         2 => array(
-          "main_title" => __("Publishing Instagram Feed", "wdi"),
+          "main_title" => __("Publishing Instagram Feed", "wd-instagram-feed"),
           "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/publishing-feed.html",
           "titles" => array(
             array(
-              "title" => __("Publishing in a Page/Post", "wdi"),
+              "title" => __("Publishing in a Page/Post", "wd-instagram-feed"),
               "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/publishing-feed/page-post.html",
             ),
             array(
-              "title" => __("Publishing as a Widget", "wdi"),
+              "title" => __("Publishing as a Widget", "wd-instagram-feed"),
               "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/publishing-feed/widget.html",
             ),
             array(
-              "title" => __("Publishing by PHP function", "wdi"),
+              "title" => __("Publishing by PHP function", "wd-instagram-feed"),
               "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/publishing-feed/php-function.html",
             ),
           )
         ),
         3 => array(
-          "main_title" => __("Styling with Themes", "wdi"),
+          "main_title" => __("Styling with Themes", "wd-instagram-feed"),
           "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/editing-themes.html",
           "titles" => array()
         ),
         4 => array(
-          "main_title" => __("Advanced customizing options", "wdi"),
+          "main_title" => __("Advanced customizing options", "wd-instagram-feed"),
           "url" => "https://web-dorado.com/wordpress-instagram-feed-wd/advanced-customizing-options.html",
           "titles" => array()
         ),

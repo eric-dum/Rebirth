@@ -44,18 +44,18 @@ private $model;
 		} 
 		?>
 		<div class="wdi_help_bar_wrap">
-			<span class="wdi_help_bar_text"><?php _e('This section allows you to set API parameters', "wdi"); ?></span>
-			<a class="wdi_hb_t_link" target="_blank" href="https://web-dorado.com/wordpress-instagram-feed-wd/installation-and-configuration/getting-access-token.html"><?php _e('Read More in User Guide', "wdi"); ?></a>
-			<a class="wdi_hb_buy_pro" target="_blank" href="https://web-dorado.com/products/wordpress-instagram-feed-wd.html"><?php _e('Upgrade to Pro Version', "wdi"); ?></a>
-			<a class="wdi_hb_s_link" target="_blank" href="https://wordpress.org/support/plugin/wd-instagram-feed"><img src="<?php echo WDI_URL; ?>/images/i_support.png"><span class="wdi_hb_s_text"><?php _e('Support Forum', "wdi"); ?></span></a>
+			<span class="wdi_help_bar_text"><?php _e('This section allows you to set API parameters', "wd-instagram-feed"); ?></span>
+			<a class="wdi_hb_t_link" target="_blank" href="https://web-dorado.com/wordpress-instagram-feed-wd/installation-and-configuration/getting-access-token.html"><?php _e('Read More in User Guide', "wd-instagram-feed"); ?></a>
+			<a class="wdi_hb_buy_pro" target="_blank" href="https://web-dorado.com/products/wordpress-instagram-feed-wd.html"><?php _e('Upgrade to Pro Version', "wd-instagram-feed"); ?></a>
+			<a class="wdi_hb_s_link" target="_blank" href="https://wordpress.org/support/plugin/wd-instagram-feed"><img src="<?php echo WDI_URL; ?>/images/i_support.png"><span class="wdi_hb_s_text"><?php _e('Support Forum', "wd-instagram-feed"); ?></span></a>
 		</div>
 
-		<h1 id="settings_wdi_title"><?php _e('Instagram WD Settings', "wdi"); ?></h1>
+		<h1 id="settings_wdi_title"><?php _e('Instagram WD Settings', "wd-instagram-feed"); ?></h1>
 		<form method="post" action="options.php">
 			<input type="hidden"id="wdi_user_id" name="<?php echo WDI_OPT.'[wdi_user_id]' ?>">
             <?php settings_fields('wdi_all_settings'); ?>
             <?php do_settings_sections('settings_wdi'); ?>
-             <div id="wdi_reset_access_token" class="button button-secondary"><?php _e("Reset Access Token and Username","wdi")?></div>          
+             <div id="wdi_reset_access_token" class="button button-secondary"><?php _e("Reset Access Token and Username","wd-instagram-feed")?></div>          
              <?php submit_button(); ?>   
 	            <style>
 		 			p.submit{
@@ -70,7 +70,7 @@ private $model;
 	            <script>
 		 	        jQuery(document).ready(function(){
 		 	            jQuery('#wdi_reset_access_token').on('click',function(){
-		 	                if(confirm("<?php _e('Are you sure that you want to reset access token and username, after resetting it you will need to log in with Instagram again for using plugin','wdi')?>")){
+		 	                if(confirm("<?php _e('Are you sure that you want to reset access token and username, after resetting it you will need to log in with Instagram again for using plugin','wd-instagram-feed')?>")){
 		 	                    jQuery('#wdi_access_token').attr('value','');
 		 	                    jQuery('#wdi_user_name').attr('value','');
 		 	                    document.cookie = "wdi_autofill=false";

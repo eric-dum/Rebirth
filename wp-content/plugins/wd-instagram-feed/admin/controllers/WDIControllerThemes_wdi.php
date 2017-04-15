@@ -342,12 +342,12 @@ class WDIControllerThemes_wdi {
       }
     }
     if(!isset($msg)){
-       echo WDILibrary::message(__('Please select at least one item',"wdi"), 'error');
+       echo WDILibrary::message(__('Please select at least one item',"wd-instagram-feed"), 'error');
     }
     elseif($msg['msg'] == false){
-      echo WDILibrary::message(__('Cannot Write on database. Check database permissions.',"wdi"), 'error');
+      echo WDILibrary::message(__('Cannot Write on database. Check database permissions.',"wd-instagram-feed"), 'error');
     }else{
-      echo WDILibrary::message(__('Items Succesfully Duplicated.', "wdi"), 'updated');
+      echo WDILibrary::message(__('Items Succesfully Duplicated.', "wd-instagram-feed"), 'updated');
     }
     
     $this->display();
@@ -379,13 +379,13 @@ class WDIControllerThemes_wdi {
       $query = $wpdb->prepare('DELETE FROM ' . $wpdb->prefix . WDI_THEME_TABLE. ' WHERE id="%d"', $id);
       
       if ($wpdb->query($query)) {
-        echo WDILibrary::message(__('Item Succesfully Deleted.',"wdi"), 'updated');
+        echo WDILibrary::message(__('Item Succesfully Deleted.',"wd-instagram-feed"), 'updated');
       }
       else {
-        echo WDILibrary::message(__('Error. Please install plugin again.',"wdi"), 'error');
+        echo WDILibrary::message(__('Error. Please install plugin again.',"wd-instagram-feed"), 'error');
       }
     }else{
-      echo WDILibrary::message(__('You cannot delete default theme.',"wdi"), 'error');
+      echo WDILibrary::message(__('You cannot delete default theme.',"wd-instagram-feed"), 'error');
     }
     $this->display();
   }
@@ -406,16 +406,16 @@ class WDIControllerThemes_wdi {
             $wpdb->query($query);
           }else{
             $defaulFlag = true;
-            echo WDILibrary::message(__('You cannot delete default theme.',"wdi"), 'error');
+            echo WDILibrary::message(__('You cannot delete default theme.',"wd-instagram-feed"), 'error');
           }
         }
     }
     if ($flag) {
-      echo WDILibrary::message(__('Items Succesfully Deleted.',"wdi"), 'updated');
+      echo WDILibrary::message(__('Items Succesfully Deleted.',"wd-instagram-feed"), 'updated');
     }
     else {
       if($defaulFlag==false){
-         echo WDILibrary::message(__('You must select at least one item.',"wdi"), 'error');
+         echo WDILibrary::message(__('You must select at least one item.',"wd-instagram-feed"), 'error');
       }
      
     }
