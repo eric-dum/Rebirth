@@ -495,19 +495,11 @@ function twentyseventeen_post_thumbnail_sizes_attr( $attr, $attachment, $size ) 
 }
 add_filter( 'wp_get_attachment_image_attributes', 'twentyseventeen_post_thumbnail_sizes_attr', 10, 3 );
 
-/**
- * Use front-page.php when Front page displays is set to a static page.
- *
- * @since Twenty Seventeen 1.0
- *
- * @param string $template front-page.php.
- *
- * @return string The template to be used: blank if is_home() is true (defaults to index.php), else $template.
- */
-/*function twentyseventeen_front_page_template( $template ) {
-	return is_home() ? '' : $template;
-}*/
-/*add_filter( 'frontpage_template',  'twentyseventeen_front_page_template' );*/
+
+
+
+
+
 
 
 /* CUSTOM POST TYPES */
@@ -602,6 +594,40 @@ function my_custom_post_faq() {
   register_post_type( 'faq', $args ); 
 }
 add_action( 'init', 'my_custom_post_faq' );
+
+
+
+function my_custom_post_videos() {
+  $labels = array(
+    'name'               => _x( 'videos', 'post type general name' ),
+    'singular_name'      => _x( 'video', 'post type singular name' ),
+    'add_new'            => _x( 'New video', 'book' ),
+    'add_new_item'       => __( 'Add New video' ),
+    'edit_item'          => __( 'Edit video' ),
+    'new_item'           => __( 'New video' ),
+    'all_items'          => __( 'All videos' ),
+    'view_item'          => __( 'View video' ),
+    'search_items'       => __( 'Search videos' ),
+    'not_found'          => __( 'No videos found' ),
+    'not_found_in_trash' => __( 'No videos found in the Trash' ), 
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Videos'
+  );
+  $args = array(
+    'labels'        => $labels,
+    'description'   => 'Holds our videos and video specific data',
+    'public'        => true,
+    'menu_position' => 3,
+    'supports'      => array( 'title', 'editor' ),
+    'menu_icon' => 'dashicons-format-video',
+    'has_archive'   => true
+  );
+  register_post_type( 'videos', $args ); 
+}
+add_action( 'init', 'my_custom_post_videos' );
+
+
+
 
 
 

@@ -21,12 +21,15 @@
 
 //Zoom Gallery
 .zoom-gallery {
+  margin-bottom: 30px;
   img {
     border: 2px solid transparent;
   }
   .zoom-thumbs {
     a {
       display: block;
+      width: 25%;
+      float: left;
       &.active {
         img {
           border-color: @gray-light;
@@ -43,10 +46,22 @@
   }
 
   @media (min-width: @screen-md-min) {
+    margin-bottom: 0;
     .zoom-thumbs {
-      a:nth-child(n+2) {
-        margin-top: 5px;
+      a {
+        width: 100%;
+        float: none;
+        &:nth-child(n+2) {
+          margin-top: 5px;
+        }
       }
     }
   }
+}
+
+
+
+//lightbox styling
+#fancybox-content {
+  border: 0;
 }

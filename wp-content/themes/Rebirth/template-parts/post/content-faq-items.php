@@ -17,10 +17,10 @@
     <span class="heading">Q</span>
   </div>
   <div class="col-sm-12 faq-content">
-    <h2 class="h3 heading question">
+    <h2 class="h3 heading question" role="button" data-toggle="collapse" href="#faq-item-<?php echo the_id(); ?>" aria-expanded="false" aria-controls="collapseExample">
       <?php echo the_title() ?>
     </h2>
-    <div class="answer">
+    <div class="answer collapse" id="faq-item-<?php echo the_id(); ?>">
       <?php echo the_content() ?>
     </div>
   </div>

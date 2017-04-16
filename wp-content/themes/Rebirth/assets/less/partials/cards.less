@@ -25,8 +25,19 @@
   &.media-card {
     margin-top: 30px;
     .media-img {
+      position: relative;
       img {
         width: 100%;
+      }
+      .cat-label {
+        position: absolute;
+        top: auto;
+        left: auto;
+        right: 0;
+        bottom: 0;
+        background-color: @brand-primary;
+        color: white;
+        padding: 5px 15px;
       }
     }
     .media-content {
@@ -38,15 +49,13 @@
         margin-bottom: 20px;
       }
     }
-
-    @media (min-width: @screen-sm-min) {
-      margin-top: 15px;
-    }
   }
 
   &.card-faq {
-    @graphic-width: 40px;
+    @graphic-width: 60px;
 
+    border-top: 2px solid white;
+    padding-top: 30px;
     margin-bottom: 30px;
 
     .faq-graphic {
@@ -61,7 +70,8 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        .translate(-50%, -50%);
+        .translate(-50%, -55%);
+        font-size: 32px;
       }
     }
     .faq-content {
@@ -71,10 +81,46 @@
         font-size: 18px;
         text-transform: none;
         margin-top: 0;
+        width: 85%;
+        position: relative;
+        &:after {
+          content: '\f078';
+          font-family: FontAwesome;
+          color: white;
+          position: absolute;
+          right: -20%;
+          left: auto;
+          top: 50%;
+          transform: translateY(-50%);
+          transform-origin: center center;
+          transition: all 0.25s ease-in-out;
+        }
+        &[aria-expanded="false"] {
+          &:after {
+            transform: rotate(0deg);
+          }
+        }
+        &[aria-expanded="true"] {
+          &:after {
+            transform: rotate(-180deg);
+          }
+        }
       }
       .answer {
         font-size: 16px;
         color: white;
+      }
+
+      @media (min-width: 600px) {
+        .question {
+          width: 100%;
+          &:after {
+            display: none;
+          }
+        }
+        .answer {
+          display: block;
+        }
       }
     }
 
@@ -84,14 +130,14 @@
       clear: both;
     }
 
+
     @media (min-width: @screen-md-min) {
       min-height: 250px;
+      border-top: 0;
+      padding-top: 0;
     }
     @media (min-width: @screen-lg-min) {
       min-height: 200px;
-    }
-    @media (min-width: 1440px) {
-      min-height: 150px;
     }
   }
 }

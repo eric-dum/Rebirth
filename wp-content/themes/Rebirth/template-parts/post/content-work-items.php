@@ -12,7 +12,7 @@
 ?>
 <section id="primary-content" class="row">
   <div class="zoom-gallery">
-    <div class="col-sm-1 zoom-thumbs">
+    <div class="col-md-1 zoom-thumbs">
       <div id="gal1">
         
         <?php 
@@ -132,7 +132,7 @@
         <?php endif; ?>
       </div>
     </div>
-    <div class="col-sm-5 zoom-main">
+    <div class="col-md-5 zoom-main">
       <?php 
 
           $image = get_field('main_gallery_image_1');
@@ -161,7 +161,7 @@
         <?php endif; ?>
     </div>
   </div>
-  <div class="col-sm-6 post-content">
+  <div class="col-md-6 post-content">
     <h1 class="h2">
       <?php the_title() ?> 
     </h1>
@@ -183,27 +183,31 @@
   <div class="gallery-items">
     <div class="col-xs-6 col-md-3">
       <div class="item">
-        <?php 
+          <?php 
 
-          $image = get_field('gallery_item_1');
+            $image = get_field('gallery_item_1');
 
-          // vars
-          $url = $image['url'];
-          $title = $image['title'];
-          $alt = $image['alt'];
-          $caption = $image['caption'];
+            // vars
+            $url = $image['url'];
+            $title = $image['title'];
+            $alt = $image['alt'];
+            $caption = $image['caption'];
 
-          // thumbnail
-          $size = 'action-gallery-thumb';
-          $thumb = $image['sizes'][ $size ];
-          $width = $image['sizes'][ $size . '-width' ];
-          $height = $image['sizes'][ $size . '-height' ];
+            // thumbnail
+            $sizeThumb = 'action-gallery-thumb';
+            $sizeFull = 'large';
+            $full = $image['sizes'][ $sizeFull ];
+            $thumb = $image['sizes'][ $sizeThumb ];
+            $width = $image['sizes'][ $size . '-width' ];
+            $height = $image['sizes'][ $size . '-height' ];
 
-          if( !empty($image) ): ?>
+            if( !empty($image) ): ?>
+              
+              <a href="<?php echo $full; ?>" rel="lightbox">
+                <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>">
+              </a>
 
-            <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>">
-
-        <?php endif; ?>
+          <?php endif; ?>
       </div>
     </div>
     <div class="col-xs-6 col-md-3">
@@ -219,14 +223,18 @@
           $caption = $image['caption'];
 
           // thumbnail
-          $size = 'action-gallery-thumb';
-          $thumb = $image['sizes'][ $size ];
+          $sizeThumb = 'action-gallery-thumb';
+          $sizeFull = 'large';
+          $full = $image['sizes'][ $sizeFull ];
+          $thumb = $image['sizes'][ $sizeThumb ];
           $width = $image['sizes'][ $size . '-width' ];
           $height = $image['sizes'][ $size . '-height' ];
 
           if( !empty($image) ): ?>
-
-            <img src="<?php echo $thumb; ?>" alt="<?php echo $image['alt']; ?>">
+            
+            <a href="<?php echo $full; ?>" rel="lightbox">
+              <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>">
+            </a>
 
         <?php endif; ?>
       </div>
@@ -244,14 +252,18 @@
           $caption = $image['caption'];
 
           // thumbnail
-          $size = 'action-gallery-thumb';
-          $thumb = $image['sizes'][ $size ];
+          $sizeThumb = 'action-gallery-thumb';
+          $sizeFull = 'large';
+          $full = $image['sizes'][ $sizeFull ];
+          $thumb = $image['sizes'][ $sizeThumb ];
           $width = $image['sizes'][ $size . '-width' ];
           $height = $image['sizes'][ $size . '-height' ];
 
           if( !empty($image) ): ?>
-
-            <img src="<?php echo $thumb; ?>" alt="<?php echo $image['alt']; ?>">
+            
+            <a href="<?php echo $full; ?>" rel="lightbox">
+              <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>">
+            </a>
 
         <?php endif; ?>
       </div>
@@ -269,14 +281,18 @@
           $caption = $image['caption'];
 
           // thumbnail
-          $size = 'action-gallery-thumb';
-          $thumb = $image['sizes'][ $size ];
+          $sizeThumb = 'action-gallery-thumb';
+          $sizeFull = 'large';
+          $full = $image['sizes'][ $sizeFull ];
+          $thumb = $image['sizes'][ $sizeThumb ];
           $width = $image['sizes'][ $size . '-width' ];
           $height = $image['sizes'][ $size . '-height' ];
 
           if( !empty($image) ): ?>
-
-            <img src="<?php echo $thumb; ?>" alt="<?php echo $image['alt']; ?>">
+            
+            <a href="<?php echo $full; ?>" rel="lightbox">
+              <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>">
+            </a>
 
         <?php endif; ?>
       </div>

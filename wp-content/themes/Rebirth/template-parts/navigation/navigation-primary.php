@@ -29,12 +29,12 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="/about">
+          <a href="/about/">
             About us
           </a>
         </li>
         <li class="nav-item">
-          <a href="/faq">
+          <a href="/faqs/">
             FAQ
           </a>
         </li>
@@ -49,12 +49,12 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="/recent-work">
+          <a href="/the-work/">
             Recent Work
           </a>
         </li>
         <li class="nav-item">
-          <a href="/contact">
+          <a href="/contact/">
             Contact
           </a>
         </li>

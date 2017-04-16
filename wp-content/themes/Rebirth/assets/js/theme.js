@@ -55,7 +55,11 @@ $(function() {
 
 
 
-  // auto-generate carousel indicator html
+
+
+
+
+  // auto-generate carousel indicator based on aamouunt of slides
   var heroCarousel = $('#carousel-hero');
   heroCarousel.append("<ol class='carousel-indicators'></ol>");
   var indicators = $(".carousel-indicators"); 
@@ -64,15 +68,25 @@ $(function() {
       indicators.append("<li data-target='#carousel-hero' data-slide-to='"+index+"' class='active'></li>") : 
       indicators.append("<li data-target='#carousel-hero' data-slide-to='"+index+"'></li>");
   });
-
-  $(function() {
-    $('#carousel-hero .carousel-inner .item').first().addClass('active');
-    // $('#carousel-hero .carousel-indicators li').first().addClass('active');
-  });
-  
-
-  // then call carousel
+    
+  //call carousel
   heroCarousel.carousel();
+  
+  //force first slide active
+  $('#carousel-hero .carousel-inner .item').first().addClass('active');
+
+
+
+
+
+
+
+  //faq functions
+
+
+
+
+
 
 
 
