@@ -43,4 +43,4 @@
 
 </div>
 
-<a href="" class="btn btn-primary btn-block">View More</a>
+<a href="/the-work/" class="btn btn-primary btn-block">View More</a>

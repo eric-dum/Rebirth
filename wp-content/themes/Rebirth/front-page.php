@@ -54,7 +54,22 @@ get_header(); ?>
       </h2>
     </div>
     <div class="media-contain">
+      <?php 
+        $args = array(
+          'post_type' => 'videos',
+          'posts_per_page' => '3'
+        );
+        $query = new WP_Query( $args ); 
+      ?>
+      <?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
+        
       <?php get_template_part( 'template-parts/cards/card', 'media' ); ?>
+
+      <?php endwhile; 
+         wp_reset_postdata();
+       else : ?>
+
+      <?php endif; ?>
     </div>
   </section>
 

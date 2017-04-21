@@ -55,6 +55,7 @@ function twentyseventeen_setup() {
 	add_image_size( 'zoom-gallery-thumb', 800, 600, true );
 	add_image_size( 'action-gallery-thumb', 400, 200, array( 'center', 'center' ) );
 	add_image_size( 'promo-carousel', 1440, 600, array( 'center', 'center' ) );
+	add_image_size( 'video-feature', 400, 250, array( 'center', 'center' ) );
 
 	//add_image_size( 'twentyseventeen-featured-image', 2000, 1200, true );
 
@@ -93,7 +94,8 @@ function twentyseventeen_setup() {
 		'link',
 		'gallery',
 		'audio',
-		'work-items'
+		'work-items',
+		'videos'
 	) );
 
 	// Add theme support for Custom Logo.
@@ -619,6 +621,7 @@ function my_custom_post_videos() {
     'public'        => true,
     'menu_position' => 3,
     'supports'      => array( 'title', 'editor' ),
+    'taxonomies'    => array( 'category' ),
     'menu_icon' => 'dashicons-format-video',
     'has_archive'   => true
   );

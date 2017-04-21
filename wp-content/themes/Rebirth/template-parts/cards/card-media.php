@@ -10,59 +10,47 @@
 ?>
 
 <div class="col-sm-4 card media-card">
-  <div class="media-img">
-    <img src="//placehold.it/400x300" alt="" class="img-responsive">
-  </div>
-  <div class="media-content">
-    <h3 class="heading">
-      Mid-state taxidermy players rep their team
-    </h3>
-    <div class="meta"></div>
-    <div class="excerpt">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam bibendum feugiat orci eu lobortis. In varius, tortor vel porttitor bibendum, risus arcu rhoncus elit...
-      </p>
+  <a href="<?php echo the_permalink(); ?>">
+    <div class="media-img">
+      <?php 
+
+        $image = get_field('tile_image');
+
+        // vars
+        $url = $image['url'];
+        $title = $image['title'];
+        $alt = $image['alt'];
+        $caption = $image['caption'];
+
+        // thumbnail
+        $size = 'video-feature';
+        $thumb = $image['sizes'][ $size ];
+        $width = $image['sizes'][ $size . '-width' ];
+        $height = $image['sizes'][ $size . '-height' ];
+        
+        if( !empty($image) ): ?>
+        
+        <img class="img-responsive" src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" />
+
+      <?php endif; ?>
     </div>
-    <a href="" class="btn btn-ghost">
-      Read More
-    </a>
-  </div>
-</div>
-<div class="col-sm-4 card media-card">
-  <div class="media-img">
-    <img src="//placehold.it/400x300" alt="" class="img-responsive">
-  </div>
-  <div class="media-content">
-    <h3 class="heading">
-      Mid-state taxidermy players rep their team
-    </h3>
-    <div class="meta"></div>
-    <div class="excerpt">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam bibendum feugiat orci eu lobortis. In varius, tortor vel porttitor bibendum, risus arcu rhoncus elit...
-      </p>
+    <div class="media-content">
+      <h3 class="heading">
+        <?php the_title(); ?>
+      </h3>
+      <div class="meta"></div>
+      <div class="excerpt">
+        <p>
+          <?php
+            $content = get_the_content();
+            $charLimit = 200;
+            echo mb_strimwidth($content, 0, $charLimit, '...');
+          ?>
+        </p>
+      </div>
+      <a href="<?php echo the_permalink(); ?>" class="btn btn-ghost">
+        View Video
+      </a>
     </div>
-    <a href="" class="btn btn-ghost">
-      Read More
-    </a>
-  </div>
-</div>
-<div class="col-sm-4 card media-card">
-  <div class="media-img">
-    <img src="//placehold.it/400x300" alt="" class="img-responsive">
-  </div>
-  <div class="media-content">
-    <h3 class="heading">
-      Mid-state taxidermy players rep their team
-    </h3>
-    <div class="meta"></div>
-    <div class="excerpt">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam bibendum feugiat orci eu lobortis. In varius, tortor vel porttitor bibendum, risus arcu rhoncus elit...
-      </p>
-    </div>
-    <a href="" class="btn btn-ghost">
-      Read More
-    </a>
-  </div>
+  </a>
 </div>
